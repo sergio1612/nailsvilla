@@ -7,10 +7,13 @@ import { Pricing } from "@/components/sections/Pricing"
 import { Testimonials } from "@/components/sections/Testimonials"
 import { Gallery } from "@/components/sections/Gallery"
 import { Contact } from "@/components/sections/Contact"
+import { BackToTop } from "@/components/common/BackToTop"
+import { Loader } from "@/components/common/Loader"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <Loader />
       <Header />
       <Hero />
       <About />
@@ -20,6 +23,7 @@ export default function Home() {
       <Gallery />
       <Contact />
       <Footer />
+      <BackToTop />
     </main>
   )
 }

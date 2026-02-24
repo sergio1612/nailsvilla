@@ -8,7 +8,7 @@ export function Pricing() {
   const pricingPlans = [
     {
       name: "Basic",
-      price: "$35",
+      price: "₹35",
       description: "Perfect for regular maintenance",
       features: [
         "Classic Manicure",
@@ -19,7 +19,7 @@ export function Pricing() {
     },
     {
       name: "Premium",
-      price: "$55",
+      price: "₹55",
       description: "Most popular choice",
       features: [
         "Gel Manicure",
@@ -32,7 +32,7 @@ export function Pricing() {
     },
     {
       name: "Luxury",
-      price: "$85",
+      price: "₹85",
       description: "Ultimate pampering experience",
       features: [
         "Gel Extensions",
@@ -46,12 +46,12 @@ export function Pricing() {
   ]
 
   const additionalServices = [
-    { service: "Pedicure", price: "$45" },
-    { service: "Gel Pedicure", price: "$60" },
-    { service: "Nail Repair", price: "$15" },
-    { service: "Nail Removal", price: "$20" },
-    { service: "French Tips", price: "+$10" },
-    { service: "3D Nail Art", price: "+$25" },
+    { service: "Pedicure", price: "₹45" },
+    { service: "Gel Pedicure", price: "₹60" },
+    { service: "Nail Repair", price: "₹15" },
+    { service: "Nail Removal", price: "₹20" },
+    { service: "French Tips", price: "+₹10" },
+    { service: "3D Nail Art", price: "+₹25" },
   ]
 
   const scrollToContact = () => {

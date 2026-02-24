@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Sparkles, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { Sparkles, X, ChevronLeft, ChevronRight, Download } from "lucide-react"
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
@@ -86,6 +86,29 @@ export function Gallery() {
     }
   }
 
+  const downloadImage = async (imageSrc: string, imageAlt: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+    }
+    
+    try {
+      const response = await fetch(imageSrc)
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement("a")
+      link.href = url
+      link.download = `${imageAlt.replace(/\s+/g, "-").toLowerCase()}.jpg`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error("Error downloading image:", error)
+      // Fallback: open image in new tab
+      window.open(imageSrc, "_blank")
+    }
+  }
+
   return (
     <>
       <section id="gallery" className="py-16 sm:py-20 lg:py-24 bg-background">
@@ -119,6 +142,16 @@ export function Gallery() {
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                  <div className="absolute top-2 right-2">
+                    <button
+                      onClick={(e) => downloadImage(image.src, image.alt, e)}
+                      className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
+                      aria-label="Download image"
+                      title="Download image"
+                    >
+                      <Download className="h-4 w-4" />
+                    </button>
+                  </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <p className="text-white text-sm font-medium">{image.category}</p>
                   </div>
@@ -135,13 +168,26 @@ export function Gallery() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
           onClick={closeModal}
         >
-          <button
-            onClick={closeModal}
-            className="absolute top-4 right-4 z-50 text-white hover:text-primary transition-colors p-2"
-            aria-label="Close gallery"
-          >
-            <X className="h-6 w-6" />
-          </button>
+          <div className="absolute top-4 right-4 z-50 flex gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                downloadImage(galleryImages[selectedImage].src, galleryImages[selectedImage].alt)
+              }}
+              className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
+              aria-label="Download image"
+              title="Download image"
+            >
+              <Download className="h-6 w-6" />
+            </button>
+            <button
+              onClick={closeModal}
+              className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
+              aria-label="Close gallery"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
 
           <button
             onClick={(e) => {
