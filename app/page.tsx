@@ -7,9 +7,11 @@ import { Stats } from "@/components/sections/Stats"
 import { Pricing } from "@/components/sections/Pricing"
 import { Testimonials } from "@/components/sections/Testimonials"
 import { Gallery } from "@/components/sections/Gallery"
+import { Newsletter } from "@/components/sections/Newsletter"
 import { Contact } from "@/components/sections/Contact"
 import { BackToTop } from "@/components/common/BackToTop"
 import { Loader } from "@/components/common/Loader"
+import { NewsletterPopup } from "@/components/common/NewsletterPopup"
 
 export default function Home() {
   return (
@@ -23,9 +25,11 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <Gallery />
+      <Newsletter />
       <Contact />
       <Footer />
       <BackToTop />
+      <NewsletterPopup />
     </main>
   )
 }
