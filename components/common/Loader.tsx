@@ -5,10 +5,8 @@ import { cn } from "@/lib/utils"
 
 export function Loader() {
   const [isVisible, setIsVisible] = useState(true)
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
     // Hide loader after page loads
     const timer = setTimeout(() => {
       setIsVisible(false)
@@ -17,7 +15,7 @@ export function Loader() {
     return () => clearTimeout(timer)
   }, [])
 
-  if (!isMounted || !isVisible) return null
+  if (!isVisible) return null
 
   return (
     <div
@@ -29,7 +27,7 @@ export function Loader() {
       <div className="flex flex-col items-center justify-center space-y-6">
         {/* Brand Name */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display">
-          NailsVilla
+          Nails Villa
         </h1>
         
         {/* Simple Spinner */}

@@ -11,7 +11,6 @@ import { Newsletter } from "@/components/sections/Newsletter"
 import { Contact } from "@/components/sections/Contact"
 import { BackToTop } from "@/components/common/BackToTop"
 import { Loader } from "@/components/common/Loader"
-import { NewsletterPopup } from "@/components/common/NewsletterPopup"
 
 export default function Home() {
   return (
@@ -29,7 +28,6 @@ export default function Home() {
       <Contact />
       <Footer />
       <BackToTop />
-      <NewsletterPopup />
     </main>
   )
 }

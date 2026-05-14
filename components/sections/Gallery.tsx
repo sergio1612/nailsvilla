@@ -10,56 +10,56 @@ export function Gallery() {
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=800&fit=crop&q=80",
-      alt: "Elegant French tips with floral design",
-      category: "Nail Art",
+      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&h=900&fit=crop&q=85",
+      alt: "Glossy blush gel polish",
+      category: "Gel Polish",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=800&fit=crop&q=80",
-      alt: "Gradient ombre nails with glitter",
-      category: "Gel Manicure",
+      src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=900&h=900&fit=crop&q=85",
+      alt: "Clean extension shape",
+      category: "Extensions",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&h=800&fit=crop&q=80",
-      alt: "3D nail art with gemstones",
-      category: "3D Art",
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1608248543803-ba4f8c7e9d3a?w=800&h=800&fit=crop&q=80",
-      alt: "Minimalist geometric nail design",
+      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&h=900&fit=crop&q=85",
+      alt: "Detailed nail art application",
       category: "Nail Art",
     },
     {
+      id: 4,
+      src: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&h=900&fit=crop&q=85",
+      alt: "Fresh manicure care",
+      category: "Care",
+    },
+    {
       id: 5,
-      src: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&h=800&fit=crop&q=80",
-      alt: "Bridal nail art with pearls",
-      category: "Special Occasion",
+      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&h=900&fit=crop&q=85",
+      alt: "Soft glam nail finish",
+      category: "Soft Glam",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1583241804227-4b18b0b4b5a5?w=800&h=800&fit=crop&q=80",
-      alt: "Vibrant summer nail design",
-      category: "Seasonal",
+      src: "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?w=900&h=900&fit=crop&q=85",
+      alt: "Minimal nude nail styling",
+      category: "Minimal",
     },
     {
       id: 7,
-      src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=800&fit=crop&q=80",
-      alt: "Classic red gel polish",
+      src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=900&h=900&fit=crop&q=85",
+      alt: "Polished colour selection",
       category: "Gel Manicure",
     },
     {
       id: 8,
-      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=800&fit=crop&q=80",
-      alt: "Abstract art nails",
-      category: "Nail Art",
+      src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&h=900&fit=crop&q=85",
+      alt: "Beauty essentials and nail care",
+      category: "Nail Care",
     },
     {
       id: 9,
-      src: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=800&fit=crop&q=80",
-      alt: "Elegant nude with gold accents",
+      src: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&h=900&fit=crop&q=85",
+      alt: "Elegant finished nail set",
       category: "Premium",
     },
   ]
@@ -131,7 +131,7 @@ export function Gallery() {
             {galleryImages.map((image, index) => (
               <div
                 key={image.id}
-                className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-gradient-to-br from-primary/10 to-accent/10 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-linear-to-br from-primary/10 to-accent/10 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 onClick={() => openModal(index)}
               >
                 <Image
@@ -141,7 +141,7 @@ export function Gallery() {
                   className="object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
                   <div className="absolute top-2 right-2">
                     <button
                       onClick={(e) => downloadImage(image.src, image.alt, e)}
@@ -222,7 +222,7 @@ export function Gallery() {
               className="object-contain rounded-lg"
               sizes="90vw"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/80 to-transparent rounded-b-lg">
               <p className="text-white text-lg font-medium mb-1">
                 {galleryImages[selectedImage].alt}
               </p>

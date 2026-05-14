@@ -12,21 +12,21 @@ export function Stats() {
       icon: Users,
       value: 500,
       suffix: "+",
-      label: "Clients Served",
+      label: "Happy Nail Clients",
       color: "text-primary",
     },
     {
       icon: Calendar,
-      value: 5,
+      value: 8,
       suffix: "+",
-      label: "Years of Experience",
+      label: "Core Nail Services",
       color: "text-accent",
     },
     {
       icon: Instagram,
       value: 700,
       suffix: "+",
-      label: "Instagram Followers",
+      label: "Instagram Family",
       color: "text-primary",
     },
   ]
@@ -45,13 +45,15 @@ export function Stats() {
       }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const section = sectionRef.current
+
+    if (section) {
+      observer.observe(section)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (section) {
+        observer.unobserve(section)
       }
     }
   }, [hasAnimated])
@@ -140,7 +142,7 @@ function StatCounter({
   }, [hasAnimated, value, delay])
 
   return (
-    <div className="text-center p-6 rounded-xl bg-card border border-border/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+    <div className="text-center p-6 rounded-3xl bg-white/75 border border-white/70 backdrop-blur hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2">
       <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 ${color} mb-5`}>
         <Icon className="h-7 w-7" />
       </div>

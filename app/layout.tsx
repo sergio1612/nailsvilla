@@ -15,8 +15,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "NailsVilla by Rutika - Premium Nail Artistry",
-  description: "Transform your nails into works of art. Experience premium nail care services tailored to your style and personality. Professional nail art by Rutika.",
+  title: "Nails Villa by Rutika | Ahmedabad Nail Services",
+  description:
+    "Home-based Ahmedabad nail services by Nails Villa by Rutika, founded by owner Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, nail art, and home service on request.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {

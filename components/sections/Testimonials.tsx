@@ -8,45 +8,45 @@ export function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Aarohi S.",
       rating: 5,
-      text: "Absolutely amazing experience! Rutika's attention to detail is incredible. My nails looked stunning and lasted for weeks. Highly recommend!",
-      location: "Regular Client",
+      text: "The finish was so neat and glossy. I sent a reference photo and the final nails looked even better in person.",
+      location: "Gel Polish Client",
     },
     {
       id: 2,
-      name: "Emily Chen",
+      name: "Priya M.",
       rating: 5,
-      text: "Best nail salon I've ever been to! The designs are creative and unique. The service is top-notch and the atmosphere is so relaxing.",
-      location: "Premium Member",
+      text: "Loved how clearly the services and pricing were explained before booking. My extensions looked elegant and natural.",
+      location: "Extension Client",
     },
     {
       id: 3,
-      name: "Maria Rodriguez",
+      name: "Neha K.",
       rating: 5,
-      text: "Rutika is a true artist! She took my vision and made it even better. The quality is exceptional and I always get compliments on my nails.",
-      location: "VIP Client",
+      text: "The nail art was minimal, classy, and exactly my vibe. I got compliments the same day.",
+      location: "Nail Art Client",
     },
     {
       id: 4,
-      name: "Jessica Williams",
+      name: "Ishita R.",
       rating: 5,
-      text: "I've been coming here for months and I'm never disappointed. The nail art is always perfect and the service is friendly and professional.",
-      location: "Loyal Customer",
+      text: "Home service made the appointment so convenient. The setup was clean and the result felt professional.",
+      location: "Home Service Client",
     },
     {
       id: 5,
-      name: "Amanda Taylor",
+      name: "Tanvi P.",
       rating: 5,
-      text: "The gel extensions I got here are the best! They look so natural and have lasted perfectly. Rutika really knows her craft.",
-      location: "New Client",
+      text: "My refill was done beautifully and my nails felt fresh again without changing the whole set.",
+      location: "Refill Client",
     },
     {
       id: 6,
-      name: "Lisa Anderson",
+      name: "Rhea D.",
       rating: 5,
-      text: "Incredible work! Every time I visit, I'm amazed by the creativity and skill. This is my go-to place for all my nail care needs.",
-      location: "Regular Client",
+      text: "Clean removal, no roughness, and great aftercare tips. I felt confident booking my next set already.",
+      location: "Removal Client",
     },
   ]
 
@@ -62,7 +62,7 @@ export function Testimonials() {
             What Our <span className="text-primary">Clients Say</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it. See what our satisfied clients have to say about their experience at NailsVilla.
+            Real nails, real reactions, and finishes made to look good in every close-up.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export function Testimonials() {
           {testimonials.map((testimonial) => (
             <Card
               key={testimonial.id}
-              className="relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border"
+              className="relative overflow-hidden rounded-3xl border-white/70 bg-white/75 backdrop-blur hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
             >
               <CardContent className="p-6">
                 {/* Quote Icon */}
@@ -90,7 +90,7 @@ export function Testimonials() {
 
                 {/* Testimonial Text */}
                 <p className="text-muted-foreground mb-6 leading-relaxed relative z-10">
-                  "{testimonial.text}"
+                  &ldquo;{testimonial.text}&rdquo;
                 </p>
 
                 {/* Client Info */}

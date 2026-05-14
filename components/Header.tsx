@@ -7,10 +7,8 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
@@ -41,17 +39,31 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        mounted && isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm"
+        isScrolled
+          ? "bg-white/80 backdrop-blur-xl shadow-[0_12px_45px_rgba(156,48,75,0.08)]"
           : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display">
-              NailsVilla <span className="text-xs sm:text-sm font-normal text-foreground/70">by Rutika</span>
-            </h1>
+            <button
+              onClick={() => scrollToSection("hero")}
+              className="group flex items-center gap-3 text-left"
+              aria-label="Go to home"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform group-hover:-rotate-6">
+                NV
+              </span>
+              <span>
+                <span className="block text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display">
+                  Nails Villa
+                </span>
+                <span className="block text-[11px] font-medium tracking-[0.25em] text-foreground/55 uppercase">
+                  by Rutika
+                </span>
+              </span>
+            </button>
           </div>
 
           {/* Desktop Navigation */}

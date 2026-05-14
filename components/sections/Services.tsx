@@ -8,35 +8,35 @@ export function Services() {
   const services = [
     {
       icon: Sparkles,
-      title: "Manicure",
+      title: "Gel Polish",
       description:
-        "Classic and gel manicures to keep your nails looking polished and healthy.",
-      features: ["Cuticle Care", "Nail Shaping", "Polish Application", "Hand Massage"],
-      image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80",
+        "High-shine gel colour for a clean, fresh, long-lasting finish.",
+      features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Wear"],
+      image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
     },
     {
       icon: Heart,
-      title: "Pedicure",
+      title: "Extensions",
       description:
-        "Relaxing pedicures that pamper your feet and leave them feeling refreshed.",
-      features: ["Foot Soak", "Exfoliation", "Nail Care", "Moisturizing"],
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80",
+        "Temporary and permanent extensions shaped to your style and comfort.",
+      features: ["Custom Length", "Natural Shape", "Event Ready", "Refill Friendly"],
+      image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=700&h=520&fit=crop&q=85",
     },
     {
       icon: Palette,
       title: "Nail Art",
       description:
-        "Creative and custom nail art designs to express your unique personality.",
-      features: ["Custom Designs", "3D Art", "Gradient Nails", "Stamping"],
-      image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=80",
+        "Minimal, glam, bridal, or playful designs made around your inspiration.",
+      features: ["Custom Designs", "Chrome Looks", "Glitter Details", "Statement Sets"],
+      image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
     },
     {
       icon: Gem,
-      title: "Gel Extensions",
+      title: "Overlays & Care",
       description:
-        "Long-lasting gel extensions for beautiful, durable nails that last weeks.",
-      features: ["Natural Look", "Durable", "Custom Length", "Easy Maintenance"],
-      image: "https://images.unsplash.com/photo-1608248543803-ba4f8c7e9d3a?w=600&q=80",
+        "Overlay, refill, and removal services to keep nails healthy and polished.",
+      features: ["Gel Overlays", "Refilling", "Gentle Removal", "Aftercare Guidance"],
+      image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&h=520&fit=crop&q=85",
     },
   ]
 
@@ -52,8 +52,8 @@ export function Services() {
             Our <span className="text-primary">Services</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our range of premium nail care services designed to make
-            you look and feel amazing.
+            From subtle everyday nails to celebration-ready extensions, every
+            service is designed for a polished, photo-ready finish.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export function Services() {
             return (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden group"
+                className="hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden group rounded-3xl border-white/70 bg-white/75 backdrop-blur"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -72,8 +72,8 @@ export function Services() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/90 text-primary-foreground backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/90 text-primary-foreground backdrop-blur-sm">
                     <Icon className="h-6 w-6" />
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export function Services() {
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                         {feature}
                       </li>
                     ))}

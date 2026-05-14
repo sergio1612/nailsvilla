@@ -1,85 +1,126 @@
 "use client"
 
 import Image from "next/image"
-import { Heart, Award, Users, Sparkles } from "lucide-react"
+import { Award, CalendarDays, Heart, Home, MapPin, Sparkles } from "lucide-react"
 
 export function About() {
   const features = [
     {
       icon: Heart,
-      title: "Passion for Excellence",
+      title: "Personal Attention",
       description:
-        "We pour our heart into every nail design, ensuring each client leaves feeling beautiful and confident.",
+        "Every appointment is handled directly by Rutika, from service guidance to final finish.",
     },
     {
       icon: Award,
-      title: "Premium Quality",
+      title: "Founded in 2021",
       description:
-        "Using only the finest products and techniques to deliver long-lasting, stunning results.",
+        "Nails Villa by Rutika has been serving Ahmedabad nail lovers since 10 April 2021.",
     },
     {
-      icon: Users,
-      title: "Client-Focused",
+      icon: Home,
+      title: "Flexible Appointments",
       description:
-        "Your satisfaction is our priority. We listen, understand, and create designs that reflect your unique style.",
+        "Book at Rutika's home setup or request home service based on availability.",
     },
   ]
 
+  const facts = [
+    { icon: CalendarDays, label: "Founded", value: "10 April 2021" },
+    { icon: MapPin, label: "Location", value: "Ahmedabad" },
+    { icon: Home, label: "Model", value: "Home-based + home service" },
+  ]
+
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-background">
+    <section id="about" className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-background">
+      <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl"></div>
+      <div className="absolute -right-24 bottom-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Image */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
-                alt="Nail artist at work"
-                fill
-                className="object-cover"
-              />
+        <div className="relative grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+          <div className="relative order-2 mx-auto w-full max-w-xl lg:order-1">
+            <div className="relative overflow-hidden rounded-4xl border border-white/70 bg-white/70 p-3 shadow-2xl shadow-primary/10 backdrop-blur">
+              <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[360px] lg:h-[420px] xl:h-[460px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&h=1100&fit=crop&q=85"
+                  alt="Home-based nail service setup"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#2a171d]/55 via-transparent to-transparent"></div>
+              </div>
+
+              <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/88 p-4 shadow-2xl backdrop-blur sm:p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+                  Founder-led
+                </p>
+                <h3 className="mt-2 text-xl font-bold font-display text-foreground sm:text-2xl">
+                  Nails Villa by Rutika
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Home-based nail services in Ahmedabad with home visits on request.
+                </p>
+              </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+
+            <div className="absolute -right-5 -top-5 hidden rounded-3xl bg-primary px-5 py-4 text-primary-foreground shadow-xl shadow-primary/20 sm:block">
+              <p className="text-xs uppercase tracking-[0.25em] opacity-80">Since</p>
+              <p className="text-2xl font-bold font-display">2021</p>
+            </div>
           </div>
 
-          {/* Content */}
           <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
               <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">About Us</span>
+              <span className="text-sm font-medium">About Nails Villa by Rutika</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
-              About <span className="text-primary">NailsVilla by Rutika</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 font-display text-balance">
+              A home-grown nail brand owned by <span className="text-primary">Rutika Chauhan</span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6">
-              Welcome to NailsVilla by Rutika, where artistry meets elegance. We are
-              dedicated to providing exceptional nail care services that enhance
-              your natural beauty. With years of experience and a passion for
-              perfection, we create stunning nail designs that make you feel
-              confident and beautiful.
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-5">
+              Nails Villa by Rutika was founded on 10 April 2021 with a simple idea: make
+              polished, modern nails feel personal, approachable, and beautifully
+              detailed for Ahmedabad clients.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Rutika brings her artistic vision and attention to detail to every
-              appointment, ensuring that each client receives personalized care
-              and leaves with nails that are not just beautiful, but a true
-              reflection of their style.
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Rutika currently operates from her home setup and also provides
+              home service on request. Send your inspiration, tell her the occasion,
+              and she will help you choose the right service, timing, and appointment option.
             </p>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {facts.map((fact) => {
+                const Icon = fact.icon
+                return (
+                  <div key={fact.label} className="rounded-3xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur">
+                    <Icon className="mb-4 h-5 w-5 text-primary" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      {fact.label}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">
+                      {fact.value}
+                    </p>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
               <div
                 key={index}
-                className="text-center p-8 rounded-xl bg-card border border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="p-6 rounded-3xl bg-white/75 border border-white/70 backdrop-blur hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                  <Icon className="h-8 w-8" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-5">
+                  <Icon className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 font-display">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             )
           })}
@@ -88,4 +129,3 @@ export function About() {
     </section>
   )
 }
-
