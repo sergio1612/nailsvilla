@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   description:
     "Home-based Ahmedabad nail services by Nails Villa by Rutika, founded by owner Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, nail art, and home service on request.",
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
