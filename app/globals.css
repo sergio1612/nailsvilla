@@ -1,41 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fff8ef;
-  --foreground: #2a1b16;
+  --background: #fbf7ff;
+  --foreground: #24162d;
   
-  /* Palette trial 11: Ivory + Terracotta Rose */
-  --primary: 7 44% 52%;
+  /* Palette trial 12: Soft Lavender + Royal Purple */
+  --primary: 274 48% 48%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 23 45% 89%;
-  --secondary-foreground: 10 36% 28%;
-  --accent: 23 56% 65%;
-  --accent-foreground: 16 32% 20%;
-  --muted: 26 43% 93%;
-  --muted-foreground: 18 14% 38%;
-  --border: 24 37% 84%;
-  --input: 24 37% 84%;
-  --ring: 7 44% 52%;
+  --secondary: 279 42% 91%;
+  --secondary-foreground: 274 34% 25%;
+  --accent: 319 56% 64%;
+  --accent-foreground: 288 30% 18%;
+  --muted: 276 36% 94%;
+  --muted-foreground: 280 13% 38%;
+  --border: 276 31% 84%;
+  --input: 276 31% 84%;
+  --ring: 274 48% 48%;
   --card: 0 0% 100%;
-  --card-foreground: 344 38% 16%;
+  --card-foreground: 280 38% 16%;
 }
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+  --color-background: #fbf7ff;
+  --color-foreground: #24162d;
+  --color-primary: hsl(274 48% 48%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(279 42% 91%);
+  --color-secondary-foreground: hsl(274 34% 25%);
+  --color-accent: hsl(319 56% 64%);
+  --color-accent-foreground: hsl(288 30% 18%);
+  --color-muted: hsl(276 36% 94%);
+  --color-muted-foreground: hsl(280 13% 38%);
+  --color-border: hsl(276 31% 84%);
+  --color-input: hsl(276 31% 84%);
+  --color-ring: hsl(274 48% 48%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(280 38% 16%);
   --font-display: var(--font-playfair);
   --font-sans: var(--font-poppins);
 }
@@ -46,8 +46,8 @@
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(255, 214, 204, 0.9), transparent 34rem),
-    radial-gradient(circle at 85% 10%, rgba(255, 237, 196, 0.7), transparent 28rem),
+    radial-gradient(circle at top left, rgba(225, 206, 255, 0.86), transparent 34rem),
+    radial-gradient(circle at 85% 10%, rgba(255, 210, 236, 0.64), transparent 28rem),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins), system-ui, sans-serif;
@@ -62,8 +62,8 @@ html {
 }
 
 .luxury-surface {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 245, 242, 0.78));
-  box-shadow: 0 24px 80px rgba(156, 48, 75, 0.12);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(247, 239, 255, 0.78));
+  box-shadow: 0 24px 80px rgba(117, 59, 162, 0.13);
   backdrop-filter: blur(18px);
 }
 

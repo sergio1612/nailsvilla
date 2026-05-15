@@ -40,13 +40,13 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "bg-white/80 backdrop-blur-xl shadow-[0_12px_45px_rgba(156,48,75,0.08)]"
+          ? "bg-white/80 backdrop-blur-xl shadow-[0_12px_45px_rgba(117,59,162,0.12)]"
           : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <button
               onClick={() => scrollToSection("hero")}
               className="group flex items-center gap-3 text-left"
@@ -56,7 +56,7 @@ export function Header() {
                 NV
               </span>
               <span>
-                <span className="block text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display">
+                <span className="block text-xl sm:text-2xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-display">
                   Nails Villa
                 </span>
                 <span className="block text-[11px] font-medium tracking-[0.25em] text-foreground/55 uppercase">
@@ -67,7 +67,7 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -87,7 +87,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="xl:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -101,7 +101,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-border">
+          <div className="xl:hidden py-4 space-y-4 border-t border-border">
             {navItems.map((item) => (
               <button
                 key={item.id}

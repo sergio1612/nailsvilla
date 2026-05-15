@@ -41,8 +41,8 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-20 xl:py-24 bg-muted">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
             Ready for Your <span className="text-primary">Nail Glow-Up?</span>
@@ -55,7 +55,7 @@ export function Contact() {
 
         <div className="max-w-4xl mx-auto">
           {/* WhatsApp CTA Card */}
-          <Card className="mb-12 overflow-hidden rounded-[2rem] border-primary/20 bg-gradient-to-br from-primary/10 to-accent/20 shadow-xl shadow-primary/10">
+          <Card className="mb-12 overflow-hidden rounded-4xl border-primary/20 bg-linear-to-br from-primary/10 to-accent/20 shadow-xl shadow-primary/10">
             <CardHeader className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-4 mx-auto">
                 <MessageCircle className="h-8 w-8" />
@@ -79,32 +79,36 @@ export function Contact() {
           </Card>
 
           {/* Contact Information Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
             {contactInfo.map((info, index) => {
               const Icon = info.icon
               return (
                 <Card
                   key={index}
-                  className="rounded-3xl border-white/70 bg-white/70 backdrop-blur hover:shadow-xl transition-all hover:-translate-y-1"
+                  className="rounded-3xl border-white/70 bg-white/80 backdrop-blur transition-all hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <CardHeader>
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
-                      <Icon className="h-6 w-6" />
+                  <div className="flex items-start gap-4 p-4 text-left sm:block sm:p-6">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:mb-5">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <CardTitle className="text-xl">{info.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {info.link !== "#" ? (
-                      <a
-                        href={info.link}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {info.content}
-                      </a>
-                    ) : (
-                      <p className="text-muted-foreground">{info.content}</p>
-                    )}
-                  </CardContent>
+                    <div className="min-w-0">
+                      <h3 className="text-base font-semibold text-foreground sm:text-xl">
+                        {info.title}
+                      </h3>
+                      {info.link !== "#" ? (
+                        <a
+                          href={info.link}
+                          className="mt-2 block text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary"
+                        >
+                          {info.content}
+                        </a>
+                      ) : (
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {info.content}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </Card>
               )
             })}

@@ -32,13 +32,13 @@ export function About() {
   ]
 
   return (
-    <section id="about" className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-background">
+    <section id="about" className="relative overflow-hidden py-16 sm:py-20 xl:py-28 bg-background">
       <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl"></div>
       <div className="absolute -right-24 bottom-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
-          <div className="relative order-2 mx-auto w-full max-w-xl lg:order-1">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+        <div className="relative grid grid-cols-1 xl:grid-cols-[0.95fr_1.05fr] gap-10 xl:gap-14 items-center">
+          <div className="relative order-2 mx-auto w-full max-w-xl xl:order-1">
             <div className="relative overflow-hidden rounded-4xl border border-white/70 bg-white/70 p-3 shadow-2xl shadow-primary/10 backdrop-blur">
               <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[360px] lg:h-[420px] xl:h-[460px]">
                 <Image
@@ -46,9 +46,9 @@ export function About() {
                   alt="Home-based nail service setup"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 1279px) 90vw, 45vw"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#2a171d]/55 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/55 via-transparent to-transparent"></div>
               </div>
 
               <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/88 p-4 shadow-2xl backdrop-blur sm:p-5">
@@ -70,7 +70,7 @@ export function About() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="order-1 text-center xl:order-2 xl:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
               <Sparkles className="h-4 w-4" />
               <span className="text-sm font-medium">About Nails Villa by Rutika</span>
@@ -93,14 +93,19 @@ export function About() {
               {facts.map((fact) => {
                 const Icon = fact.icon
                 return (
-                  <div key={fact.label} className="rounded-3xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur">
-                    <Icon className="mb-4 h-5 w-5 text-primary" />
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      {fact.label}
-                    </p>
-                    <p className="mt-2 text-sm font-semibold text-foreground">
-                      {fact.value}
-                    </p>
+                  <div
+                    key={fact.label}
+                    className="flex items-center gap-4 rounded-3xl border border-white/70 bg-white/80 p-4 text-left shadow-sm backdrop-blur sm:block sm:text-center"
+                  >
+                    <Icon className="h-10 w-10 shrink-0 rounded-2xl bg-primary/10 p-2.5 text-primary sm:mx-auto sm:mb-4" />
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                        {fact.label}
+                      </p>
+                      <p className="mt-1.5 text-sm font-semibold text-foreground">
+                        {fact.value}
+                      </p>
+                    </div>
                   </div>
                 )
               })}

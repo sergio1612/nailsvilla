@@ -53,14 +53,14 @@ export function Newsletter() {
   }
 
   return (
-    <section id="newsletter" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-secondary/70 via-background to-accent/25">
+    <section id="newsletter" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-linear-to-br from-secondary/70 via-background to-accent/25">
       <div className="absolute right-8 top-8 h-32 w-32 rounded-full border border-primary/15"></div>
       <div className="absolute bottom-0 left-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="luxury-surface mx-auto max-w-5xl overflow-hidden rounded-[2rem] border-white/70">
-          <CardContent className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
-            <div className="flex flex-col justify-between rounded-[1.5rem] bg-gradient-to-br from-primary to-[#b82950] p-6 text-primary-foreground sm:p-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+        <Card className="luxury-surface mx-auto max-w-5xl overflow-hidden rounded-4xl border-white/70">
+          <CardContent className="grid gap-8 p-6 sm:p-8 lg:p-10 xl:grid-cols-[0.95fr_1.05fr]">
+            <div className="flex flex-col justify-between rounded-3xl bg-linear-to-br from-primary via-purple-600 to-accent p-6 text-primary-foreground sm:p-8">
               <div>
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium">
                   <Sparkles className="h-4 w-4" />

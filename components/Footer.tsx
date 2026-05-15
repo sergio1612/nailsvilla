@@ -6,12 +6,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#2a171d] text-white border-t border-white/10">
+    <footer className="bg-foreground text-white border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-white via-secondary to-accent bg-clip-text text-transparent mb-4 font-display">
+            <h2 className="text-2xl font-bold bg-linear-to-r from-white via-secondary to-accent bg-clip-text text-transparent mb-4 font-display">
               Nails Villa by Rutika
             </h2>
             <p className="text-white/65 text-sm">

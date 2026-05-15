@@ -49,7 +49,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-0 pt-24 pb-12 sm:pt-28 lg:min-h-svh xl:pt-20 xl:pb-0"
     >
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -69,16 +69,16 @@ export function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+        <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:gap-12">
           {/* Text Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center xl:text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-primary shadow-sm backdrop-blur mb-6">
               <Sparkles className="h-4 w-4" />
               <span className="text-sm font-medium">Detailed nail artistry for Ahmedabad</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight font-display text-balance">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-6 leading-tight font-display text-balance">
               <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 Nails that make
               </span>
@@ -86,12 +86,12 @@ export function Hero() {
               <span className="text-foreground">people notice</span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto xl:mx-0 leading-relaxed">
               From everyday polish to occasion-ready extensions, get nails that
               feel clean, current, and made for your style.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start mb-8">
               <Button size="lg" onClick={scrollToContact} className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full shadow-xl shadow-primary/20">
                 Book Your Nail Glow-Up
               </Button>
@@ -108,8 +108,8 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-center lg:justify-start">
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-center xl:justify-start">
+              <div className="flex items-center gap-2 justify-center xl:justify-start">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-primary text-primary" />
@@ -125,9 +125,9 @@ export function Hero() {
           </div>
 
           {/* Image Slideshow */}
-          <div className="max-w-md mx-auto lg:max-w-lg w-full">
+          <div className="mx-auto w-full max-w-md md:max-w-xl xl:max-w-lg">
             <div className="relative rounded-4xl overflow-hidden border border-white/70 bg-white/40 p-3 shadow-2xl shadow-primary/15 backdrop-blur">
-              <div className="relative w-full h-[300px] sm:h-[380px] lg:h-[450px]">
+              <div className="relative w-full h-[300px] sm:h-[380px] md:h-[430px] xl:h-[450px]">
                 {slides.map((slide, index) => (
                   <div
                     key={slide.id}
@@ -141,7 +141,7 @@ export function Hero() {
                       fill
                       className="object-cover rounded-3xl"
                       priority={index === 0}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 500px"
+                      sizes="(max-width: 1279px) 90vw, 500px"
                     />
                     <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-black/35 via-transparent to-transparent"></div>
                   </div>

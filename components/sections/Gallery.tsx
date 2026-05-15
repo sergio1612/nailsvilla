@@ -111,8 +111,8 @@ export function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="py-16 sm:py-20 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="gallery" className="py-16 sm:py-20 xl:py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
               <Sparkles className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function Gallery() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 xl:gap-6">
             {galleryImages.map((image, index) => (
               <div
                 key={image.id}

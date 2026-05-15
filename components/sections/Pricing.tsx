@@ -30,12 +30,12 @@ export function Pricing() {
   }
 
   return (
-    <section id="pricing" className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-background">
+    <section id="pricing" className="relative overflow-hidden py-16 sm:py-20 xl:py-28 bg-background">
       <div className="absolute inset-x-0 top-0 h-56 bg-linear-to-b from-secondary/80 to-transparent"></div>
       <div className="absolute right-0 top-20 h-96 w-96 translate-x-1/3 rounded-full bg-primary/12 blur-3xl"></div>
       <div className="absolute bottom-12 left-0 h-96 w-96 -translate-x-1/3 rounded-full bg-accent/25 blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="relative mx-auto max-w-6xl">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-primary shadow-sm backdrop-blur">
@@ -51,11 +51,11 @@ export function Pricing() {
             </p>
           </div>
 
-          <Card className="relative overflow-hidden rounded-[2.25rem] border-white/70 bg-white/70 shadow-[0_30px_100px_rgba(156,48,75,0.16)] backdrop-blur">
+          <Card className="relative overflow-hidden rounded-[2.25rem] border-white/70 bg-white/70 shadow-[0_30px_100px_rgba(117,59,162,0.16)] backdrop-blur">
             <div className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-primary/35 to-transparent"></div>
             <CardContent className="p-4 sm:p-6 lg:p-8">
-              <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="relative overflow-hidden rounded-[1.75rem] bg-linear-to-br from-[#2a171d] via-[#7d2340] to-primary p-6 text-white sm:p-8">
+              <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+                <div className="relative overflow-hidden rounded-[1.75rem] bg-linear-to-br from-foreground via-purple-800 to-primary p-6 text-white sm:p-8">
                   <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/15 blur-2xl"></div>
                   <div className="absolute bottom-6 right-6 text-[8rem] font-bold leading-none text-white/4 font-display">
                     ₹
@@ -122,8 +122,8 @@ export function Pricing() {
             </CardContent>
           </Card>
 
-          <div className="mt-10 rounded-4xl border border-primary/10 bg-linear-to-r from-primary to-[#b82950] p-6 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="mt-10 rounded-4xl border border-primary/10 bg-linear-to-r from-primary via-purple-600 to-accent p-6 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-8">
+            <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
               <div>
                 <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium">
                   <Home className="h-4 w-4" />

@@ -62,10 +62,10 @@ export function Stats() {
     <section
       ref={sectionRef}
       id="stats"
-      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-accent/5"
+      className="py-16 sm:py-20 xl:py-24 bg-linear-to-br from-primary/5 via-background to-accent/5"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
