@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fff8f6;
-  --foreground: #2a171d;
+  --background: #fff8ef;
+  --foreground: #2a1b16;
   
-  /* Nails Villa by Rutika editorial rose palette */
-  --primary: 344 78% 54%;
+  /* Palette trial 11: Ivory + Terracotta Rose */
+  --primary: 7 44% 52%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 18 100% 95%;
-  --secondary-foreground: 344 67% 30%;
-  --accent: 28 88% 78%;
-  --accent-foreground: 344 67% 24%;
-  --muted: 18 62% 95%;
-  --muted-foreground: 344 13% 42%;
-  --border: 344 32% 88%;
-  --input: 344 32% 88%;
-  --ring: 344 78% 54%;
+  --secondary: 23 45% 89%;
+  --secondary-foreground: 10 36% 28%;
+  --accent: 23 56% 65%;
+  --accent-foreground: 16 32% 20%;
+  --muted: 26 43% 93%;
+  --muted-foreground: 18 14% 38%;
+  --border: 24 37% 84%;
+  --input: 24 37% 84%;
+  --ring: 7 44% 52%;
   --card: 0 0% 100%;
   --card-foreground: 344 38% 16%;
 }

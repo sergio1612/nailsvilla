@@ -18,8 +18,8 @@ export function Pricing() {
 
   const highlights = [
     "Transparent INR pricing",
-    "Home-based appointments",
-    "Custom nail art on request",
+    "Service-first menu",
+    "Design guidance on request",
   ]
 
   const scrollToContact = () => {
@@ -46,9 +46,8 @@ export function Pricing() {
               A clean, premium <span className="text-primary">nail menu</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Transparent INR pricing for Ahmedabad clients who want glossy gel
-              work, extensions, overlays, refills, removals, and appointment
-              options that fit their day.
+              No confusing packages. Pick the exact service you need and confirm
+              design details before the appointment.
             </p>
           </div>
 
@@ -73,9 +72,8 @@ export function Pricing() {
                       Modern gel work, clean extensions, soft luxe detailing.
                     </h3>
                     <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/72">
-                      Share your inspiration, occasion, and whether you prefer
-                      visiting Rutika&apos;s home setup or requesting home service.
-                      We will help you pick the right service before booking.
+                      Not sure what to choose? Send a reference picture and Rutika
+                      will suggest the closest service from the menu.
                     </p>
 
                     <div className="mt-8 grid gap-3">
@@ -129,14 +127,13 @@ export function Pricing() {
               <div>
                 <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium">
                   <Home className="h-4 w-4" />
-                  Home-based in Ahmedabad
+                  Need help choosing?
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold font-display">
-                  Prefer home service? DM your Ahmedabad area and preferred slot.
+                  Send your nail reference and we will guide you to the right service.
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm sm:text-base text-white/80">
-                  Final timing depends on selected service, design complexity,
-                  and travel availability.
+                  Final pricing may vary only if custom art or extra detailing is added.
                 </p>
               </div>
               <Button

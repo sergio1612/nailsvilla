@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/common/Button"
-import { Home, Sparkles, Star } from "lucide-react"
+import { CalendarCheck, Sparkles, Star } from "lucide-react"
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -75,7 +75,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-primary shadow-sm backdrop-blur mb-6">
               <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">Home-based Ahmedabad nail artist since 2021</span>
+              <span className="text-sm font-medium">Detailed nail artistry for Ahmedabad</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight font-display text-balance">
@@ -87,9 +87,8 @@ export function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Rutika Chauhan creates glossy gel polish, elegant extensions,
-              overlays, refills, and removals from home, with home service
-              available across Ahmedabad on request.
+              From everyday polish to occasion-ready extensions, get nails that
+              feel clean, current, and made for your style.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -116,11 +115,11 @@ export function Hero() {
                     <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="text-sm text-muted-foreground">Founded on 10 April 2021</span>
+                <span className="text-sm text-muted-foreground">Personalized service by Rutika</span>
               </div>
               <div className="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-medium text-foreground shadow-sm backdrop-blur">
-                <Home className="h-4 w-4 text-primary" />
-                Home-based + home service
+                <CalendarCheck className="h-4 w-4 text-primary" />
+                Prior booking only
               </div>
             </div>
           </div>

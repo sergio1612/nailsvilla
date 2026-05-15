@@ -48,9 +48,8 @@ export function Contact() {
             Ready for Your <span className="text-primary">Nail Glow-Up?</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Fresh nails can change your whole mood. Message Rutika on WhatsApp,
-            send your inspiration, and choose between her home setup or home
-            service in Ahmedabad.
+            Share the service you like, your reference photo, preferred date,
+            and area. Rutika will confirm the best appointment option on WhatsApp.
           </p>
         </div>
 
@@ -63,8 +62,8 @@ export function Contact() {
               </div>
               <CardTitle className="text-2xl sm:text-3xl mb-2 font-display">Book via WhatsApp</CardTitle>
               <CardDescription className="text-sm sm:text-base">
-                Quickest way to confirm your service, slot, appointment option,
-                and any inspiration photos you want recreated.
+                Best for quick questions, booking slots, reference photos, and
+                home-service availability.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">

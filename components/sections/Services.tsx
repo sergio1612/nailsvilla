@@ -52,8 +52,8 @@ export function Services() {
             Our <span className="text-primary">Services</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            From subtle everyday nails to celebration-ready extensions, every
-            service is designed for a polished, photo-ready finish.
+            Choose the finish you need: colour, length, strength, art, refill,
+            or safe removal. Each service is kept focused and easy to understand.
           </p>
         </div>
 

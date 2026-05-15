@@ -7,21 +7,21 @@ export function About() {
   const features = [
     {
       icon: Heart,
-      title: "Personal Attention",
+      title: "Owner-Led Care",
       description:
-        "Every appointment is handled directly by Rutika, from service guidance to final finish.",
+        "Rutika personally guides each appointment, from design choice to final finish.",
     },
     {
       icon: Award,
-      title: "Founded in 2021",
+      title: "Built Over Time",
       description:
-        "Nails Villa by Rutika has been serving Ahmedabad nail lovers since 10 April 2021.",
+        "Started on 10 April 2021 and shaped through real client preferences.",
     },
     {
       icon: Home,
-      title: "Flexible Appointments",
+      title: "Appointment Choice",
       description:
-        "Book at Rutika's home setup or request home service based on availability.",
+        "Choose Rutika's home setup or ask for a home visit when available.",
     },
   ]
 
@@ -79,14 +79,14 @@ export function About() {
               A home-grown nail brand owned by <span className="text-primary">Rutika Chauhan</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-5">
-              Nails Villa by Rutika was founded on 10 April 2021 with a simple idea: make
-              polished, modern nails feel personal, approachable, and beautifully
-              detailed for Ahmedabad clients.
+              Nails Villa by Rutika began on 10 April 2021 as Rutika Chauhan&apos;s
+              personal nail practice for clients who wanted neat work, honest
+              guidance, and designs that felt wearable.
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Rutika currently operates from her home setup and also provides
-              home service on request. Send your inspiration, tell her the occasion,
-              and she will help you choose the right service, timing, and appointment option.
+              There is no physical studio at the moment. Appointments are handled
+              from Rutika&apos;s home setup, with home visits available on request
+              depending on service, location, and timing.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
