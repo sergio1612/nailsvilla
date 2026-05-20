@@ -1,18 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/common/Button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Instagram, MessageCircle } from "lucide-react"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    // Check initial scroll position
+    const handleScroll = () => setIsScrolled(window.scrollY > 24)
     handleScroll()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -30,97 +26,157 @@ export function Header() {
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
-    { label: "Gallery", id: "gallery" },
     { label: "Pricing", id: "pricing" },
-    { label: "Testimonials", id: "testimonials" },
+    { label: "Gallery", id: "gallery" },
+    { label: "Reviews", id: "testimonials" },
     { label: "Contact", id: "contact" },
   ]
 
+  // Light text on the dark hero, dark text once scrolled past it
+  const isLight = !isScrolled && !isMobileMenuOpen
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
         isScrolled || isMobileMenuOpen
-          ? "bg-white/80 backdrop-blur-xl shadow-[0_12px_45px_rgba(117,59,162,0.12)]"
+          ? "bg-background/90 backdrop-blur-xl border-b border-taupe/15"
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="shrink-0">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="group flex items-center gap-3 text-left"
-              aria-label="Go to home"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform group-hover:-rotate-6">
-                NV
-              </span>
-              <span>
-                <span className="block text-xl sm:text-2xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-display">
-                  Nails Villa
-                </span>
-                <span className="block text-[11px] font-medium tracking-[0.25em] text-foreground/55 uppercase">
-                  by Rutika
-                </span>
-              </span>
-            </button>
+      {/* Top utility bar */}
+      <div
+        className={`hidden lg:block transition-all duration-500 ${
+          isScrolled ? "max-h-0 overflow-hidden opacity-0" : "max-h-10 opacity-100"
+        }`}
+      >
+        <div className="container mx-auto px-6 lg:px-10">
+          <div
+            className={`flex items-center justify-between py-2 text-[11px] tracking-[0.18em] uppercase transition-colors ${
+              isLight ? "text-ivory/70" : "text-foreground/55"
+            }`}
+          >
+            <span>Based in Ahmedabad, India</span>
+            <div className="flex items-center gap-6">
+              <span>Prior booking only</span>
+              <a
+                href="https://instagram.com/nailsvilla__"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1.5 transition-colors ${
+                  isLight ? "hover:text-ivory" : "hover:text-foreground"
+                }`}
+              >
+                <Instagram className="h-3 w-3" />
+                @nailsvilla__
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center justify-between py-4 lg:py-5">
+          {/* Logo */}
+          <button
+            onClick={() => scrollToSection("hero")}
+            className="group flex items-center gap-3 text-left"
+            aria-label="Go to home"
+          >
+            <span
+              className={`flex h-11 w-11 items-center justify-center rounded-full border font-display text-base font-semibold tracking-tight transition-all group-hover:rotate-[-8deg] ${
+                isLight
+                  ? "border-ivory/40 bg-ivory/10 text-ivory backdrop-blur"
+                  : "border-foreground/15 bg-cream/60 text-foreground"
+              }`}
+            >
+              N<span className="opacity-50">V</span>
+            </span>
+            <span className="leading-tight">
+              <span
+                className={`block font-display text-2xl font-medium tracking-tight transition-colors ${
+                  isLight ? "text-ivory" : "text-foreground"
+                }`}
+              >
+                Nails Villa
+              </span>
+              <span
+                className={`block artist-signature text-xl -mt-1 transition-colors ${
+                  isLight ? "text-champagne" : "text-mocha/80"
+                }`}
+              >
+                by Rutika
+              </span>
+            </span>
+          </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className={`relative text-[13px] font-medium tracking-[0.14em] uppercase transition-colors after:absolute after:bottom-[-6px] after:left-0 after:h-px after:w-0 after:transition-all hover:after:w-full ${
+                  isLight
+                    ? "text-ivory/75 hover:text-ivory after:bg-ivory"
+                    : "text-foreground/65 hover:text-foreground after:bg-foreground"
+                }`}
               >
                 {item.label}
               </button>
             ))}
-            <Button
+          </div>
+
+          {/* CTA */}
+          <div className="hidden xl:flex items-center gap-3">
+            <button
               onClick={() => scrollToSection("contact")}
-              className="ml-4"
+              className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-medium tracking-[0.18em] uppercase transition-all ${
+                isLight
+                  ? "bg-cream text-espresso hover:bg-champagne"
+                  : "bg-foreground text-primary-foreground hover:bg-mocha"
+              }`}
             >
+              <MessageCircle className="h-3.5 w-3.5" />
               Book Now
-            </Button>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden p-2"
+            className={`rounded-full p-2 xl:hidden transition-colors ${
+              isLight ? "text-ivory" : "text-foreground"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden py-4 space-y-4 border-t border-border">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
-              >
-                {item.label}
-              </button>
-            ))}
-            <Button
+          <div className="border-t border-taupe/20 py-6 xl:hidden">
+            <div className="space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full rounded-2xl px-4 py-3 text-left font-serif text-lg text-foreground/75 transition-colors hover:bg-cream/60 hover:text-foreground"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <button
               onClick={() => scrollToSection("contact")}
-              className="w-full"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-[12px] font-medium tracking-[0.18em] uppercase text-primary-foreground transition-all hover:bg-mocha"
             >
-              Book Now
-            </Button>
+              <MessageCircle className="h-4 w-4" />
+              Book on WhatsApp
+            </button>
           </div>
         )}
       </nav>
     </header>
   )
 }
-

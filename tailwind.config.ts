@@ -9,12 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-poppins)", "sans-serif"],
+        display: ["var(--font-playfair)", "Cormorant Garamond", "serif"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Playfair Display", "serif"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        script: ["var(--font-handwritten)", "Allura", "cursive"],
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cream: "var(--cream)",
+        ivory: "var(--ivory)",
+        champagne: "var(--champagne)",
+        taupe: "var(--taupe)",
+        mocha: "var(--mocha)",
+        espresso: "var(--espresso)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -45,4 +53,3 @@ const config: Config = {
 }
 
 export default config
-

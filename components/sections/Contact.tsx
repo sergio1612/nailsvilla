@@ -1,121 +1,253 @@
 "use client"
 
-import { Button } from "@/components/common/Button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/Card"
-import { Clock, Instagram, MapPin, MessageCircle, Phone } from "lucide-react"
+import { useState } from "react"
+import { Clock, Instagram, MapPin, MessageCircle, Phone, ArrowRight, Mail, User, Sparkles } from "lucide-react"
 
 export function Contact() {
-  const handleWhatsApp = () => {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    service: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const services = [
+    "Gel Polish",
+    "Extensions",
+    "Custom Nail Art",
+    "Refilling",
+    "Overlays",
+    "Removal & Care",
+    "Not sure yet",
+  ]
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
     const phoneNumber = "919429031140"
-    const message = encodeURIComponent(
-      "Hello Nails Villa by Rutika! I want to book a nail appointment in Ahmedabad. Please help me choose between Rutika's home setup and home service."
+    const text = encodeURIComponent(
+      `Hello Nails Villa by Rutika!\n\nName: ${form.name}\nPhone: ${form.phone}\nService: ${form.service || "Need help choosing"}\nNote: ${form.message || "—"}\n\nPlease help me book a slot in Ahmedabad.`
     )
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank")
+    setTimeout(() => {
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank")
+      setIsSubmitting(false)
+    }, 400)
   }
 
   const contactInfo = [
     {
       icon: Phone,
-      title: "Fast Booking",
-      content: "WhatsApp us to choose a service and confirm your slot",
+      label: "WhatsApp",
+      content: "+91 94290 31140",
       link: "https://wa.me/919429031140",
     },
     {
       icon: Instagram,
-      title: "Instagram",
+      label: "Instagram",
       content: "@nailsvilla__",
       link: "https://instagram.com/nailsvilla__",
     },
     {
-      icon: Clock,
-      title: "Hours",
-      content: "Prior booking only. No physical studio at the moment.",
-      link: "#",
+      icon: MapPin,
+      label: "Studio",
+      content: "Home-based, Ahmedabad",
+      link: null,
     },
     {
-      icon: MapPin,
-      title: "Appointment Options",
-      content: "Visit Rutika's home setup or request home service in Ahmedabad.",
-      link: "#",
+      icon: Clock,
+      label: "Hours",
+      content: "Prior booking only",
+      link: null,
     },
   ]
 
   return (
-    <section id="contact" className="py-16 sm:py-20 xl:py-24 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
-            Ready for Your <span className="text-primary">Nail Glow-Up?</span>
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-background py-24 sm:py-28 lg:py-32"
+    >
+      <div className="container mx-auto px-6 lg:px-10">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <p className="section-eyebrow text-mocha/70 mb-4">
+            ✦ &nbsp; Get in Touch &nbsp; ✦
+          </p>
+          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight text-foreground">
+            Let&apos;s plan your{" "}
+            <span className="font-serif italic">perfect set</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Share the service you like, your reference photo, preferred date,
-            and area. Rutika will confirm the best appointment option on WhatsApp.
+          <p className="mt-6 font-serif text-xl leading-relaxed text-foreground/65 italic">
+            Share your details — I&apos;ll respond on WhatsApp with a slot,
+            pricing, and design guidance.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* WhatsApp CTA Card */}
-          <Card className="mb-12 overflow-hidden rounded-4xl border-primary/20 bg-linear-to-br from-primary/10 to-accent/20 shadow-xl shadow-primary/10">
-            <CardHeader className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-4 mx-auto">
-                <MessageCircle className="h-8 w-8" />
-              </div>
-              <CardTitle className="text-2xl sm:text-3xl mb-2 font-display">Book via WhatsApp</CardTitle>
-              <CardDescription className="text-sm sm:text-base">
-                Best for quick questions, booking slots, reference photos, and
-                home-service availability.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Button
-                size="lg"
-                onClick={handleWhatsApp}
-                className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full bg-green-600 hover:bg-green-700 text-white"
-              >
-                <MessageCircle className="h-5 w-5 mr-2" />
-                Book My Nails on WhatsApp
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Main grid */}
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-px overflow-hidden rounded-[2.5rem] border border-taupe/20 bg-taupe/15 lg:grid-cols-[1fr_1.2fr] elegant-shadow">
+            {/* Info side */}
+            <div className="bg-espresso p-10 lg:p-12 text-ivory relative overflow-hidden">
+              <div className="absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-champagne/15 blur-3xl"></div>
 
-          {/* Contact Information Grid */}
-          <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon
-              return (
-                <Card
-                  key={index}
-                  className="rounded-3xl border-white/70 bg-white/80 backdrop-blur transition-all hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex items-start gap-4 p-4 text-left sm:block sm:p-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:mb-5">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-foreground sm:text-xl">
-                        {info.title}
-                      </h3>
-                      {info.link !== "#" ? (
-                        <a
-                          href={info.link}
-                          className="mt-2 block text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary"
-                        >
-                          {info.content}
-                        </a>
-                      ) : (
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {info.content}
-                        </p>
-                      )}
-                    </div>
+              <div className="relative">
+                <p className="section-eyebrow text-champagne/80 mb-4">
+                  Booking Information
+                </p>
+                <h3 className="font-display text-3xl sm:text-4xl font-light leading-tight">
+                  Reach out anytime
+                </h3>
+                <p className="mt-4 font-serif text-base leading-relaxed text-ivory/70 italic">
+                  Best for slot bookings, reference photos, and home-service
+                  availability.
+                </p>
+
+                <div className="mt-10 space-y-6">
+                  {contactInfo.map((info) => {
+                    const Icon = info.icon
+                    const content = (
+                      <>
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ivory/20">
+                          <Icon className="h-4 w-4" strokeWidth={1.5} />
+                        </div>
+                        <div>
+                          <p className="section-eyebrow text-champagne/70">
+                            {info.label}
+                          </p>
+                          <p className="mt-1 font-serif text-base text-ivory">
+                            {info.content}
+                          </p>
+                        </div>
+                      </>
+                    )
+                    return info.link ? (
+                      <a
+                        key={info.label}
+                        href={info.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 group transition-opacity hover:opacity-80"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={info.label} className="flex items-center gap-4">
+                        {content}
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <div className="mt-12 pt-8 border-t border-ivory/15">
+                  <p className="artist-signature text-4xl text-champagne">
+                    xo, Rutika
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Form side */}
+            <div className="bg-cream p-10 lg:p-12">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label className="section-eyebrow text-foreground/60 block mb-2">
+                    Your Name
+                  </label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" strokeWidth={1.5} />
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Aaliah Brown"
+                      className="w-full rounded-2xl border border-taupe/30 bg-ivory/70 px-4 py-3.5 pl-11 font-serif text-base text-foreground placeholder:text-foreground/35 transition-all focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/10"
+                    />
                   </div>
-                </Card>
-              )
-            })}
+                </div>
+
+                <div>
+                  <label className="section-eyebrow text-foreground/60 block mb-2">
+                    WhatsApp Number
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" strokeWidth={1.5} />
+                    <input
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+91 9XXXX XXXXX"
+                      className="w-full rounded-2xl border border-taupe/30 bg-ivory/70 px-4 py-3.5 pl-11 font-serif text-base text-foreground placeholder:text-foreground/35 transition-all focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/10"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="section-eyebrow text-foreground/60 block mb-2">
+                    Service Interest
+                  </label>
+                  <div className="relative">
+                    <Sparkles className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40 pointer-events-none" strokeWidth={1.5} />
+                    <select
+                      value={form.service}
+                      onChange={(e) => setForm({ ...form, service: e.target.value })}
+                      className="w-full appearance-none rounded-2xl border border-taupe/30 bg-ivory/70 px-4 py-3.5 pl-11 font-serif text-base text-foreground transition-all focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/10"
+                    >
+                      <option value="">Select a service</option>
+                      {services.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="section-eyebrow text-foreground/60 block mb-2">
+                    Your Note (Optional)
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-4 h-4 w-4 text-foreground/40" strokeWidth={1.5} />
+                    <textarea
+                      rows={4}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Preferred date, design reference, or any questions…"
+                      className="w-full rounded-2xl border border-taupe/30 bg-ivory/70 px-4 py-3.5 pl-11 font-serif text-base text-foreground placeholder:text-foreground/35 transition-all focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/10 resize-none"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[12px] font-medium tracking-[0.22em] uppercase text-primary-foreground transition-all hover:bg-mocha disabled:opacity-60"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span>Opening WhatsApp</span>
+                      <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-ivory border-t-transparent"></div>
+                    </>
+                  ) : (
+                    <>
+                      <MessageCircle className="h-4 w-4" />
+                      Continue on WhatsApp
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-xs italic text-foreground/55">
+                  Your details are only used to continue your booking
+                  conversation.
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
   )
 }
-

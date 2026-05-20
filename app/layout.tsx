@@ -1,23 +1,41 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Poppins } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Playfair_Display,
+  Inter,
+  Allura,
+} from "next/font/google";
 import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const allura = Allura({
+  variable: "--font-handwritten",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
-  title: "Nails Villa by Rutika | Ahmedabad Nail Services",
+  title: "Nails Villa by Rutika | Ahmedabad Nail Studio",
   description:
-    "Home-based Ahmedabad nail services by Nails Villa by Rutika, founded by owner Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, nail art, and home service on request.",
+    "Home-based luxury nail studio in Ahmedabad founded by Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, custom nail art, and home service on request.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -39,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${poppins.variable} antialiased`}
+        className={`${cormorant.variable} ${playfairDisplay.variable} ${inter.variable} ${allura.variable} antialiased`}
         suppressHydrationWarning
       >
         {children}

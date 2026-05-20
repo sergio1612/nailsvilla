@@ -1,71 +1,42 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Users, Calendar, Instagram } from "lucide-react"
+import { Users, Calendar, Instagram, Heart } from "lucide-react"
 
 export function Stats() {
   const [hasAnimated, setHasAnimated] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
   const stats = [
-    {
-      icon: Users,
-      value: 500,
-      suffix: "+",
-      label: "Happy Nail Clients",
-      color: "text-primary",
-    },
-    {
-      icon: Calendar,
-      value: 8,
-      suffix: "+",
-      label: "Core Nail Services",
-      color: "text-accent",
-    },
-    {
-      icon: Instagram,
-      value: 700,
-      suffix: "+",
-      label: "Instagram Family",
-      color: "text-primary",
-    },
+    { icon: Users, value: 500, suffix: "+", label: "Happy Clients" },
+    { icon: Calendar, value: 5, suffix: "+", label: "Years of Practice" },
+    { icon: Heart, value: 8, suffix: "+", label: "Core Services" },
+    { icon: Instagram, value: 700, suffix: "+", label: "Instagram Family" },
   ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true)
-          }
+          if (entry.isIntersecting && !hasAnimated) setHasAnimated(true)
         })
       },
-      {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-      }
+      { threshold: 0.3 }
     )
-
     const section = sectionRef.current
-
-    if (section) {
-      observer.observe(section)
-    }
-
+    if (section) observer.observe(section)
     return () => {
-      if (section) {
-        observer.unobserve(section)
-      }
+      if (section) observer.unobserve(section)
     }
   }, [hasAnimated])
 
   return (
-    <section
-      ref={sectionRef}
-      id="stats"
-      className="py-16 sm:py-20 xl:py-24 bg-linear-to-br from-primary/5 via-background to-accent/5"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8">
+    <section ref={sectionRef} id="stats" className="relative bg-espresso py-20 sm:py-24">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/30 to-transparent"></div>
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-champagne/30 to-transparent"></div>
+
+      <div className="container mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
@@ -75,9 +46,9 @@ export function Stats() {
                 value={stat.value}
                 suffix={stat.suffix}
                 label={stat.label}
-                color={stat.color}
                 hasAnimated={hasAnimated}
-                delay={index * 200} // Stagger animation
+                delay={index * 200}
+                isLast={index === stats.length - 1}
               />
             )
           })}
@@ -88,13 +59,13 @@ export function Stats() {
 }
 
 interface StatCounterProps {
-  icon: React.ComponentType<{ className?: string }>
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
   value: number
   suffix: string
   label: string
-  color: string
   hasAnimated: boolean
   delay: number
+  isLast: boolean
 }
 
 function StatCounter({
@@ -102,39 +73,31 @@ function StatCounter({
   value,
   suffix,
   label,
-  color,
   hasAnimated,
   delay,
+  isLast,
 }: StatCounterProps) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
     if (!hasAnimated) return
-
-    const duration = 2000 // 2 seconds
+    const duration = 2000
     const steps = 60
     const increment = value / steps
     const stepDuration = duration / steps
-
     let currentStep = 0
     let intervalId: NodeJS.Timeout | null = null
-
     const timer = setTimeout(() => {
       intervalId = setInterval(() => {
         currentStep++
-        const nextValue = Math.min(
-          Math.floor(increment * currentStep),
-          value
-        )
-        setCount(nextValue)
-
-        if (currentStep >= steps || nextValue >= value) {
+        const next = Math.min(Math.floor(increment * currentStep), value)
+        setCount(next)
+        if (currentStep >= steps || next >= value) {
           setCount(value)
           if (intervalId) clearInterval(intervalId)
         }
       }, stepDuration)
     }, delay)
-
     return () => {
       clearTimeout(timer)
       if (intervalId) clearInterval(intervalId)
@@ -142,22 +105,24 @@ function StatCounter({
   }, [hasAnimated, value, delay])
 
   return (
-    <div className="text-center p-6 rounded-3xl bg-white/75 border border-white/70 backdrop-blur hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2">
-      <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 ${color} mb-5`}>
-        <Icon className="h-7 w-7" />
-      </div>
-      <div className="mb-3 flex items-baseline justify-center gap-1">
-        <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+    <div
+      className={`flex flex-col items-center justify-center text-center px-6 py-10 lg:py-12 ${
+        !isLast ? "lg:border-r border-ivory/10" : ""
+      } ${"border-ivory/10"}`}
+    >
+      <Icon
+        className="h-7 w-7 text-champagne/80 mb-4"
+        strokeWidth={1.3}
+      />
+      <div className="flex items-baseline gap-0.5">
+        <span className="font-display text-5xl sm:text-6xl font-light text-ivory tracking-tight">
           {count}
         </span>
-        <span className="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary leading-none">
+        <span className="font-display text-3xl font-light text-champagne">
           {suffix}
         </span>
       </div>
-      <p className="text-sm sm:text-base text-muted-foreground font-medium">
-        {label}
-      </p>
+      <p className="mt-3 section-eyebrow text-ivory/60">{label}</p>
     </div>
   )
 }
-

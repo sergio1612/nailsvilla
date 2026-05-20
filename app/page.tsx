@@ -4,8 +4,10 @@ import { Hero } from "@/components/sections/Hero"
 import { About } from "@/components/sections/About"
 import { Services } from "@/components/sections/Services"
 import { Pricing } from "@/components/sections/Pricing"
-import { Testimonials } from "@/components/sections/Testimonials"
+import { Stats } from "@/components/sections/Stats"
 import { Gallery } from "@/components/sections/Gallery"
+import { Testimonials } from "@/components/sections/Testimonials"
+import { Newsletter } from "@/components/sections/Newsletter"
 import { Contact } from "@/components/sections/Contact"
 import { BackToTop } from "@/components/common/BackToTop"
 import { Loader } from "@/components/common/Loader"
@@ -19,8 +21,10 @@ export default function Home() {
       <About />
       <Services />
       <Pricing />
-      <Testimonials />
+      <Stats />
       <Gallery />
+      <Testimonials />
+      <Newsletter />
       <Contact />
       <Footer />
       <BackToTop />

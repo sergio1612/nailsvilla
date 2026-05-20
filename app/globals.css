@@ -1,131 +1,234 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf7ff;
-  --foreground: #24162d;
-  
-  /* Palette trial 12: Soft Lavender + Royal Purple */
-  --primary: 274 48% 48%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 279 42% 91%;
-  --secondary-foreground: 274 34% 25%;
-  --accent: 319 56% 64%;
-  --accent-foreground: 288 30% 18%;
-  --muted: 276 36% 94%;
-  --muted-foreground: 280 13% 38%;
-  --border: 276 31% 84%;
-  --input: 276 31% 84%;
-  --ring: 274 48% 48%;
-  --card: 0 0% 100%;
-  --card-foreground: 280 38% 16%;
+  /* Warm cream luxury palette inspired by editorial nail studios */
+  --background: #f5ede1;
+  --background-alt: #ece2d3;
+  --background-deep: #ddd0bd;
+  --foreground: #2b231d;
+  --foreground-soft: #4a3f36;
+
+  --cream: #faf3e8;
+  --ivory: #fbf6ed;
+  --champagne: #d9c5a8;
+  --taupe: #b09b82;
+  --mocha: #6b5847;
+  --espresso: #2b231d;
+
+  --primary: 28 22% 18%;
+  --primary-foreground: 38 50% 96%;
+  --secondary: 32 28% 84%;
+  --secondary-foreground: 28 22% 22%;
+  --accent: 30 30% 62%;
+  --accent-foreground: 28 22% 18%;
+  --muted: 34 30% 90%;
+  --muted-foreground: 28 12% 38%;
+  --border: 30 22% 78%;
+  --input: 30 22% 78%;
+  --ring: 28 22% 18%;
+  --card: 38 42% 95%;
+  --card-foreground: 28 22% 18%;
 }
 
 @theme {
-  --color-background: #fbf7ff;
-  --color-foreground: #24162d;
-  --color-primary: hsl(274 48% 48%);
-  --color-primary-foreground: hsl(0 0% 100%);
-  --color-secondary: hsl(279 42% 91%);
-  --color-secondary-foreground: hsl(274 34% 25%);
-  --color-accent: hsl(319 56% 64%);
-  --color-accent-foreground: hsl(288 30% 18%);
-  --color-muted: hsl(276 36% 94%);
-  --color-muted-foreground: hsl(280 13% 38%);
-  --color-border: hsl(276 31% 84%);
-  --color-input: hsl(276 31% 84%);
-  --color-ring: hsl(274 48% 48%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(280 38% 16%);
+  --color-background: #f5ede1;
+  --color-foreground: #2b231d;
+  --color-cream: #faf3e8;
+  --color-ivory: #fbf6ed;
+  --color-champagne: #d9c5a8;
+  --color-taupe: #b09b82;
+  --color-mocha: #6b5847;
+  --color-espresso: #2b231d;
+  --color-primary: hsl(28 22% 18%);
+  --color-primary-foreground: hsl(38 50% 96%);
+  --color-secondary: hsl(32 28% 84%);
+  --color-secondary-foreground: hsl(28 22% 22%);
+  --color-accent: hsl(30 30% 62%);
+  --color-accent-foreground: hsl(28 22% 18%);
+  --color-muted: hsl(34 30% 90%);
+  --color-muted-foreground: hsl(28 12% 38%);
+  --color-border: hsl(30 22% 78%);
+  --color-input: hsl(30 22% 78%);
+  --color-ring: hsl(28 22% 18%);
+  --color-card: hsl(38 42% 95%);
+  --color-card-foreground: hsl(28 22% 18%);
   --font-display: var(--font-playfair);
-  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-script: var(--font-handwritten);
 }
 
 * {
   border-color: hsl(var(--border));
 }
 
-body {
-  background:
-    radial-gradient(circle at top left, rgba(225, 206, 255, 0.86), transparent 34rem),
-    radial-gradient(circle at 85% 10%, rgba(255, 210, 236, 0.64), transparent 28rem),
-    var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), system-ui, sans-serif;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-::selection {
-  background: hsl(var(--primary) / 0.18);
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 250, 240, 0.85), transparent 38rem),
+    radial-gradient(circle at 88% 14%, rgba(217, 197, 168, 0.40), transparent 32rem),
+    radial-gradient(circle at 50% 95%, rgba(176, 155, 130, 0.18), transparent 44rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01", "ss02", "cv11";
+  letter-spacing: -0.005em;
 }
 
-.luxury-surface {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(247, 239, 255, 0.78));
-  box-shadow: 0 24px 80px rgba(117, 59, 162, 0.13);
-  backdrop-filter: blur(18px);
+::selection {
+  background: hsl(var(--primary) / 0.22);
+  color: hsl(var(--primary-foreground));
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-playfair), "Cormorant Garamond", serif;
+  letter-spacing: -0.02em;
+}
+
+.font-serif {
+  font-family: var(--font-serif), "Cormorant Garamond", "Playfair Display", serif;
+  letter-spacing: -0.005em;
+}
+
+.font-script {
+  font-family: var(--font-handwritten), "Allura", "Sacramento", cursive !important;
+}
+
+.artist-signature {
+  font-family: var(--font-handwritten), "Allura", "Sacramento", cursive !important;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.section-eyebrow {
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-.font-display {
-  font-family: var(--font-playfair), serif;
+.text-pretty {
+  text-wrap: pretty;
 }
 
-/* Loader Animations */
+/* Editorial surfaces */
+.luxury-surface {
+  background: linear-gradient(135deg, rgba(251, 246, 237, 0.92), rgba(228, 215, 196, 0.82));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 30px 80px rgba(43, 35, 29, 0.10);
+  backdrop-filter: blur(20px);
+}
+
+.editorial-panel {
+  background:
+    linear-gradient(135deg, rgba(251, 246, 237, 0.78), rgba(220, 205, 184, 0.62)),
+    rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 28px 70px rgba(43, 35, 29, 0.12);
+  backdrop-filter: blur(22px);
+}
+
+.portfolio-frame {
+  box-shadow:
+    0 24px 70px rgba(43, 35, 29, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: hsl(var(--accent));
+}
+
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.elegant-shadow {
+  box-shadow:
+    0 1px 2px rgba(43, 35, 29, 0.04),
+    0 8px 24px rgba(43, 35, 29, 0.08),
+    0 24px 60px rgba(43, 35, 29, 0.08);
+}
+
+.soft-card {
+  background: var(--cream);
+  border: 1px solid rgba(176, 155, 130, 0.18);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 12px 36px rgba(43, 35, 29, 0.06);
+}
+
+.dark-card {
+  background: linear-gradient(135deg, #2b231d 0%, #3a2f26 100%);
+  color: var(--ivory);
+}
+
+/* Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes liquid {
-  0%, 100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.15);
-  }
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.15); }
 }
 
 @keyframes sparkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 @keyframes bottle-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-liquid {
-  animation: liquid 1.5s ease-in-out infinite;
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
 }
 
-.animate-sparkle {
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-.animate-bottle-bounce {
-  animation: bottle-bounce 1.5s ease-in-out infinite;
-}
+.animate-fade-up { animation: fade-up 0.8s ease-out both; }
+.animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
+.animate-liquid { animation: liquid 1.5s ease-in-out infinite; }
+.animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+.animate-bottle-bounce { animation: bottle-bounce 1.5s ease-in-out infinite; }
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }

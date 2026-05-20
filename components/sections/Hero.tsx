@@ -2,173 +2,276 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Button } from "@/components/common/Button"
-import { ArrowRight, Sparkles } from "lucide-react"
+import {
+  ArrowRight,
+  MapPin,
+  MessageCircle,
+  Star,
+  Instagram,
+  ChevronDown,
+} from "lucide-react"
 
 export function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0)
 
   const slides = [
     {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=900&fit=crop&q=85",
+      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1800&h=1200&fit=crop&q=90",
       alt: "Glossy gel polish nail finish",
+      caption: "Gel Polish",
     },
     {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&h=900&fit=crop&q=85",
-      alt: "Detailed nail art service",
+      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=1800&h=1200&fit=crop&q=90",
+      alt: "Custom nail art",
+      caption: "Custom Nail Art",
     },
     {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=700&h=900&fit=crop&q=85",
-      alt: "Elegant manicure and nail care",
+      src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1800&h=1200&fit=crop&q=90",
+      alt: "Elegant manicure",
+      caption: "Extensions",
     },
     {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=700&h=900&fit=crop&q=85",
-      alt: "Clean nail extension look",
+      src: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=1800&h=1200&fit=crop&q=90",
+      alt: "Premium nail set",
+      caption: "Soft Glam",
     },
   ]
 
-  const serviceHighlights = ["Gel polish", "Extensions", "Custom art"]
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 3000)
-
+      setCurrentImage((prev) => (prev + 1) % slides.length)
+    }, 5500)
     return () => clearInterval(interval)
   }, [slides.length])
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+  const scrollToContact = () =>
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+  const scrollToPricing = () =>
+    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
+  const scrollToAbout = () =>
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
 
   return (
     <section
       id="hero"
-      className="relative isolate overflow-hidden px-0 pt-24 pb-10 sm:pt-28 sm:pb-12 xl:pt-24"
+      className="relative isolate flex h-[100svh] min-h-[640px] w-full flex-col overflow-hidden"
     >
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-        <div className="relative overflow-hidden rounded-4xl bg-foreground shadow-2xl shadow-primary/15">
-          <div className="absolute inset-0 md:hidden">
-            {slides.map((slide, index) => (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  index === currentSlide ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover opacity-35"
-                  priority={index === 0}
-                  sizes="92vw"
-                />
-              </div>
-            ))}
+      {/* Full-bleed image stack */}
+      <div className="absolute inset-0 -z-10">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.caption}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              index === currentImage ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className="object-cover scale-105"
+              sizes="100vw"
+              priority={index === 0}
+            />
           </div>
+        ))}
+      </div>
 
-          <div className="absolute inset-y-0 right-0 hidden w-[54%] overflow-hidden md:block md:[clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)]">
-            {slides.map((slide, index) => (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  index === currentSlide ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover"
-                  priority={index === 0}
-                  sizes="640px"
-                />
-              </div>
-            ))}
-            <div className="absolute inset-0 bg-linear-to-l from-transparent via-transparent to-foreground/25"></div>
-          </div>
+      {/* Dark overlays for legibility */}
+      <div className="absolute inset-0 -z-10 bg-espresso/55"></div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-espresso/40 via-transparent to-espresso/80"></div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-espresso/30 via-transparent to-espresso/30"></div>
 
-          <div className="absolute inset-0 bg-linear-to-r from-foreground via-foreground/92 to-foreground/20"></div>
-          <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/35 blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/3 h-44 w-44 rounded-full bg-accent/20 blur-3xl"></div>
-
-          <div className="relative z-10 grid min-h-[430px] items-center md:grid-cols-[1fr_0.9fr] lg:min-h-[460px]">
-            <div className="px-5 py-10 text-center text-white sm:px-8 lg:px-12 lg:py-12 lg:text-left">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 shadow-xl backdrop-blur">
-                <Sparkles className="h-4 w-4 text-[#ffd8ef]" />
-                <span className="text-sm font-medium">Signature nail sets by Rutika</span>
-              </div>
-
-              <h1 className="mb-5 max-w-2xl font-display text-4xl font-bold leading-tight text-balance sm:text-5xl lg:text-6xl">
-                Your nails,
-                <span className="block text-[#ffd8ef]">ready for the spotlight</span>
-              </h1>
-
-              <p className="mx-auto mb-6 max-w-xl text-base leading-relaxed text-white/76 sm:text-lg lg:mx-0">
-                Polished gel finishes, extensions, and custom nail art designed
-                around your event, outfit, and everyday style.
-              </p>
-
-              <div className="mb-7 flex flex-wrap justify-center gap-2 lg:justify-start">
-                {serviceHighlights.map((service) => (
-                  <span
-                    key={service}
-                    className="rounded-full border border-white/16 bg-white/10 px-3.5 py-1.5 text-sm font-medium text-white backdrop-blur"
-                  >
-                    {service}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-                <Button
-                  size="lg"
-                  onClick={scrollToContact}
-                  className="rounded-full bg-white px-6 py-5 text-base text-foreground shadow-xl shadow-black/20 hover:bg-white/90 sm:px-7"
-                >
-                  Book Appointment
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => {
-                    const element = document.getElementById("pricing")
-                    element?.scrollIntoView({ behavior: "smooth" })
-                  }}
-                  className="rounded-full border-white/25 bg-white/10 px-6 py-5 text-base text-white backdrop-blur hover:bg-white hover:text-foreground sm:px-7"
-                >
-                  View Price List
-                </Button>
-              </div>
+      {/* Top utility bar inside the hero */}
+      <div className="relative z-10 hidden pt-24 md:block lg:pt-28 shrink-0">
+        <div className="container mx-auto px-6 lg:px-10">
+          <div className="flex items-center justify-between text-[10px] tracking-[0.22em] uppercase text-ivory/65">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-champagne/60"></span>
+              <span>Vol. 01 &nbsp;·&nbsp; Est. 10 April 2021</span>
+            </div>
+            <div className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-champagne animate-sparkle"></span>
+              Now booking — April / May
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className="absolute bottom-5 right-5 z-20 flex gap-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide
-                    ? "w-7 bg-white"
-                    : "w-2 bg-white/45 hover:bg-white/75"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
+      {/* Main content — centered, takes remaining space */}
+      <div className="relative z-10 flex flex-1 items-center justify-center min-h-0 px-6 pt-24 pb-24 md:pt-6 md:pb-20 lg:px-10">
+        <div className="container mx-auto text-center">
+          <p className="section-eyebrow text-[10px] text-champagne/85 animate-fade-up">
+            ✦ &nbsp; Welcome to &nbsp; ✦
+          </p>
+
+          <h1 className="mt-4 font-display font-light leading-[0.85] tracking-tight text-ivory animate-fade-up">
+            <span className="block text-[clamp(3.5rem,11vw,7rem)]">
+              Nails
+            </span>
+            <span className="block text-[clamp(3.5rem,11vw,7rem)] font-serif italic">
+              Villa
+            </span>
+          </h1>
+
+          <p className="artist-signature mt-2 text-[clamp(2.5rem,6vw,4rem)] text-champagne animate-fade-up">
+            by Rutika
+          </p>
+
+          {/* Ornament divider */}
+          <div className="my-5 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-champagne/50"></span>
+            <span className="text-champagne text-[10px]">✦</span>
+            <span className="h-px w-10 bg-champagne/50"></span>
+          </div>
+
+          {/* Tagline */}
+          <p className="mx-auto max-w-xl font-serif text-base sm:text-lg leading-relaxed text-ivory/85 italic text-balance">
+            A home-based luxury nail studio in Ahmedabad — bespoke gel,
+            extensions, and editorial nail art.
+          </p>
+
+          {/* Meta strip */}
+          <div className="mt-5 inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[10px] tracking-[0.22em] uppercase text-ivory/65">
+            <div className="flex items-center gap-1.5">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-2.5 w-2.5 fill-champagne text-champagne"
+                    strokeWidth={0}
+                  />
+                ))}
+              </div>
+              <span>500+ Clients</span>
+            </div>
+            <span className="h-1 w-1 rounded-full bg-ivory/40"></span>
+            <div className="inline-flex items-center gap-1.5">
+              <MapPin className="h-2.5 w-2.5" strokeWidth={1.5} />
+              Ahmedabad
+            </div>
+            <span className="h-1 w-1 rounded-full bg-ivory/40"></span>
+            <a
+              href="https://instagram.com/nailsvilla__"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-champagne transition-colors"
+            >
+              <Instagram className="h-2.5 w-2.5" strokeWidth={1.5} />
+              @nailsvilla__
+            </a>
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              onClick={scrollToContact}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-cream px-6 py-3 text-[11px] font-medium tracking-[0.22em] uppercase text-espresso transition-all hover:bg-champagne hover:gap-3"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              Book Appointment
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </button>
+            <button
+              onClick={scrollToPricing}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/30 bg-transparent px-6 py-3 text-[11px] font-medium tracking-[0.22em] uppercase text-ivory transition-all hover:bg-ivory/10"
+            >
+              View Price List
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar — slide caption + thumbnails + scroll indicator */}
+      <div className="relative z-10 pb-5 sm:pb-6 shrink-0">
+        <div className="container mx-auto px-6 lg:px-10">
+          {/* Slide thumbnails */}
+          <div className="hidden lg:flex items-end justify-between gap-6">
+            {/* Caption */}
+            <div className="text-ivory">
+              <p className="section-eyebrow text-champagne/70 text-[9px] mb-1">
+                Now featuring
+              </p>
+              <p className="font-display text-lg font-light">
+                {slides[currentImage].caption}
+              </p>
+              <p className="text-[10px] tracking-[0.22em] uppercase text-ivory/55 mt-0.5">
+                0{currentImage + 1} &nbsp;/&nbsp; 0{slides.length}
+              </p>
+            </div>
+
+            {/* Thumbnail nav */}
+            <div className="flex gap-2.5">
+              {slides.map((slide, idx) => (
+                <button
+                  key={slide.caption}
+                  onClick={() => setCurrentImage(idx)}
+                  className={`relative h-14 w-11 overflow-hidden rounded-lg border transition-all ${
+                    idx === currentImage
+                      ? "border-champagne scale-110"
+                      : "border-ivory/20 opacity-50 hover:opacity-90"
+                  }`}
+                  aria-label={`Show ${slide.caption}`}
+                >
+                  <Image
+                    src={slide.src}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="48px"
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Scroll cue */}
+            <button
+              onClick={scrollToAbout}
+              className="flex flex-col items-center gap-1 text-ivory/65 transition-colors hover:text-ivory"
+              aria-label="Scroll to about"
+            >
+              <span className="text-[9px] tracking-[0.28em] uppercase">
+                Discover
+              </span>
+              <ChevronDown
+                className="h-3.5 w-3.5 animate-bottle-bounce"
+                strokeWidth={1.5}
               />
-            ))}
+            </button>
+          </div>
+
+          {/* Mobile compact bar */}
+          <div className="flex items-center justify-between gap-3 lg:hidden">
+            <p className="font-display text-sm font-light text-ivory">
+              {slides[currentImage].caption}
+            </p>
+            <div className="flex gap-1.5">
+              {slides.map((slide, idx) => (
+                <button
+                  key={slide.caption}
+                  onClick={() => setCurrentImage(idx)}
+                  className={`h-1 rounded-full transition-all ${
+                    idx === currentImage
+                      ? "w-6 bg-ivory"
+                      : "w-1.5 bg-ivory/40"
+                  }`}
+                  aria-label={`Show ${slide.caption}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={scrollToAbout}
+              className="text-ivory/65 transition-colors hover:text-ivory"
+              aria-label="Scroll to about"
+            >
+              <ChevronDown
+                className="h-4 w-4 animate-bottle-bounce"
+                strokeWidth={1.5}
+              />
+            </button>
           </div>
         </div>
       </div>
     </section>
   )
 }
-
