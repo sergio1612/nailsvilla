@@ -152,7 +152,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="absolute bottom-5 right-5 z-20 flex gap-2">
+          <div className="absolute bottom-5 inset-x-0 z-20 flex justify-center gap-2 lg:inset-x-auto lg:right-5 lg:justify-end">
             {slides.map((_, index) => (
               <button
                 key={index}

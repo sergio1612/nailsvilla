@@ -1,134 +1,206 @@
 "use client"
 
 import Image from "next/image"
-import { Award, CalendarDays, Heart, Home, MapPin, Sparkles } from "lucide-react"
+import {
+  Award,
+  CalendarDays,
+  Heart,
+  Home,
+  MapPin,
+  Sparkles,
+} from "lucide-react"
 
 export function About() {
   const features = [
     {
       icon: Heart,
-      title: "Owner-Led Care",
+      title: "Owner-led care",
       description:
         "Rutika personally guides each appointment, from design choice to final finish.",
     },
     {
       icon: Award,
-      title: "Built Over Time",
+      title: "Built since 2021",
       description:
-        "Started on 10 April 2021 and shaped through real client preferences.",
+        "Started 10 April 2021 and shaped by real client preferences and references.",
     },
     {
       icon: Home,
-      title: "Appointment Choice",
+      title: "Your choice of setup",
       description:
-        "Choose Rutika's home setup or ask for a home visit when available.",
+        "Visit Rutika's home studio or request a home visit anywhere in Ahmedabad.",
     },
   ]
 
   const facts = [
     { icon: CalendarDays, label: "Founded", value: "10 April 2021" },
-    { icon: MapPin, label: "Location", value: "Ahmedabad" },
-    { icon: Home, label: "Model", value: "Home-based + home service" },
+    { icon: MapPin, label: "Location", value: "Ahmedabad, IN" },
+    { icon: Home, label: "Format", value: "Home Studio + Visits" },
   ]
 
   return (
-    <section id="about" className="relative overflow-hidden py-16 sm:py-20 xl:py-28 bg-background">
-      <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl"></div>
-      <div className="absolute -right-24 bottom-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+    <section
+      id="about"
+      className="relative flex min-h-svh items-center overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
+    >
+      {/* Soft ambient glows */}
+      <div className="absolute -left-32 top-20 -z-10 h-80 w-80 rounded-full bg-primary/15 blur-3xl"></div>
+      <div className="absolute -right-32 bottom-20 -z-10 h-80 w-80 rounded-full bg-accent/20 blur-3xl"></div>
+      <div className="absolute left-1/2 top-1/2 -z-10 hidden lg:block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-        <div className="relative grid grid-cols-1 xl:grid-cols-[0.95fr_1.05fr] gap-10 xl:gap-14 items-center">
-          <div className="relative order-2 mx-auto w-full max-w-xl xl:order-1">
-            <div className="relative overflow-hidden rounded-4xl border border-white/70 bg-white/70 p-3 shadow-2xl shadow-primary/10 backdrop-blur">
-              <div className="relative h-[300px] overflow-hidden rounded-3xl sm:h-[360px] lg:h-[420px] xl:h-[460px]">
-                <Image
-                  src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&h=1100&fit=crop&q=85"
-                  alt="Home-based nail service setup"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1279px) 90vw, 45vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-foreground/55 via-transparent to-transparent"></div>
-              </div>
-
-              <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/88 p-4 shadow-2xl backdrop-blur sm:p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
-                  Founder-led
-                </p>
-                <h3 className="mt-2 text-xl font-bold font-display text-foreground sm:text-2xl">
-                  Nails Villa by Rutika
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Home-based nail services in Ahmedabad with home visits on request.
-                </p>
-              </div>
-            </div>
-
-            <div className="absolute -right-5 -top-5 hidden rounded-3xl bg-primary px-5 py-4 text-primary-foreground shadow-xl shadow-primary/20 sm:block">
-              <p className="text-xs uppercase tracking-[0.25em] opacity-80">Since</p>
-              <p className="text-2xl font-bold font-display">2021</p>
-            </div>
-          </div>
-
-          <div className="order-1 text-center xl:order-2 xl:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-              <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">About Nails Villa by Rutika</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 font-display text-balance">
-              A home-grown nail brand owned by <span className="text-primary">Rutika Chauhan</span>
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-5">
-              Nails Villa by Rutika began on 10 April 2021 as Rutika Chauhan&apos;s
-              personal nail practice for clients who wanted neat work, honest
-              guidance, and designs that felt wearable.
-            </p>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              There is no physical studio at the moment. Appointments are handled
-              from Rutika&apos;s home setup, with home visits available on request
-              depending on service, location, and timing.
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {facts.map((fact) => {
-                const Icon = fact.icon
-                return (
-                  <div
-                    key={fact.label}
-                    className="flex items-center gap-4 rounded-3xl border border-white/70 bg-white/80 p-4 text-left shadow-sm backdrop-blur sm:block sm:text-center"
-                  >
-                    <Icon className="h-10 w-10 shrink-0 rounded-2xl bg-primary/10 p-2.5 text-primary sm:mx-auto sm:mb-4" />
-                    <div className="min-w-0">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                        {fact.label}
-                      </p>
-                      <p className="mt-1.5 text-sm font-semibold text-foreground">
-                        {fact.value}
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-10">
+        {/* Section eyebrow */}
+        <div className="mx-auto mb-8 max-w-2xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-primary">
+            <Sparkles className="h-4 w-4" />
+            <span className="text-xs font-semibold uppercase tracking-[0.28em]">
+              About the Studio
+            </span>
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <div
-                key={index}
-                className="p-6 rounded-3xl bg-white/75 border border-white/70 backdrop-blur hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-5">
-                  <Icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 font-display">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+        {/* SINGLE UNIFIED CARD — everything lives inside */}
+        <div className="luxury-surface relative mx-auto max-w-6xl overflow-hidden rounded-4xl border border-white/70">
+          {/* Decorative inner glows */}
+          <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl pointer-events-none"></div>
+          <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-primary/15 blur-3xl pointer-events-none"></div>
+
+          {/* TOP — Portrait + Editorial letter */}
+          <div className="relative grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10 xl:p-12">
+            {/* Portrait */}
+            <div className="relative mx-auto flex aspect-square w-full max-w-[280px] items-center justify-center md:order-1 xl:max-w-[320px]">
+              <div className="absolute inset-0 rounded-full bg-linear-to-br from-accent/45 via-primary/25 to-transparent blur-2xl"></div>
+              <div className="absolute -inset-3 rounded-full border border-primary/15"></div>
+              <div className="absolute -inset-6 rounded-full border border-primary/8"></div>
+              <div className="relative aspect-square w-full overflow-hidden rounded-full border-[6px] border-white shadow-2xl shadow-primary/25">
+                <Image
+                  src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=600&fit=crop&q=85"
+                  alt="Rutika Chauhan, founder of Nails Villa"
+                  fill
+                  className="object-cover"
+                  sizes="340px"
+                />
               </div>
-            )
-          })}
+              {/* "Since 2021" badge */}
+              <div className="absolute -bottom-2 -right-2 flex h-20 w-20 rotate-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/35">
+                <div className="text-center leading-tight">
+                  <p className="text-[9px] tracking-[0.22em] uppercase opacity-75">
+                    Since
+                  </p>
+                  <p className="font-display text-xl font-bold">2021</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Letter content */}
+            <div className="text-center md:order-2 md:text-left">
+              <h2 className="font-display text-4xl font-bold leading-[1.02] tracking-tight text-foreground sm:text-5xl xl:text-6xl">
+                Meet{" "}
+                <span className="font-cursive text-6xl text-primary sm:text-7xl xl:text-8xl">
+                  Rutika
+                </span>
+              </h2>
+
+              {/* Ornament divider */}
+              <div className="my-5 flex items-center justify-center gap-3 md:justify-start">
+                <span className="h-px w-10 bg-primary/30"></span>
+                <Sparkles className="h-3.5 w-3.5 text-accent" />
+                <span className="h-px w-10 bg-primary/30"></span>
+              </div>
+
+              <div className="space-y-3 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <p>
+                  My name is{" "}
+                  <span className="font-cursive text-3xl text-primary sm:text-4xl">
+                    Rutika
+                  </span>
+                  , and I&apos;m the founder and certified nail technician
+                  behind Nails Villa — a home-based studio dedicated to creating
+                  beautiful, lasting nail designs that enhance your style and
+                  confidence.
+                </p>
+                <p>
+                  I specialize in classic manicures, gel extensions, and custom
+                  nail art tailored to your reference, outfit, and lifestyle.
+                  Whether you&apos;re new to nail enhancements or a dedicated
+                  client, I&apos;m here to make your experience elegant,
+                  seamless, and stunning.
+                </p>
+                <p className="italic text-foreground/70">
+                  Thank you for visiting — I can&apos;t wait to design your
+                  perfect set.
+                </p>
+              </div>
+
+              <p className="mt-5">
+                <span className="font-display italic text-foreground/55 mr-1">xo,</span>
+                <span className="font-cursive text-5xl text-primary sm:text-6xl">
+                  Rutika
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* DIVIDER */}
+          <div className="relative px-8 sm:px-12 lg:px-16">
+            <div className="h-px w-full bg-linear-to-r from-transparent via-primary/20 to-transparent"></div>
+          </div>
+
+          {/* MIDDLE — Features (the why) */}
+          <div className="relative grid gap-px bg-primary/10 sm:grid-cols-3">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <div
+                  key={index}
+                  className="relative bg-white/48 p-5 backdrop-blur transition-colors hover:bg-white/70 sm:p-6"
+                >
+                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" strokeWidth={1.6} />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {feature.description}
+                  </p>
+                  <p className="absolute right-5 top-5 font-display text-2xl font-bold text-primary/12">
+                    0{index + 1}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* DIVIDER */}
+          <div className="relative px-8 sm:px-12 lg:px-16">
+            <div className="h-px w-full bg-linear-to-r from-transparent via-primary/20 to-transparent"></div>
+          </div>
+
+          {/* BOTTOM — Facts strip */}
+          <div className="relative grid gap-px bg-primary/10 sm:grid-cols-3">
+            {facts.map((fact) => {
+              const Icon = fact.icon
+              return (
+                <div
+                  key={fact.label}
+                  className="flex items-center gap-3 bg-white/38 p-5 backdrop-blur sm:justify-center sm:p-6"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <Icon className="h-4 w-4" strokeWidth={1.6} />
+                  </div>
+                  <div className="min-w-0 text-left">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      {fact.label}
+                    </p>
+                    <p className="mt-0.5 font-display text-sm font-semibold text-foreground sm:text-base">
+                      {fact.value}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

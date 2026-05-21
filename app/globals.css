@@ -3,7 +3,7 @@
 :root {
   --background: #fbf7ff;
   --foreground: #24162d;
-  
+
   /* Palette trial 12: Soft Lavender + Royal Purple */
   --primary: 274 48% 48%;
   --primary-foreground: 0 0% 100%;
@@ -38,6 +38,8 @@
   --color-card-foreground: hsl(280 38% 16%);
   --font-display: var(--font-playfair);
   --font-sans: var(--font-poppins);
+  --font-script: var(--font-script);
+  --font-cursive: var(--font-cursive);
 }
 
 * {
@@ -71,61 +73,48 @@ html {
   text-wrap: balance;
 }
 
+.text-pretty {
+  text-wrap: pretty;
+}
+
 .font-display {
   font-family: var(--font-playfair), serif;
 }
 
+.font-script {
+  font-family: var(--font-script), "Allura", cursive !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive), "Niconne", cursive !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
 /* Loader Animations */
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes liquid {
-  0%, 100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.15);
-  }
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.15); }
 }
 
 @keyframes sparkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 @keyframes bottle-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-.animate-liquid {
-  animation: liquid 1.5s ease-in-out infinite;
-}
-
-.animate-sparkle {
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-.animate-bottle-bounce {
-  animation: bottle-bounce 1.5s ease-in-out infinite;
-}
+.animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
+.animate-liquid { animation: liquid 1.5s ease-in-out infinite; }
+.animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+.animate-bottle-bounce { animation: bottle-bounce 1.5s ease-in-out infinite; }

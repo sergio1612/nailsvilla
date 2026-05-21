@@ -106,13 +106,13 @@ export function Pricing() {
               )}
               <HTMLFlipBook
                 ref={bookRef}
-                width={340}
-                height={540}
+                width={320}
+                height={640}
                 size="stretch"
-                minWidth={290}
-                maxWidth={390}
-                minHeight={460}
-                maxHeight={540}
+                minWidth={280}
+                maxWidth={420}
+                minHeight={560}
+                maxHeight={760}
                 startPage={0}
                 drawShadow
                 flippingTime={850}
@@ -131,7 +131,7 @@ export function Pricing() {
                 style={{ margin: "0 auto" }}
                 onFlip={(event) => setCurrentPage(Number(event.data))}
               >
-                <BrochurePage className="relative bg-linear-to-br from-foreground via-purple-800 to-primary text-white before:absolute before:inset-y-0 before:left-0 before:w-5 before:bg-white/10 before:shadow-[inset_-10px_0_18px_rgba(0,0,0,0.18)]">
+                <BrochurePage className="relative bg-linear-to-br from-foreground via-purple-800 to-primary text-white">
                   <div className="relative flex h-full flex-col justify-between p-5 sm:p-7">
                     <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/15 blur-2xl"></div>
                     <div className="absolute bottom-8 right-6 text-[8rem] font-bold leading-none text-white/5 font-display">
@@ -159,7 +159,7 @@ export function Pricing() {
                 </BrochurePage>
 
                 {servicePages.map((pageServices, pageIndex) => (
-                  <BrochurePage key={pageIndex} className="relative bg-[#fffbff] before:absolute before:inset-y-0 before:left-0 before:w-4 before:bg-linear-to-r before:from-primary/10 before:to-transparent after:absolute after:inset-y-6 after:right-2 after:w-px after:bg-primary/10">
+                  <BrochurePage key={pageIndex} className="relative bg-[#fffbff]">
                     <div className="relative flex h-full flex-col p-4 sm:p-5">
                       <div className="mb-3 border-b border-primary/10 pb-3">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary">
@@ -207,7 +207,7 @@ export function Pricing() {
                   </BrochurePage>
                 ))}
 
-                <BrochurePage className="relative bg-[#fffbff] before:absolute before:inset-y-0 before:left-0 before:w-4 before:bg-linear-to-r before:from-primary/10 before:to-transparent after:absolute after:inset-y-6 after:right-2 after:w-px after:bg-primary/10">
+                <BrochurePage className="relative bg-[#fffbff]">
                   <div className="flex h-full flex-col justify-between p-5">
                     <div>
                       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary">
@@ -232,7 +232,7 @@ export function Pricing() {
                   </div>
                 </BrochurePage>
 
-                <BrochurePage className="relative bg-linear-to-br from-primary via-purple-600 to-accent text-white before:absolute before:inset-y-0 before:right-0 before:w-5 before:bg-white/10 before:shadow-[inset_10px_0_18px_rgba(0,0,0,0.16)]">
+                <BrochurePage className="relative bg-linear-to-br from-primary via-purple-600 to-accent text-white">
                   <div className="flex h-full flex-col justify-between p-5 sm:p-7">
                     <div>
                       <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-white text-primary shadow-xl shadow-black/10">

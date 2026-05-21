@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Poppins } from "next/font/google";
+import { Playfair_Display, Poppins, Allura, Niconne } from "next/font/google";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -12,6 +12,18 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const allura = Allura({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const niconne = Niconne({
+  variable: "--font-cursive",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${poppins.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${poppins.variable} ${allura.variable} ${niconne.variable} antialiased`}
         suppressHydrationWarning
       >
         {children}
