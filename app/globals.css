@@ -93,28 +93,92 @@ html {
   letter-spacing: 0.01em;
 }
 
-/* Loader Animations */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+/* ===================================================================
+   LOADER — "The Bloom"
+   Five elegant nail-tip petals blossom outward from a glowing core,
+   sparkles dance in the gaps, the wordmark rises in below, and a
+   calligraphic flourish hand-draws itself beneath the cursive signature.
+   Total cycle: 2.4s. Plays once then holds the bloomed state.
+   =================================================================== */
+
+@keyframes loader-aura-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.92); }
+  50%      { opacity: 1;    transform: scale(1.08); }
 }
 
-@keyframes liquid {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.15); }
+/* Each petal pops outward from the flower center with a satisfying bounce.
+   Stagger is supplied via inline animation-delay. */
+@keyframes loader-petal-bloom {
+  0%   { transform: scale(0)    rotate(-14deg); opacity: 0; }
+  55%  { transform: scale(1.18) rotate(7deg);   opacity: 1; }
+  78%  { transform: scale(0.94) rotate(-2deg);  opacity: 1; }
+  100% { transform: scale(1)    rotate(0);      opacity: 1; }
 }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+/* Center jewel pops in after the petals are blooming, then breathes gently */
+@keyframes loader-jewel-pop {
+  0%, 25% { transform: scale(0);    opacity: 0; }
+  65%     { transform: scale(1.35); opacity: 1; }
+  85%     { transform: scale(0.92); opacity: 1; }
+  100%    { transform: scale(1);    opacity: 1; }
+}
+@keyframes loader-jewel-breathe {
+  0%, 100% { transform: scale(1);    }
+  50%      { transform: scale(1.08); }
 }
 
-@keyframes bottle-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* Gentle sway of the flower group — adds life without rotating into sparkles */
+@keyframes loader-flower-spin {
+  0%, 100% { transform: rotate(0);        }
+  25%      { transform: rotate(2.5deg);   }
+  75%      { transform: rotate(-2.5deg);  }
 }
 
-.animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
-.animate-liquid { animation: liquid 1.5s ease-in-out infinite; }
-.animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
-.animate-bottle-bounce { animation: bottle-bounce 1.5s ease-in-out infinite; }
+/* Sparkles between the petals — short snappy pop */
+@keyframes loader-sparkle-pop {
+  0%   { transform: scale(0)   rotate(0);    opacity: 0; }
+  50%  { transform: scale(1.4) rotate(55deg); opacity: 1; }
+  100% { transform: scale(1)   rotate(85deg); opacity: 0.95; }
+}
+
+/* Wordmark / tagline rise in */
+@keyframes loader-rise-in {
+  0%, 45% { opacity: 0; transform: translateY(14px); }
+  75%     { opacity: 1; transform: translateY(0); }
+  100%    { opacity: 1; transform: translateY(0); }
+}
+
+/* Calligraphic flourish that draws itself under "by Rutika" */
+@keyframes loader-flourish-draw {
+  0%   { stroke-dashoffset: 240; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Progress bar */
+@keyframes loader-progress {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.loader-aura         { animation: loader-aura-pulse 2.4s ease-in-out infinite; transform-origin: 150px 150px; }
+.loader-petal        { animation: loader-petal-bloom 0.85s cubic-bezier(.34, 1.6, .64, 1) both; transform-origin: 0 0; }
+.loader-flower-spin  { animation: loader-flower-spin 4.5s ease-in-out 1.3s infinite; transform-origin: 150px 150px; }
+.loader-jewel        { animation: loader-jewel-pop 0.75s cubic-bezier(.34, 1.6, .64, 1) 0.55s both, loader-jewel-breathe 1.6s ease-in-out 1.4s infinite; transform-origin: 150px 150px; }
+.loader-sparkle      { animation: loader-sparkle-pop 0.65s ease-out both; transform-origin: center; transform-box: fill-box; }
+.loader-rise         { animation: loader-rise-in 2.4s ease-out both; }
+.loader-flourish     { stroke-dasharray: 240; animation: loader-flourish-draw 0.95s cubic-bezier(.4,.0,.2,1) 1.55s both; }
+.loader-progress-bar { animation: loader-progress 2.4s ease-out both; transform-origin: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-aura,
+  .loader-petal,
+  .loader-flower-spin,
+  .loader-jewel,
+  .loader-sparkle,
+  .loader-rise,
+  .loader-flourish,
+  .loader-progress-bar { animation: none !important; }
+  .loader-rise         { opacity: 1; transform: none; }
+  .loader-flourish     { stroke-dashoffset: 0; }
+  .loader-progress-bar { transform: scaleX(1); }
+}
