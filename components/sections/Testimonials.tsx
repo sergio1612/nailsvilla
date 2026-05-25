@@ -52,8 +52,8 @@ export function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" className="py-16 sm:py-20 xl:py-24 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+    <section id="testimonials" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-muted">
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         {/* ============ HEADER ============ */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">

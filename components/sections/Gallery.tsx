@@ -111,8 +111,8 @@ export function Gallery() {
 
   return (
     <>
-      <section id="gallery" className="py-16 sm:py-20 xl:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+      <section id="gallery" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-background">
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
               <Sparkles className="h-4 w-4" />

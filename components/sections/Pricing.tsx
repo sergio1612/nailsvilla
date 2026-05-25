@@ -77,7 +77,7 @@ export function Pricing() {
       <div className="absolute right-0 top-20 h-96 w-96 translate-x-1/3 rounded-full bg-primary/12 blur-3xl"></div>
       <div className="absolute bottom-12 left-0 h-96 w-96 -translate-x-1/3 rounded-full bg-accent/25 blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="relative mx-auto max-w-6xl">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-primary shadow-sm backdrop-blur">
@@ -302,9 +302,6 @@ export function Pricing() {
                 <h3 className="text-2xl sm:text-3xl font-bold font-display">
                   Send your nail inspo and we will guide you to the right service.
                 </h3>
-                <p className="mt-2 max-w-2xl text-sm sm:text-base text-white/80">
-                  Final pricing may vary only if custom art or extra detailing is added.
-                </p>
               </div>
               <Button
                 className="rounded-full bg-white px-7 text-primary hover:bg-white/90"

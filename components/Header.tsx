@@ -49,7 +49,7 @@ export function Header() {
           <div className="shrink-0">
             <button
               onClick={() => scrollToSection("hero")}
-              className="group flex items-center gap-3 text-left"
+              className="group flex items-center gap-3 text-left cursor-pointer"
               aria-label="Go to home"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform group-hover:-rotate-6">
@@ -72,7 +72,7 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer"
               >
                 {item.label}
               </button>
@@ -87,7 +87,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="xl:hidden p-2"
+            className="xl:hidden p-2 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -106,7 +106,7 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 cursor-pointer"
               >
                 {item.label}
               </button>

@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { Button } from "@/components/common/Button"
 import { Card, CardContent } from "@/components/common/Card"
-import { CheckCircle2, MessageCircle, Phone, Sparkles } from "lucide-react"
+import { CheckCircle2, Phone, Sparkles } from "lucide-react"
+import { WhatsappIcon } from "@/components/common/WhatsappIcon"
 import { cn } from "@/lib/utils"
 
 export function Newsletter() {
@@ -136,7 +137,7 @@ export function Newsletter() {
                       </>
                     ) : (
                       <>
-                        <MessageCircle className="mr-2 h-5 w-5" />
+                        <WhatsappIcon className="mr-2 h-5 w-5" />
                         Continue on WhatsApp
                       </>
                     )}

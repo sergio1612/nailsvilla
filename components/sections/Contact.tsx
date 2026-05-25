@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/common/Button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/Card"
-import { Clock, Instagram, MapPin, MessageCircle, Phone } from "lucide-react"
+import { Clock, Instagram, MapPin, Phone } from "lucide-react"
+import { WhatsappIcon } from "@/components/common/WhatsappIcon"
 
 export function Contact() {
   const handleWhatsApp = () => {
@@ -41,8 +42,8 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-16 sm:py-20 xl:py-24 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
+    <section id="contact" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-muted">
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
             Ready for Your <span className="text-primary">Nail Glow-Up?</span>
@@ -58,7 +59,7 @@ export function Contact() {
           <Card className="mb-12 overflow-hidden rounded-4xl border-primary/20 bg-linear-to-br from-primary/10 to-accent/20 shadow-xl shadow-primary/10">
             <CardHeader className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-4 mx-auto">
-                <MessageCircle className="h-8 w-8" />
+                <WhatsappIcon className="h-8 w-8" />
               </div>
               <CardTitle className="text-2xl sm:text-3xl mb-2 font-display">Book via WhatsApp</CardTitle>
               <CardDescription className="text-sm sm:text-base">
@@ -70,9 +71,9 @@ export function Contact() {
               <Button
                 size="lg"
                 onClick={handleWhatsApp}
-                className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full bg-green-600 hover:bg-green-700 text-white"
+                className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full bg-green-600 hover:bg-green-700 text-white hover:shadow-green-500/40"
               >
-                <MessageCircle className="h-5 w-5 mr-2" />
+                <WhatsappIcon className="h-5 w-5 mr-2" />
                 Book My Nails on WhatsApp
               </Button>
             </CardContent>

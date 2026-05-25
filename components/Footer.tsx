@@ -1,6 +1,7 @@
 "use client"
 
-import { ArrowUp, Instagram, MapPin, MessageCircle } from "lucide-react"
+import { ArrowUp, Instagram, MapPin } from "lucide-react"
+import { WhatsappIcon } from "@/components/common/WhatsappIcon"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -15,7 +16,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-foreground text-white">
+    <footer className="relative overflow-hidden bg-foreground text-white">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-10 xl:px-8">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.2fr_0.8fr_1fr]">
           <div className="max-w-md">
@@ -63,7 +64,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/65 transition-colors hover:text-white"
               >
-                <MessageCircle className="h-4 w-4 text-accent" />
+                <WhatsappIcon className="h-4 w-4 text-accent" />
                 <span>WhatsApp Us</span>
               </a>
               <a

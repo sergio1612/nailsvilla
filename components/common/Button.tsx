@@ -14,11 +14,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+          // Universal hover feel: smooth all-property transition + tiny lift on hover.
+          // Disabled buttons skip the lift via `disabled:pointer-events-none`.
+          "inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium cursor-pointer transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
           {
-            "bg-primary text-primary-foreground hover:opacity-90": variant === "default",
-            "border border-border bg-transparent hover:bg-accent hover:text-accent-foreground": variant === "outline",
-            "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
+            // `hover:bg-primary/90` darkens just the background on hover instead of
+            // the old `hover:opacity-90` which faded the entire button (including
+            // text) and looked disabled when overrides changed the background.
+            "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/35":
+              variant === "default",
+            "border border-border bg-transparent hover:bg-accent hover:text-accent-foreground hover:border-primary/30 hover:shadow-lg hover:shadow-primary/15":
+              variant === "outline",
+            "hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:shadow-primary/15":
+              variant === "ghost",
             "h-10 px-4 py-2": size === "default",
             "h-9 px-3 text-sm": size === "sm",
             "h-11 px-8": size === "lg",

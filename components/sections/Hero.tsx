@@ -31,7 +31,7 @@ export function Hero() {
     },
   ]
 
-  const serviceHighlights = ["Gel polish", "Extensions", "Custom art"]
+  const serviceHighlights = ["Gel polish", "Extensions", "Custom art", "Press-ons"]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -132,10 +132,10 @@ export function Hero() {
                 <Button
                   size="lg"
                   onClick={scrollToContact}
-                  className="rounded-full bg-white px-6 py-5 text-base text-foreground shadow-xl shadow-black/20 hover:bg-white/90 sm:px-7"
+                  className="group rounded-full bg-white px-6 py-5 text-base text-foreground shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-primary hover:opacity-100 hover:shadow-2xl hover:shadow-primary/40 sm:px-7"
                 >
                   Book Appointment
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
                 <Button
                   size="lg"
