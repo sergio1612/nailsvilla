@@ -34,12 +34,19 @@ export function Pricing() {
   const bookRef = useRef<FlipBookHandle>(null)
   const [currentPage, setCurrentPage] = useState(0)
 
+  // Service order maps directly to brochure pages via `servicePages` slicing
+  // below — 3 services per page. Reordering here changes which page an item
+  // appears on, so keep groups of 3 together.
   const services = [
+    // ── Most Requested ──
     { name: "Gel Polish", price: "₹499", note: "Glossy, durable colour finish" },
     { name: "Temporary Extension", price: "₹799", note: "Event-ready length with a soft finish" },
+    { name: "Press-On Nails", price: "₹399", note: "Custom-fit reusable nail sets" },
+    // ── Extensions & Care ──
     { name: "Gel Overlays", price: "₹999", note: "Strength and shine over natural nails" },
     { name: "Permanent Extension", price: "₹1299", note: "Long-lasting sculpted extensions" },
     { name: "Refilling", price: "₹599", note: "Refresh your extensions beautifully" },
+    // ── Finishing Touches ──
     { name: "Gel Polish Removal", price: "₹299", note: "Gentle product removal" },
     { name: "Extension Removal", price: "₹499", note: "Careful removal with nail care" },
     { name: "Toe Extensions (Feet)", price: "₹899", note: "Polished toe extension service" },
@@ -192,9 +199,11 @@ export function Pricing() {
                                 <p className="text-2xl font-bold text-primary">
                                   {service.price}
                                 </p>
-                                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                                  onwards
-                                </p>
+                                {pageIndex !== 2 && (
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                                    onwards
+                                  </p>
+                                )}
                               </div>
                             </div>
                             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">

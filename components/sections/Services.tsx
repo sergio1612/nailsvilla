@@ -11,7 +11,7 @@ export function Services() {
       title: "Gel Polish",
       description:
         "High-shine gel colour for a clean, fresh, long-lasting finish.",
-      features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Wear"],
+      features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Chic"],
       image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
     },
     {
@@ -27,7 +27,7 @@ export function Services() {
       title: "Nail Art",
       description:
         "Minimal, glam, bridal, or playful designs made around your inspiration.",
-      features: ["Custom Designs", "Chrome Looks", "Glitter Details", "Statement Sets"],
+      features: ["Custom Designs", "Wedding Glitters", "Vacation Vibes", "Birthday Glam"],
       image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
     },
     {
