@@ -27,9 +27,9 @@ const niconne = Niconne({
 });
 
 export const metadata: Metadata = {
-  title: "Nails Villa by Rutika | Ahmedabad Nail Services",
+  title: "NailsVilla by Rutika | Ahmedabad Nail Services",
   description:
-    "Home-based Ahmedabad nail services by Nails Villa by Rutika, founded by owner Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, nail art, and home service on request.",
+    "Home-based Ahmedabad nail services by NailsVilla by Rutika, founded by owner Rutika Chauhan on 10 April 2021. Gel polish, extensions, overlays, refills, removals, nail art, and home service on request.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",

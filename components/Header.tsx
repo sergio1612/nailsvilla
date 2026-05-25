@@ -57,7 +57,7 @@ export function Header() {
               </span>
               <span>
                 <span className="block text-xl sm:text-2xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-display">
-                  Nails Villa
+                  NailsVilla
                 </span>
                 <span className="block text-[11px] font-medium tracking-[0.25em] text-foreground/55 uppercase">
                   by Rutika

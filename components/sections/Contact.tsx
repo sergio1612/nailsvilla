@@ -8,7 +8,7 @@ export function Contact() {
   const handleWhatsApp = () => {
     const phoneNumber = "919429031140"
     const message = encodeURIComponent(
-      "Hello Nails Villa by Rutika! I want to book a nail appointment in Ahmedabad. Please help me choose between Rutika's home setup and home service."
+      "Hello NailsVilla by Rutika! I want to book a nail appointment in Ahmedabad. Please help me choose between Rutika's home setup and home service."
     )
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank")
   }

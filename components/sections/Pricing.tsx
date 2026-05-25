@@ -21,7 +21,7 @@ const BrochurePage = forwardRef<HTMLDivElement, BrochurePageProps>(
   ({ children, className = "" }, ref) => (
     <div
       ref={ref}
-      className={`overflow-hidden bg-white text-foreground shadow-2xl ${className}`}
+      className={`overflow-hidden bg-white text-foreground shadow-none sm:shadow-2xl ${className}`}
     >
       {children}
     </div>
@@ -96,7 +96,7 @@ export function Pricing() {
                 >
                   <div className="absolute inset-y-8 right-4 w-px bg-primary/15"></div>
                   <div className="absolute left-8 top-8 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
-                    Nails Villa
+                    NailsVilla
                   </div>
                   <div className="absolute bottom-8 left-8 right-8 rounded-3xl border border-primary/10 bg-white/70 p-5 text-sm leading-relaxed text-muted-foreground">
                     Open the brochure to view service pricing, nail care notes,
@@ -142,7 +142,7 @@ export function Pricing() {
                         <Gem className="h-7 w-7" />
                       </div>
                       <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/65">
-                        Nails Villa
+                        NailsVilla
                       </p>
                       <h3 className="mt-4 text-3xl font-bold leading-tight font-display">
                         Price list brochure
@@ -291,7 +291,7 @@ export function Pricing() {
                   Need help choosing?
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold font-display">
-                  Send your nail reference and we will guide you to the right service.
+                  Send your nail inspo and we will guide you to the right service.
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm sm:text-base text-white/80">
                   Final pricing may vary only if custom art or extra detailing is added.

@@ -75,7 +75,7 @@ export function About() {
               <div className="relative aspect-square w-full overflow-hidden rounded-full border-[6px] border-white shadow-2xl shadow-primary/25">
                 <Image
                   src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=600&fit=crop&q=85"
-                  alt="Rutika Chauhan, founder of Nails Villa"
+                  alt="Rutika Chauhan, founder of NailsVilla"
                   fill
                   className="object-cover"
                   sizes="340px"
@@ -114,8 +114,8 @@ export function About() {
                   <span className="font-cursive text-3xl text-primary sm:text-4xl">
                     Rutika
                   </span>
-                  , and I&apos;m the founder and certified nail technician
-                  behind Nails Villa — a home-based studio dedicated to creating
+                  , and I&apos;m the founder and certified nail artist
+                  behind NailsVilla — a home-based studio dedicated to creating
                   beautiful, lasting nail designs that enhance your style and
                   confidence.
                 </p>

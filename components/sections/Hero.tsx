@@ -104,7 +104,7 @@ export function Hero() {
             <div className="px-5 py-10 text-center text-white sm:px-8 lg:px-12 lg:py-12 lg:text-left">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 shadow-xl backdrop-blur">
                 <Sparkles className="h-4 w-4 text-[#ffd8ef]" />
-                <span className="text-sm font-medium">Signature nail sets by Rutika</span>
+                <span className="text-sm font-medium">Signature nails by Rutika</span>
               </div>
 
               <h1 className="mb-5 max-w-2xl font-display text-4xl font-bold leading-tight text-balance sm:text-5xl lg:text-6xl">

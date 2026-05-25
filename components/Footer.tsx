@@ -21,7 +21,7 @@ export function Footer() {
           <div className="max-w-md">
             <a href="#hero" className="inline-block">
               <span className="block font-display text-3xl font-bold">
-                Nails Villa
+                NailsVilla
               </span>
               <span className="mt-1 block text-xs font-medium uppercase tracking-[0.3em] text-white/45">
                 by Rutika
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="mt-6 flex flex-col gap-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {currentYear} Nails Villa by Rutika. All rights reserved.</p>
+          <p>&copy; {currentYear} NailsVilla by Rutika. All rights reserved.</p>
           <a
             href="#hero"
             className="inline-flex items-center gap-2 transition-colors hover:text-white"

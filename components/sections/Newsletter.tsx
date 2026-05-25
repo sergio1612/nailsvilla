@@ -33,7 +33,7 @@ export function Newsletter() {
     try {
       const businessWhatsAppNumber = "919429031140"
       const message = encodeURIComponent(
-        `Hello Nails Villa by Rutika! I want to book a nail appointment in Ahmedabad.\n\nMy WhatsApp number: ${phoneNumber}\nPreferred service: Please help me choose from the latest price list.\nAppointment preference: Rutika's home setup / home service.`
+        `Hello NailsVilla by Rutika! I want to book a nail appointment in Ahmedabad.\n\nMy WhatsApp number: ${phoneNumber}\nPreferred service: Please help me choose from the latest price list.\nAppointment preference: Rutika's home setup / home service.`
       )
 
       await new Promise((resolve) => setTimeout(resolve, 400))
