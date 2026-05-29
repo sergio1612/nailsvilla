@@ -99,13 +99,11 @@ export function Loader() {
         </div>
 
         {/* ============ WORDMARK ============ */}
-        <div className="loader-rise mt-7 text-center">
-          <h1 className="font-display text-2xl font-bold leading-none sm:text-3xl">
-            <span className="bg-linear-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">
-              NailsVilla
-            </span>
+        <div className="loader-rise mt-3 text-center">
+          <h1 className="font-display bg-linear-to-r from-primary to-accent bg-clip-text text-transparent" style={{ fontWeight: 600, fontSize: "24px", lineHeight: 1.2 }}>
+            NailsVilla
           </h1>
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+          <p className="mt-1 font-medium uppercase text-foreground/55 text-center" style={{ fontSize: "11px", letterSpacing: "2px" }}>
             by Rutika
           </p>
         </div>

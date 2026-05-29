@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import { Menu, X } from "lucide-react"
 
@@ -14,6 +15,7 @@ export function Header() {
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
+    { label: "Press-Ons", id: "press-on-nails" },
     { label: "Gallery", id: "gallery" },
     { label: "Pricing", id: "pricing" },
     { label: "Testimonials", id: "testimonials" },
@@ -91,17 +93,22 @@ export function Header() {
           <div className="shrink-0">
             <button
               onClick={() => scrollToSection("hero")}
-              className="group flex items-center gap-3 text-left cursor-pointer"
+              className="group flex items-center gap-0 text-left cursor-pointer"
               aria-label="Go to home"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform group-hover:-rotate-6">
-                NV
-              </span>
+              <Image
+                src="/nv-photos/logo-hands-v4.png"
+                alt=""
+                width={64}
+                height={64}
+                className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-16 sm:w-16"
+                priority
+              />
               <span>
-                <span className="block text-xl sm:text-2xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-display">
+                <span className="block font-display bg-linear-to-r from-primary to-accent bg-clip-text text-transparent" style={{ fontWeight: 600, fontSize: "24px", lineHeight: 1.2 }}>
                   NailsVilla
                 </span>
-                <span className="block text-[11px] font-medium tracking-[0.25em] text-foreground/55 uppercase">
+                <span className="block text-[11px] font-medium text-foreground/55 uppercase text-center" style={{ letterSpacing: "2px" }}>
                   by Rutika
                 </span>
               </span>
