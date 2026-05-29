@@ -78,7 +78,7 @@ export function About() {
                   src={aboutArtistPhoto}
                   alt="Rutika Chauhan, founder of NailsVilla"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-[center_15%]"
                   sizes="340px"
                 />
               </div>

@@ -4,26 +4,32 @@ export function photoSrc(filename: string) {
   return `${PHOTO_DIR}/${encodeURIComponent(filename)}`
 }
 
-export const aboutArtistPhoto = photoSrc("about_nail_artist.png")
+export const aboutArtistPhoto = photoSrc("rutu-owner.png")
+export const aboutArtistAtWork = photoSrc("rutu-work.png")
 
 export const heroSlides = [
   {
     id: 1,
+    src: aboutArtistAtWork,
+    alt: "Rutika performing a manicure at NailsVilla",
+  },
+  {
+    id: 2,
     src: photoSrc("PHOTO-2026-04-21-12-44-28(5).jpg"),
     alt: "Rose gold glitter French manicure",
   },
   {
-    id: 2,
+    id: 3,
     src: photoSrc("PHOTO-2026-04-21-12-44-28.jpg"),
     alt: "Colourful summer nail art by the river",
   },
   {
-    id: 3,
+    id: 4,
     src: photoSrc("PHOTO-2026-04-21-12-44-28(1).jpg"),
     alt: "Bridal henna with mauve almond nails",
   },
   {
-    id: 4,
+    id: 5,
     src: photoSrc("PHOTO-2026-04-21-12-44-27(1).jpg"),
     alt: "Dusty rose manicure with glitter accents",
   },
