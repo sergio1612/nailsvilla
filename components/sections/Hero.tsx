@@ -4,32 +4,12 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import { ArrowRight, Sparkles } from "lucide-react"
+import { heroSlides } from "@/lib/photos"
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const slides = [
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=900&fit=crop&q=85",
-      alt: "Glossy gel polish nail finish",
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&h=900&fit=crop&q=85",
-      alt: "Detailed nail art service",
-    },
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=700&h=900&fit=crop&q=85",
-      alt: "Elegant manicure and nail care",
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=700&h=900&fit=crop&q=85",
-      alt: "Clean nail extension look",
-    },
-  ]
+  const slides = heroSlides
 
   const serviceHighlights = ["Gel polish", "Extensions", "Custom art", "Press-ons"]
 

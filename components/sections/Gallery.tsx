@@ -3,66 +3,10 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Sparkles, X, ChevronLeft, ChevronRight, Download } from "lucide-react"
+import { galleryImages } from "@/lib/photos"
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-
-  const galleryImages = [
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&h=900&fit=crop&q=85",
-      alt: "Glossy blush gel polish",
-      category: "Gel Polish",
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=900&h=900&fit=crop&q=85",
-      alt: "Clean extension shape",
-      category: "Extensions",
-    },
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&h=900&fit=crop&q=85",
-      alt: "Detailed nail art application",
-      category: "Nail Art",
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&h=900&fit=crop&q=85",
-      alt: "Fresh manicure care",
-      category: "Care",
-    },
-    {
-      id: 5,
-      src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&h=900&fit=crop&q=85",
-      alt: "Soft glam nail finish",
-      category: "Soft Glam",
-    },
-    {
-      id: 6,
-      src: "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?w=900&h=900&fit=crop&q=85",
-      alt: "Minimal nude nail styling",
-      category: "Minimal",
-    },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=900&h=900&fit=crop&q=85",
-      alt: "Polished colour selection",
-      category: "Gel Manicure",
-    },
-    {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&h=900&fit=crop&q=85",
-      alt: "Beauty essentials and nail care",
-      category: "Nail Care",
-    },
-    {
-      id: 9,
-      src: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&h=900&fit=crop&q=85",
-      alt: "Elegant finished nail set",
-      category: "Premium",
-    },
-  ]
 
   const openModal = (index: number) => {
     setSelectedImage(index)

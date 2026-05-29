@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/Card"
 import { Sparkles, Heart, Palette, Gem, CheckCircle2 } from "lucide-react"
+import { serviceImages } from "@/lib/photos"
 
 export function Services() {
   const services = [
@@ -12,7 +13,7 @@ export function Services() {
       description:
         "High-shine gel colour for a clean, fresh, long-lasting finish.",
       features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Chic"],
-      image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
+      image: serviceImages.gelPolish,
     },
     {
       icon: Heart,
@@ -20,7 +21,7 @@ export function Services() {
       description:
         "Temporary and permanent extensions shaped to your style and comfort.",
       features: ["Custom Length", "Natural Shape", "Event Ready", "Refill Friendly"],
-      image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=700&h=520&fit=crop&q=85",
+      image: serviceImages.extensions,
     },
     {
       icon: Palette,
@@ -28,7 +29,7 @@ export function Services() {
       description:
         "Minimal, glam, bridal, or playful designs made around your inspiration.",
       features: ["Custom Designs", "Wedding Glitters", "Vacation Vibes", "Birthday Glam"],
-      image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&h=520&fit=crop&q=85",
+      image: serviceImages.nailArt,
     },
     {
       icon: Gem,
@@ -36,7 +37,7 @@ export function Services() {
       description:
         "Overlay, refill, and removal services to keep nails healthy and polished.",
       features: ["Gel Overlays", "Refilling", "Gentle Removal", "Aftercare Guidance"],
-      image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&h=520&fit=crop&q=85",
+      image: serviceImages.overlays,
     },
   ]
 

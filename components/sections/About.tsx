@@ -9,6 +9,7 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react"
+import { aboutArtistPhoto } from "@/lib/photos"
 
 export function About() {
   const features = [
@@ -74,10 +75,10 @@ export function About() {
               <div className="absolute -inset-6 rounded-full border border-primary/8"></div>
               <div className="relative aspect-square w-full overflow-hidden rounded-full border-[6px] border-white shadow-2xl shadow-primary/25">
                 <Image
-                  src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=600&fit=crop&q=85"
+                  src={aboutArtistPhoto}
                   alt="Rutika Chauhan, founder of NailsVilla"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   sizes="340px"
                 />
               </div>
