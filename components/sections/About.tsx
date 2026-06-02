@@ -185,7 +185,7 @@ export function About() {
               return (
                 <div
                   key={fact.label}
-                  className="flex items-center gap-3 bg-white/38 p-5 backdrop-blur sm:justify-center sm:p-6"
+                  className="flex items-center gap-3 bg-white/38 p-5 backdrop-blur sm:p-6"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <Icon className="h-4 w-4" strokeWidth={1.6} />

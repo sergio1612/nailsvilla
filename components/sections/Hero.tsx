@@ -47,7 +47,7 @@ export function Hero() {
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_38%]"
                   priority={index === 0}
                   sizes="92vw"
                 />
@@ -69,7 +69,7 @@ export function Hero() {
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_38%]"
                   priority={index === 0}
                   sizes="720px"
                 />
@@ -81,7 +81,7 @@ export function Hero() {
           <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/35 blur-3xl"></div>
           <div className="absolute bottom-0 left-1/3 h-44 w-44 rounded-full bg-accent/20 blur-3xl"></div>
 
-          <div className="relative z-10 grid min-h-[430px] items-center md:grid-cols-[1fr_0.9fr] lg:min-h-[460px]">
+          <div className="relative z-10 grid min-h-[540px] items-center md:grid-cols-[1fr_0.9fr] lg:min-h-[620px]">
             <div className="px-5 py-10 text-center text-white sm:px-8 lg:px-12 lg:py-12 lg:text-left">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 shadow-xl backdrop-blur">
                 <Sparkles className="h-4 w-4 text-[#ffd8ef]" />
