@@ -47,15 +47,17 @@ export function Hero() {
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  className="object-cover opacity-35"
+                  className="object-cover"
                   priority={index === 0}
                   sizes="92vw"
                 />
               </div>
             ))}
+            <div className="absolute inset-0 bg-primary/55 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-foreground/75 via-foreground/45 to-foreground/80"></div>
           </div>
 
-          <div className="absolute inset-y-0 right-0 hidden w-[54%] overflow-hidden md:block md:[clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)]">
+          <div className="absolute inset-y-0 right-0 hidden w-[62%] overflow-hidden md:block [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.4)_22%,#000_48%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.4)_22%,#000_48%)]">
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
@@ -69,14 +71,13 @@ export function Hero() {
                   fill
                   className="object-cover"
                   priority={index === 0}
-                  sizes="640px"
+                  sizes="720px"
                 />
               </div>
             ))}
-            <div className="absolute inset-0 bg-linear-to-l from-transparent via-transparent to-foreground/25"></div>
           </div>
 
-          <div className="absolute inset-0 bg-linear-to-r from-foreground via-foreground/92 to-foreground/20"></div>
+          <div className="absolute inset-0 hidden bg-linear-to-r from-foreground via-foreground/85 to-transparent md:block"></div>
           <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/35 blur-3xl"></div>
           <div className="absolute bottom-0 left-1/3 h-44 w-44 rounded-full bg-accent/20 blur-3xl"></div>
 
@@ -132,7 +133,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="absolute bottom-5 inset-x-0 z-20 flex justify-center gap-2 lg:inset-x-auto lg:right-5 lg:justify-end">
+          <div className={`absolute bottom-5 inset-x-0 z-20 flex justify-center gap-2 lg:inset-x-auto lg:right-5 lg:justify-end ${slides.length <= 1 ? "hidden" : ""}`}>
             {slides.map((_, index) => (
               <button
                 key={index}

@@ -13,26 +13,6 @@ export const heroSlides = [
     src: aboutArtistAtWork,
     alt: "Rutika performing a manicure at NailsVilla",
   },
-  {
-    id: 2,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28(5).jpg"),
-    alt: "Rose gold glitter French manicure",
-  },
-  {
-    id: 3,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28.jpg"),
-    alt: "Colourful summer nail art by the river",
-  },
-  {
-    id: 4,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28(1).jpg"),
-    alt: "Bridal henna with mauve almond nails",
-  },
-  {
-    id: 5,
-    src: photoSrc("PHOTO-2026-04-21-12-44-27(1).jpg"),
-    alt: "Dusty rose manicure with glitter accents",
-  },
 ]
 
 export const galleryImages = [
