@@ -23,34 +23,16 @@ export const galleryImages = [
     category: "Nail Art",
   },
   {
-    id: 2,
-    src: photoSrc("PHOTO-2026-04-21-12-44-26(1).jpg"),
-    alt: "Playful heart and smiley nail art",
-    category: "Nail Art",
-  },
-  {
     id: 3,
     src: photoSrc("PHOTO-2026-04-21-12-44-27(1).jpg"),
     alt: "Dusty rose gel with glitter accents",
     category: "Gel Polish",
   },
   {
-    id: 4,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28(1).jpg"),
-    alt: "Bridal henna with mauve nails",
-    category: "Bridal",
-  },
-  {
     id: 5,
     src: photoSrc("PHOTO-2026-04-21-12-44-28(5).jpg"),
     alt: "Rose gold French tip manicure",
     category: "Soft Glam",
-  },
-  {
-    id: 6,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28(10).jpg"),
-    alt: "Elegant almond French with rose gold glitter",
-    category: "Extensions",
   },
   {
     id: 7,
@@ -60,7 +42,7 @@ export const galleryImages = [
   },
   {
     id: 8,
-    src: photoSrc("PHOTO-2026-04-21-12-44-28(3).jpg"),
+    src: photoSrc("gallery-green-heart.png"),
     alt: "Green heart pattern nail art",
     category: "Nail Art",
   },
@@ -105,12 +87,6 @@ export const galleryImages = [
     src: photoSrc("PHOTO-2026-04-21-12-44-27(7).jpg"),
     alt: "NailsVilla nail design",
     category: "Gel Manicure",
-  },
-  {
-    id: 16,
-    src: photoSrc("PHOTO-2026-04-21-12-44-27(8).jpg"),
-    alt: "NailsVilla nail design",
-    category: "Care",
   },
   {
     id: 17,
@@ -168,3 +144,40 @@ export const serviceImages = {
   nailArt: photoSrc("PHOTO-2026-04-21-12-44-26(1).jpg"),
   overlays: photoSrc("PHOTO-2026-04-21-12-44-27(3).jpg"),
 }
+
+const PRESS_ON_DIR = "/nv-photos/press-on"
+
+function pressOnPhotoSrc(filename: string) {
+  return `${PRESS_ON_DIR}/${encodeURIComponent(filename)}`
+}
+
+export const pressOnPhotos = [
+  {
+    src: pressOnPhotoSrc("press-on-01.png"),
+    alt: "Burgundy cat-eye press-ons with gold floral accents",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-02.png"),
+    alt: "Pale pink cat-eye press-ons with silver French tips and MR monogram",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-03.png"),
+    alt: "Rose-gold cat-eye press-ons with white flower charms",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-04.png"),
+    alt: "Soft pink French press-ons with white bow charms",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-05.png"),
+    alt: "Celestial pink press-ons with pearls and silver stars",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-06.png"),
+    alt: "Dusty rose cat-eye press-ons with gold glitter French tips",
+  },
+  {
+    src: pressOnPhotoSrc("press-on-07.png"),
+    alt: "Champagne gold cat-eye press-ons with peacock and flower charms",
+  },
+]

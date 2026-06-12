@@ -14,7 +14,7 @@ import {
   Heart,
   Star,
 } from "lucide-react"
-import { photoSrc } from "@/lib/photos"
+import { pressOnPhotos } from "@/lib/photos"
 
 const steps = [
   {
@@ -50,14 +50,6 @@ const features = [
   { icon: Star, label: "Reusable sets" },
   { icon: Sparkles, label: "Hand-painted art" },
   { icon: RefreshCw, label: "Easy removal" },
-]
-
-const previewPhotos = [
-  { src: photoSrc("PHOTO-2026-04-21-12-44-28(5).jpg"), alt: "Rose gold French press-on nails" },
-  { src: photoSrc("PHOTO-2026-04-21-12-44-26(1).jpg"), alt: "Playful art press-on set" },
-  { src: photoSrc("PHOTO-2026-04-21-12-44-28(3).jpg"), alt: "Green heart press-on design" },
-  { src: photoSrc("PHOTO-2026-04-21-12-44-27(1).jpg"), alt: "Dusty rose glitter press-ons" },
-  { src: photoSrc("PHOTO-2026-04-21-12-44-28(10).jpg"), alt: "Almond shaped press-on nails" },
 ]
 
 export function PressOnNails() {
@@ -136,8 +128,8 @@ export function PressOnNails() {
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary">
             Press-on styles
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {previewPhotos.map((photo, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {pressOnPhotos.map((photo, i) => (
               <div
                 key={i}
                 className="group relative aspect-square overflow-hidden rounded-2xl border border-white/60 shadow-sm"
