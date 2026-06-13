@@ -1,6 +1,6 @@
 "use client"
 
-import { forwardRef, useRef, useState, type ReactNode } from "react"
+import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react"
 import HTMLFlipBook from "react-pageflip"
 import { Button } from "@/components/common/Button"
 import { ArrowLeft, ArrowRight, Check, Gem, Home, Sparkles } from "lucide-react"
@@ -30,9 +30,42 @@ const BrochurePage = forwardRef<HTMLDivElement, BrochurePageProps>(
 
 BrochurePage.displayName = "BrochurePage"
 
+const DESKTOP_BOOK = {
+  width: 320,
+  height: 640,
+  minWidth: 280,
+  maxWidth: 420,
+  minHeight: 560,
+  maxHeight: 760,
+}
+
+const MOBILE_BOOK = {
+  width: 300,
+  height: 440,
+  minWidth: 260,
+  maxWidth: 340,
+  minHeight: 380,
+  maxHeight: 460,
+}
+
 export function Pricing() {
   const bookRef = useRef<FlipBookHandle>(null)
   const [currentPage, setCurrentPage] = useState(0)
+  const [bookSize, setBookSize] = useState(() =>
+    typeof window !== "undefined" && window.innerWidth < 640
+      ? MOBILE_BOOK
+      : DESKTOP_BOOK
+  )
+
+  useEffect(() => {
+    const updateBookSize = () => {
+      setBookSize(window.innerWidth < 640 ? MOBILE_BOOK : DESKTOP_BOOK)
+    }
+
+    updateBookSize()
+    window.addEventListener("resize", updateBookSize)
+    return () => window.removeEventListener("resize", updateBookSize)
+  }, [])
 
   // Service order maps directly to brochure pages via `servicePages` slicing
   // below — 3 services per page. Reordering here changes which page an item
@@ -40,11 +73,11 @@ export function Pricing() {
   const services = [
     // ── Most Requested ──
     { name: "Gel Polish", price: "₹499", note: "Glossy, durable colour finish" },
-    { name: "Temporary Extension", price: "₹799", note: "Event-ready length with a soft finish" },
-    { name: "Press-On Nails", price: "₹399", note: "Custom-fit reusable nail sets" },
+    { name: "Temporary Extension", price: "₹799", note: "Event ready length with a soft finish" },
+    { name: "Press On Nails", price: "₹399", note: "Custom fit reusable nail sets" },
     // ── Extensions & Care ──
     { name: "Gel Overlays", price: "₹999", note: "Strength and shine over natural nails" },
-    { name: "Permanent Extension", price: "₹1299", note: "Long-lasting sculpted extensions" },
+    { name: "Permanent Extension", price: "₹1299", note: "Long lasting sculpted extensions" },
     { name: "Refilling", price: "₹599", note: "Refresh your extensions beautifully" },
     // ── Finishing Touches ──
     { name: "Gel Polish Removal", price: "₹299", note: "Gentle product removal" },
@@ -54,7 +87,7 @@ export function Pricing() {
 
   const highlights = [
     "Transparent INR pricing",
-    "Service-first menu",
+    "Service first menu",
     "Design guidance on request",
   ]
 
@@ -82,7 +115,7 @@ export function Pricing() {
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-primary shadow-sm backdrop-blur">
               <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">Flip-through brochure</span>
+              <span className="text-sm font-medium">Flip through brochure</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display leading-tight text-balance">
               A boutique <span className="text-primary">nail menu</span>
@@ -112,14 +145,15 @@ export function Pricing() {
                 </div>
               )}
               <HTMLFlipBook
+                key={`${bookSize.width}-${bookSize.height}`}
                 ref={bookRef}
-                width={320}
-                height={640}
+                width={bookSize.width}
+                height={bookSize.height}
                 size="stretch"
-                minWidth={280}
-                maxWidth={420}
-                minHeight={560}
-                maxHeight={760}
+                minWidth={bookSize.minWidth}
+                maxWidth={bookSize.maxWidth}
+                minHeight={bookSize.minHeight}
+                maxHeight={bookSize.maxHeight}
                 startPage={0}
                 drawShadow
                 flippingTime={850}
@@ -139,27 +173,27 @@ export function Pricing() {
                 onFlip={(event) => setCurrentPage(Number(event.data))}
               >
                 <BrochurePage className="relative bg-linear-to-br from-foreground via-purple-800 to-primary text-white">
-                  <div className="relative flex h-full flex-col justify-between p-5 sm:p-7">
+                  <div className="relative flex h-full flex-col gap-5 p-4 sm:justify-between sm:gap-0 sm:p-7">
                     <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/15 blur-2xl"></div>
-                    <div className="absolute bottom-8 right-6 text-[8rem] font-bold leading-none text-white/5 font-display">
+                    <div className="absolute bottom-6 right-4 text-[5rem] font-bold leading-none text-white/5 font-display sm:bottom-8 sm:right-6 sm:text-[8rem]">
                       ₹
                     </div>
                     <div className="relative">
-                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-3xl bg-white text-primary shadow-2xl shadow-black/15">
-                        <Gem className="h-7 w-7" />
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-3xl bg-white text-primary shadow-2xl shadow-black/15 sm:mb-6 sm:h-14 sm:w-14">
+                        <Gem className="h-6 w-6 sm:h-7 sm:w-7" />
                       </div>
                       <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/65">
                         NailsVilla
                       </p>
-                      <h3 className="mt-4 text-3xl font-bold leading-tight font-display">
+                      <h3 className="mt-3 text-2xl font-bold leading-tight font-display sm:mt-4 sm:text-3xl">
                         Price list brochure
                       </h3>
-                      <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
+                      <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/75 sm:mt-4">
                         Modern gel work, clean extensions, refills, removal, and
                         soft luxe detailing by Rutika.
                       </p>
                     </div>
-                    <div className="relative rounded-3xl bg-white/12 p-3.5 text-sm backdrop-blur">
+                    <div className="relative mt-auto rounded-3xl bg-white/12 p-3 text-sm backdrop-blur sm:p-3.5">
                       Swipe or tap the corners to turn pages.
                     </div>
                   </div>
@@ -167,12 +201,12 @@ export function Pricing() {
 
                 {servicePages.map((pageServices, pageIndex) => (
                   <BrochurePage key={pageIndex} className="relative bg-[#fffbff]">
-                    <div className="relative flex h-full flex-col p-4 sm:p-5">
-                      <div className="mb-3 border-b border-primary/10 pb-3">
+                    <div className="relative flex h-full flex-col p-3 sm:p-5">
+                      <div className="mb-2 border-b border-primary/10 pb-2 sm:mb-3 sm:pb-3">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary">
                           Price menu {pageIndex + 1}
                         </p>
-                        <h3 className="mt-1.5 text-2xl font-bold leading-tight font-display">
+                        <h3 className="mt-1 text-xl font-bold leading-tight font-display sm:mt-1.5 sm:text-2xl">
                           {pageIndex === 0
                             ? "Most requested"
                             : pageIndex === 1
@@ -180,23 +214,23 @@ export function Pricing() {
                               : "Finishing touches"}
                         </h3>
                       </div>
-                      <div className="grid flex-1 content-start gap-2.5">
+                      <div className="grid flex-1 content-start gap-2 sm:gap-2.5">
                         {pageServices.map((service, index) => (
                           <div
                             key={service.name}
-                            className="rounded-[1.25rem] border border-primary/10 bg-white/90 p-3 shadow-sm"
+                            className="rounded-[1.25rem] border border-primary/10 bg-white/90 p-2.5 shadow-sm sm:p-3"
                           >
-                            <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start justify-between gap-2 sm:gap-3">
                               <div>
-                                <span className="mb-2.5 flex h-8 w-8 items-center justify-center rounded-2xl bg-secondary text-xs font-bold text-primary">
+                                <span className="mb-2 flex h-7 w-7 items-center justify-center rounded-2xl bg-secondary text-xs font-bold text-primary sm:mb-2.5 sm:h-8 sm:w-8">
                                   {String(pageIndex * 3 + index + 1).padStart(2, "0")}
                                 </span>
-                                <h4 className="text-lg font-semibold font-display">
+                                <h4 className="text-base font-semibold font-display sm:text-lg">
                                   {service.name}
                                 </h4>
                               </div>
                               <div className="text-right">
-                                <p className="text-2xl font-bold text-primary">
+                                <p className="text-xl font-bold text-primary sm:text-2xl">
                                   {service.price}
                                 </p>
                                 {pageIndex !== 2 && (
@@ -206,7 +240,7 @@ export function Pricing() {
                                 )}
                               </div>
                             </div>
-                            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground sm:mt-1.5 sm:text-sm">
                               {service.note}
                             </p>
                           </div>

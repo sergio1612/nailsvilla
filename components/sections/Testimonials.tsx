@@ -18,7 +18,7 @@ export function Testimonials() {
       id: 7,
       name: "Krupali",
       rating: 5,
-      text: "Absolutely obsessed with my nails! The shape, detailing, and finish turned out even prettier than I imagined. So clean, elegant, and long-lasting.",
+      text: "Absolutely obsessed with my nails! The shape, detailing, and finish turned out even prettier than I imagined. So clean, elegant, and long lasting.",
       location: "Signature Set Client",
     },
     {
@@ -39,15 +39,15 @@ export function Testimonials() {
       id: 1,
       name: "Shikha",
       rating: 5,
-      text: "Had a really great experience getting nail art done by Rutika! She manages her work and passion for nail art so beautifully. The designs were neat, creative, and exactly how I wanted them. Highly recommended for anyone looking for beautiful nail art from the comfort of home — I have been her repeat customer for every go-to event.",
-      location: "Repeat Client — Event Nails",
+      text: "Had a really great experience getting nail art done by Rutika! She manages her work and passion for nail art so beautifully. The designs were neat, creative, and exactly how I wanted them. Highly recommended for anyone looking for beautiful nail art from the comfort of home. I have been her repeat customer for every go to event.",
+      location: "Repeat Client, Event Nails",
     },
     {
       id: 6,
       name: "Aditi",
       rating: 5,
-      text: "I’ve always been a long-nail girl at heart, but with super short nails I never thought it would actually look this beautiful on me. Then Rutika from NailsVilla made it happen — she completely transformed my hands and gave me the prettiest nails I always dreamed of. Now for every big occasion, I trust only her. No one has ever made my hands feel this beautiful and confident. Thank you for always working your magic.",
-      location: "Loyal Client — Special Occasions",
+      text: "I’ve always been a long nail girl at heart, but with super short nails I never thought it would actually look this beautiful on me. Then Rutika from NailsVilla made it happen. She completely transformed my hands and gave me the prettiest nails I always dreamed of. Now for every big occasion, I trust only her. No one has ever made my hands feel this beautiful and confident. Thank you for always working your magic.",
+      location: "Loyal Client, Special Occasions",
     },
   ]
 
@@ -64,7 +64,7 @@ export function Testimonials() {
             What Our <span className="text-primary">Clients Say</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real nails, real reactions, and finishes made to look good in every close-up.
+            Real nails, real reactions, and finishes made to look good in every close up.
           </p>
         </div>
 

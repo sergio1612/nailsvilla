@@ -49,7 +49,7 @@ export const galleryImages = [
   {
     id: 9,
     src: photoSrc("PHOTO-2026-04-21-12-44-28(8).jpg"),
-    alt: "Pink cat-eye nails with henna",
+    alt: "Pink cat eye nails with henna",
     category: "Bridal",
   },
   {
@@ -154,30 +154,30 @@ function pressOnPhotoSrc(filename: string) {
 export const pressOnPhotos = [
   {
     src: pressOnPhotoSrc("press-on-01.png"),
-    alt: "Burgundy cat-eye press-ons with gold floral accents",
+    alt: "Burgundy cat eye press ons with gold floral accents",
   },
   {
     src: pressOnPhotoSrc("press-on-02.png"),
-    alt: "Pale pink cat-eye press-ons with silver French tips and MR monogram",
+    alt: "Pale pink cat eye press ons with silver French tips and MR monogram",
   },
   {
     src: pressOnPhotoSrc("press-on-03.png"),
-    alt: "Rose-gold cat-eye press-ons with white flower charms",
+    alt: "Rose gold cat eye press ons with white flower charms",
   },
   {
     src: pressOnPhotoSrc("press-on-04.png"),
-    alt: "Soft pink French press-ons with white bow charms",
+    alt: "Soft pink French press ons with white bow charms",
   },
   {
     src: pressOnPhotoSrc("press-on-05.png"),
-    alt: "Celestial pink press-ons with pearls and silver stars",
+    alt: "Celestial pink press ons with pearls and silver stars",
   },
   {
     src: pressOnPhotoSrc("press-on-06.png"),
-    alt: "Dusty rose cat-eye press-ons with gold glitter French tips",
+    alt: "Dusty rose cat eye press ons with gold glitter French tips",
   },
   {
     src: pressOnPhotoSrc("press-on-07.png"),
-    alt: "Champagne gold cat-eye press-ons with peacock and flower charms",
+    alt: "Champagne gold cat eye press ons with peacock and flower charms",
   },
 ]

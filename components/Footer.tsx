@@ -30,8 +30,8 @@ export function Footer() {
             </a>
 
             <p className="mt-5 text-sm leading-relaxed text-white/62">
-              Owner-led nail care in Ahmedabad, founded by Rutika Chauhan in
-              2021. Home-based appointments with home service available on
+              Owner led nail care in Ahmedabad, founded by Rutika Chauhan in
+              2021. Home based appointments with home service available on
               request.
             </p>
           </div>
@@ -81,7 +81,7 @@ export function Footer() {
                 className="flex items-center gap-3 text-white/65 transition-colors hover:text-white"
               >
                 <MapPin className="h-4 w-4 text-accent" />
-                <span>Home-based in Ahmedabad</span>
+                <span>Home based in Ahmedabad</span>
               </a>
             </div>
           </div>

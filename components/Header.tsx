@@ -15,7 +15,7 @@ export function Header() {
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
-    { label: "Press-Ons", id: "press-on-nails" },
+    { label: "Press Ons", id: "press-on-nails" },
     { label: "Gallery", id: "gallery" },
     { label: "Pricing", id: "pricing" },
     { label: "Testimonials", id: "testimonials" },

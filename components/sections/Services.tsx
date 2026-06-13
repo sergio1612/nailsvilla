@@ -11,7 +11,7 @@ export function Services() {
       icon: Sparkles,
       title: "Gel Polish",
       description:
-        "High-shine gel colour for a clean, fresh, long-lasting finish.",
+        "High shine gel colour for a clean, fresh, long lasting finish.",
       features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Chic"],
       image: serviceImages.gelPolish,
     },

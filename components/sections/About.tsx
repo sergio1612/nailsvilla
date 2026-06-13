@@ -15,7 +15,7 @@ export function About() {
   const features = [
     {
       icon: Heart,
-      title: "Owner-led care",
+      title: "Owner led care",
       description:
         "Rutika personally guides each appointment, from design choice to final finish.",
     },
@@ -55,7 +55,7 @@ export function About() {
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-primary">
             <Sparkles className="h-4 w-4" />
             <span className="text-xs font-semibold uppercase tracking-[0.28em]">
-              About the Studio
+              Meet the artist
             </span>
           </div>
         </div>
@@ -116,7 +116,7 @@ export function About() {
                     Rutika
                   </span>
                   , and I&apos;m the founder and certified nail artist
-                  behind NailsVilla — a home-based studio dedicated to creating
+                  behind NailsVilla, a home based studio dedicated to creating
                   beautiful, lasting nail designs that enhance your style and
                   confidence.
                 </p>
@@ -128,7 +128,7 @@ export function About() {
                   seamless, and stunning.
                 </p>
                 <p className="italic text-foreground/70">
-                  Thank you for visiting — I can&apos;t wait to design your
+                  Thank you for visiting. I can&apos;t wait to design your
                   perfect set.
                 </p>
               </div>

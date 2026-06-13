@@ -11,7 +11,7 @@ export function Hero() {
 
   const slides = heroSlides
 
-  const serviceHighlights = ["Gel polish", "Extensions", "Custom art", "Press-ons"]
+  const serviceHighlights = ["Gel polish", "Extensions", "Custom art", "Press ons"]
 
   useEffect(() => {
     const interval = setInterval(() => {

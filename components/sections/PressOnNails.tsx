@@ -21,34 +21,34 @@ const steps = [
     num: "01",
     icon: Ruler,
     title: "Share your size kit",
-    body: "Rutika sends you a sizing guide. You pick your fit from home — no appointment needed for this step.",
+    body: "Rutika sends you a sizing guide. You pick your fit from home, no appointment needed for this step.",
   },
   {
     num: "02",
     icon: Paintbrush,
     title: "Choose your design",
-    body: "Send a reference, pick a colour palette, or describe your vibe. Each set is hand-painted to order.",
+    body: "Send a reference, pick a colour palette, or describe your vibe. Each set is hand painted to order.",
   },
   {
     num: "03",
     icon: PackageCheck,
     title: "Receive your set",
-    body: "Your custom press-on set arrives ready to wear. Glue and application guide included.",
+    body: "Your custom press on set arrives ready to wear. Glue and application guide included.",
   },
   {
     num: "04",
     icon: RefreshCw,
     title: "Reuse & reorder",
-    body: "Remove gently, clean, and wear again. Most sets last 3–5 wears. Reorder the same design anytime.",
+    body: "Remove gently, clean, and wear again. Most sets last 3 to 5 wears. Reorder the same design anytime.",
   },
 ]
 
 const features = [
   { icon: ShieldCheck, label: "Zero nail damage" },
   { icon: Clock, label: "Ready in minutes" },
-  { icon: Heart, label: "Custom-fitted" },
+  { icon: Heart, label: "Custom fitted" },
   { icon: Star, label: "Reusable sets" },
-  { icon: Sparkles, label: "Hand-painted art" },
+  { icon: Sparkles, label: "Hand painted art" },
   { icon: RefreshCw, label: "Easy removal" },
 ]
 
@@ -73,14 +73,14 @@ export function PressOnNails() {
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-primary mb-6">
             <Sparkles className="h-4 w-4" />
-            <span className="text-sm font-medium">Custom to order</span>
+            <span className="text-sm font-medium">Peel. Press. Slay.</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-5">
-            Press-On <span className="text-primary">Nails</span>
+            Press On <span className="text-primary">Nails</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Salon-quality nail art without the salon visit. Each set is custom-sized,
-            hand-painted by Rutika, and designed to last — then wear again.
+            Salon quality nail art without the salon visit. Each set is custom sized,
+            hand painted by Rutika, and designed to last, then wear again.
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export function PressOnNails() {
         {/* — Photo strip — */}
         <div className="mb-14">
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-            Press-on styles
+            Press on styles
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {pressOnPhotos.map((photo, i) => (
@@ -164,8 +164,8 @@ export function PressOnNails() {
                 <span className="text-[#ffd8ef]">dream set?</span>
               </h3>
               <p className="max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">
-                Share your size and inspo. Rutika will paint a set custom-made
-                for your nails — ready for your next event, vacation, or everyday glam.
+                Share your size and inspo. Rutika will paint a set custom made
+                for your nails, ready for your next event, vacation, or everyday glam.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/70">

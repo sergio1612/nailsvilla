@@ -68,16 +68,16 @@ export function Newsletter() {
                   Appointment concierge
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-balance">
-                  Tell us your nail mood. Rutika will help plan your nail glow-up.
+                  Tell us your nail mood. Rutika will help plan your nail glow up.
                 </h2>
                 <p className="mt-4 text-sm sm:text-base text-white/80">
                   Share your number and continue on WhatsApp for availability,
-                  home-based appointment details, home-service requests, and design guidance.
+                  home based appointment details, home service requests, and design guidance.
                 </p>
               </div>
 
               <div className="mt-8 grid gap-3 text-sm">
-                {["Latest INR pricing", "Home-based appointments", "Home service on request"].map((item) => (
+                {["Latest INR pricing", "Home based appointments", "Home service on request"].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-white" />
                     <span>{item}</span>
@@ -96,7 +96,7 @@ export function Newsletter() {
                     WhatsApp is opening
                   </h3>
                   <p className="text-muted-foreground">
-                    Send the pre-filled message and we will help you plan your appointment.
+                    Send the pre filled message and we will help you plan your appointment.
                   </p>
                 </div>
               ) : (

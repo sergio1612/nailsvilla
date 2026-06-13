@@ -46,7 +46,7 @@ export function Contact() {
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
-            Ready for Your <span className="text-primary">Nail Glow-Up?</span>
+            Ready for Your <span className="text-primary">Nail Glow Up?</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Share the service you like, your reference photo, preferred date,
@@ -64,7 +64,7 @@ export function Contact() {
               <CardTitle className="text-2xl sm:text-3xl mb-2 font-display">Book via WhatsApp</CardTitle>
               <CardDescription className="text-sm sm:text-base">
                 Best for quick questions, booking slots, reference photos, and
-                home-service availability.
+                home service availability.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
