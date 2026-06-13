@@ -44,7 +44,7 @@ export function Services() {
   return (
     <section id="services" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-muted">
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-section-eyebrow>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
             <Sparkles className="h-4 w-4" />
             <span className="text-sm font-medium">What We Offer</span>
@@ -66,12 +66,13 @@ export function Services() {
                 key={index}
                 className="hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden group rounded-3xl border-white/70 bg-white/75 backdrop-blur"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative aspect-[5/4] sm:aspect-square overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
                   <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/90 text-primary-foreground backdrop-blur-sm">

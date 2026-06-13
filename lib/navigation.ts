@@ -9,17 +9,23 @@ export const NAV_ITEMS = [
   { label: "Contact", id: "contact" },
 ] as const
 
-/** Fixed header (h-20) plus breathing room so section eyebrows stay visible */
-export const HEADER_SCROLL_OFFSET = 96
+/** Fixed header height (h-20) */
+export const HEADER_SCROLL_OFFSET = 80
 
 export function scrollToSection(id: string) {
-  const element = document.getElementById(id)
-  if (!element) return
+  if (id === "hero") {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    return
+  }
+
+  const section = document.getElementById(id)
+  if (!section) return
+
+  const target =
+    section.querySelector<HTMLElement>("[data-section-eyebrow]") ?? section
 
   const top =
-    element.getBoundingClientRect().top +
-    window.scrollY -
-    HEADER_SCROLL_OFFSET
+    target.getBoundingClientRect().top + window.scrollY - HEADER_SCROLL_OFFSET
 
   window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
 }

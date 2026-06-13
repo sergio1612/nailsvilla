@@ -59,8 +59,8 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
-  scroll-margin-top: 6rem;
+[data-section-eyebrow] {
+  scroll-margin-top: 5rem;
 }
 
 ::selection {

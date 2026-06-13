@@ -2,22 +2,29 @@
 
 import { ArrowUp, Instagram, MapPin } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
-import { NAV_ITEMS } from "@/lib/navigation"
+import { NAV_ITEMS, scrollToSection } from "@/lib/navigation"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const quickLinks = NAV_ITEMS.map(({ label, id }) => ({
-    label,
-    href: `#${id}`,
-  }))
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    event.preventDefault()
+    scrollToSection(id)
+  }
 
   return (
     <footer className="relative overflow-hidden bg-foreground text-white">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-10 xl:px-8">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.2fr_0.8fr_1fr]">
           <div className="max-w-md">
-            <a href="#hero" className="inline-block">
+            <a
+              href="#hero"
+              onClick={(e) => handleNavClick(e, "hero")}
+              className="inline-block"
+            >
               <span className="block font-display text-3xl font-bold">
                 NailsVilla
               </span>
@@ -38,13 +45,14 @@ export function Footer() {
               Explore
             </h3>
             <nav className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
-              {quickLinks.map((link) => (
+              {NAV_ITEMS.map(({ label, id }) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={id}
+                  href={`#${id}`}
+                  onClick={(e) => handleNavClick(e, id)}
                   className="text-white/65 transition-colors hover:text-white"
                 >
-                  {link.label}
+                  {label}
                 </a>
               ))}
             </nav>
@@ -75,6 +83,7 @@ export function Footer() {
               </a>
               <a
                 href="#contact"
+                onClick={(e) => handleNavClick(e, "contact")}
                 className="flex items-center gap-3 text-white/65 transition-colors hover:text-white"
               >
                 <MapPin className="h-4 w-4 text-accent" />
@@ -88,6 +97,7 @@ export function Footer() {
           <p>&copy; {currentYear} NailsVilla by Rutika. All rights reserved.</p>
           <a
             href="#hero"
+            onClick={(e) => handleNavClick(e, "hero")}
             className="inline-flex items-center gap-2 transition-colors hover:text-white"
           >
             Back to top

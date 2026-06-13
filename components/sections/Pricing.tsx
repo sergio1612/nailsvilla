@@ -108,7 +108,7 @@ export function Pricing() {
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         <div className="relative mx-auto max-w-6xl">
-          <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="mx-auto mb-10 max-w-3xl text-center" data-section-eyebrow>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-primary shadow-sm backdrop-blur">
               <Sparkles className="h-4 w-4" />
               <span className="text-sm font-medium">Flip through brochure</span>

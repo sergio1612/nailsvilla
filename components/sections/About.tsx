@@ -51,7 +51,7 @@ export function About() {
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section eyebrow */}
-        <div className="mx-auto mb-8 max-w-2xl text-center">
+        <div className="mx-auto mb-8 max-w-2xl text-center" data-section-eyebrow>
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-primary">
             <Sparkles className="h-4 w-4" />
             <span className="text-xs font-semibold uppercase tracking-[0.28em]">

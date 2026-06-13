@@ -24,6 +24,13 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+
+    requestAnimationFrame(() => scrollToSection(hash))
+  }, [])
+
+  useEffect(() => {
     // Track how much of each section is visible
     const visibilityMap = new Map<string, number>()
 

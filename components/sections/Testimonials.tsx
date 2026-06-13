@@ -55,7 +55,7 @@ export function Testimonials() {
     <section id="testimonials" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-muted">
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
         {/* ============ HEADER ============ */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12 sm:mb-16" data-section-eyebrow>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
             <Sparkles className="h-4 w-4" />
             <span className="text-sm font-medium">Client Reviews</span>

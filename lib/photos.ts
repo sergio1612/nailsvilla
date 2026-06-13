@@ -129,8 +129,8 @@ export const galleryImages = [
 export const serviceImages = {
   gelPolish: photoSrc("gallery-dusty-rose-glitter.png"),
   extensions: photoSrc("gallery-rose-gold-pearls.png"),
-  nailArt: photoSrc("PHOTO-2026-04-21-12-44-26(1).jpg"),
-  overlays: photoSrc("PHOTO-2026-04-21-12-44-27(3).jpg"),
+  nailArt: photoSrc("gallery-playful-nail-art.png"),
+  overlays: photoSrc("gallery-gold-glitter-french.png"),
 }
 
 const PRESS_ON_DIR = "/nv-photos/press-on"
