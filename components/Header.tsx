@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import { Menu, X } from "lucide-react"
+import { NAV_ITEMS, scrollToSection } from "@/lib/navigation"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -11,16 +12,7 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("hero")
   const observerRef = useRef<IntersectionObserver | null>(null)
 
-  const navItems = [
-    { label: "Home", id: "hero" },
-    { label: "About", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Press Ons", id: "press-on-nails" },
-    { label: "Gallery", id: "gallery" },
-    { label: "Pricing", id: "pricing" },
-    { label: "Testimonials", id: "testimonials" },
-    { label: "Contact", id: "contact" },
-  ]
+  const navItems = NAV_ITEMS
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,13 +63,10 @@ export function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setActiveSection(id)
-      setIsMobileMenuOpen(false)
-    }
+  const handleScrollToSection = (id: string) => {
+    scrollToSection(id)
+    setActiveSection(id)
+    setIsMobileMenuOpen(false)
   }
 
   return (
@@ -92,7 +81,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="shrink-0">
             <button
-              onClick={() => scrollToSection("hero")}
+              onClick={() => handleScrollToSection("hero")}
               className="group flex items-center gap-0 text-left cursor-pointer"
               aria-label="Go to home"
             >
@@ -122,7 +111,7 @@ export function Header() {
               return (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleScrollToSection(item.id)}
                   className={`relative font-medium transition-colors cursor-pointer ${
                     isActive
                       ? "text-primary"
@@ -140,7 +129,7 @@ export function Header() {
               )
             })}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => handleScrollToSection("contact")}
               className="ml-4"
             >
               Book Now
@@ -169,25 +158,20 @@ export function Header() {
               return (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`flex items-center gap-3 w-full text-left font-medium py-2.5 px-3 rounded-xl transition-all cursor-pointer ${
+                  onClick={() => handleScrollToSection(item.id)}
+                  className={`w-full rounded-xl px-3 py-2.5 text-left font-medium transition-all cursor-pointer ${
                     isActive
-                      ? "text-primary bg-primary/8"
-                      : "text-foreground hover:text-primary hover:bg-primary/5"
+                      ? "bg-primary/8 text-primary"
+                      : "text-foreground hover:bg-primary/5 hover:text-primary"
                   }`}
                 >
-                  {isActive && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  )}
-                  <span className={isActive ? "" : "ml-[18px]"}>
-                    {item.label}
-                  </span>
+                  {item.label}
                 </button>
               )
             })}
             <div className="pt-2">
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => handleScrollToSection("contact")}
                 className="w-full"
               >
                 Book Now

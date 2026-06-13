@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { heroSlides } from "@/lib/photos"
+import { scrollToSection } from "@/lib/navigation"
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -21,12 +22,7 @@ export function Hero() {
     return () => clearInterval(interval)
   }, [slides.length])
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+  const scrollToContact = () => scrollToSection("contact")
 
   return (
     <section
@@ -121,10 +117,7 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => {
-                    const element = document.getElementById("pricing")
-                    element?.scrollIntoView({ behavior: "smooth" })
-                  }}
+                  onClick={() => scrollToSection("pricing")}
                   className="rounded-full border-white/25 bg-white/10 px-6 py-5 text-base text-white backdrop-blur hover:bg-white hover:text-foreground sm:px-7"
                 >
                   View Price List

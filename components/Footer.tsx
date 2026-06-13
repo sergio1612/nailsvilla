@@ -2,18 +2,15 @@
 
 import { ArrowUp, Instagram, MapPin } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
+import { NAV_ITEMS } from "@/lib/navigation"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const quickLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
-  ]
+  const quickLinks = NAV_ITEMS.map(({ label, id }) => ({
+    label,
+    href: `#${id}`,
+  }))
 
   return (
     <footer className="relative overflow-hidden bg-foreground text-white">

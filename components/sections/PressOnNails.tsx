@@ -15,6 +15,7 @@ import {
   Star,
 } from "lucide-react"
 import { pressOnPhotos } from "@/lib/photos"
+import { scrollToSection } from "@/lib/navigation"
 
 const steps = [
   {
@@ -53,10 +54,7 @@ const features = [
 ]
 
 export function PressOnNails() {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) element.scrollIntoView({ behavior: "smooth" })
-  }
+  const scrollToContact = () => scrollToSection("contact")
 
   return (
     <section

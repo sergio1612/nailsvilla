@@ -4,6 +4,7 @@ import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react"
 import HTMLFlipBook from "react-pageflip"
 import { Button } from "@/components/common/Button"
 import { ArrowLeft, ArrowRight, Check, Gem, Home, Sparkles } from "lucide-react"
+import { scrollToSection } from "@/lib/navigation"
 
 type FlipBookHandle = {
   pageFlip: () => {
@@ -97,12 +98,7 @@ export function Pricing() {
     services.slice(6),
   ]
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+  const scrollToContact = () => scrollToSection("contact")
 
   return (
     <section id="pricing" className="relative overflow-hidden py-16 sm:py-20 xl:py-28 bg-background">
