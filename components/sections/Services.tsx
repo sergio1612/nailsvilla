@@ -1,9 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/Card"
 import { Sparkles, Heart, Palette, Gem, CheckCircle2 } from "lucide-react"
-import { serviceImages } from "@/lib/photos"
 
 export function Services() {
   const services = [
@@ -13,7 +11,6 @@ export function Services() {
       description:
         "High shine gel colour for a clean, fresh, long lasting finish.",
       features: ["Nail Prep", "Smooth Colour", "Gloss Finish", "Everyday Chic"],
-      image: serviceImages.gelPolish,
     },
     {
       icon: Heart,
@@ -21,7 +18,6 @@ export function Services() {
       description:
         "Temporary and permanent extensions shaped to your style and comfort.",
       features: ["Custom Length", "Natural Shape", "Event Ready", "Refill Friendly"],
-      image: serviceImages.extensions,
     },
     {
       icon: Palette,
@@ -29,7 +25,6 @@ export function Services() {
       description:
         "Minimal, glam, bridal, or playful designs made around your inspiration.",
       features: ["Custom Designs", "Wedding Glitters", "Vacation Vibes", "Birthday Glam"],
-      image: serviceImages.nailArt,
     },
     {
       icon: Gem,
@@ -37,7 +32,6 @@ export function Services() {
       description:
         "Overlay, refill, and removal services to keep nails healthy and polished.",
       features: ["Gel Overlays", "Refilling", "Gentle Removal", "Aftercare Guidance"],
-      image: serviceImages.overlays,
     },
   ]
 
@@ -64,22 +58,12 @@ export function Services() {
             return (
               <Card
                 key={index}
-                className="hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden group rounded-3xl border-white/70 bg-white/75 backdrop-blur"
+                className="hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2 group rounded-3xl border-white/70 bg-white/75 backdrop-blur"
               >
-                <div className="relative aspect-[5/4] sm:aspect-square overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/90 text-primary-foreground backdrop-blur-sm">
+                <CardHeader>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
-                </div>
-                <CardHeader>
                   <CardTitle className="font-display">{service.title}</CardTitle>
                   <CardDescription>{service.description}</CardDescription>
                 </CardHeader>

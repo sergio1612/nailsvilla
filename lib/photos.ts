@@ -152,13 +152,6 @@ export const galleryImages: GalleryImage[] = [
   },
 ]
 
-export const serviceImages = {
-  gelPolish: photoSrc("gallery-dusty-rose-glitter.png"),
-  extensions: photoSrc("gallery-rose-gold-pearls.png"),
-  nailArt: photoSrc("gallery-playful-nail-art.png"),
-  overlays: photoSrc("gallery-gold-glitter-french.png"),
-}
-
 const PRESS_ON_DIR = "/nv-photos/press-on"
 
 function pressOnPhotoSrc(filename: string) {
