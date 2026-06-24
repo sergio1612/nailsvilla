@@ -81,6 +81,15 @@ html {
   text-wrap: pretty;
 }
 
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .font-display {
   font-family: var(--font-playfair), serif;
 }

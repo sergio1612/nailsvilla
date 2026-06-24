@@ -2,19 +2,76 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Sparkles, X, ChevronLeft, ChevronRight, Download } from "lucide-react"
-import { galleryImages } from "@/lib/photos"
+import { usePathname, useRouter } from "next/navigation"
+import { Button } from "@/components/common/Button"
+import {
+  Sparkles,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  ZoomIn,
+  ArrowRight,
+} from "lucide-react"
+import { galleryImages, type GalleryImage } from "@/lib/photos"
+import { handleNavClick, NAV_ITEMS } from "@/lib/navigation"
+
+const contactItem = NAV_ITEMS.find((item) => item.sectionId === "contact")!
+
+function GalleryStyleCard({
+  image,
+  onOpen,
+  layout,
+}: {
+  image: GalleryImage
+  onOpen: () => void
+  layout: "carousel" | "grid"
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className={`group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+        layout === "carousel"
+          ? "w-[85vw] max-w-sm shrink-0 snap-center"
+          : "w-full"
+      }`}
+    >
+      <div className="relative aspect-4/5 overflow-hidden bg-linear-to-br from-primary/5 to-accent/10">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes={
+            layout === "carousel"
+              ? "85vw"
+              : "(max-width: 1024px) 50vw, 33vw"
+          }
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
+          <ZoomIn className="h-3.5 w-3.5" />
+          View detail
+        </div>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-4">
+        <p className="font-display text-base font-bold text-white sm:text-lg">
+          {image.title}
+        </p>
+        <p className="mt-0.5 text-xs text-white/75 sm:text-sm">{image.category}</p>
+      </div>
+    </button>
+  )
+}
 
 export function Gallery() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  const openModal = (index: number) => {
-    setSelectedImage(index)
-  }
-
-  const closeModal = () => {
-    setSelectedImage(null)
-  }
+  const openModal = (index: number) => setSelectedImage(index)
+  const closeModal = () => setSelectedImage(null)
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -30,11 +87,18 @@ export function Gallery() {
     }
   }
 
-  const downloadImage = async (imageSrc: string, imageAlt: string, e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation()
-    }
-    
+  const bookThisLook = () => {
+    closeModal()
+    handleNavClick(contactItem, pathname, router)
+  }
+
+  const downloadImage = async (
+    imageSrc: string,
+    imageAlt: string,
+    e?: React.MouseEvent
+  ) => {
+    if (e) e.stopPropagation()
+
     try {
       const response = await fetch(imageSrc)
       const blob = await response.blob()
@@ -48,65 +112,62 @@ export function Gallery() {
       window.URL.revokeObjectURL(url)
     } catch (error) {
       console.error("Error downloading image:", error)
-      // Fallback: open image in new tab
       window.open(imageSrc, "_blank")
     }
   }
 
   return (
     <>
-      <section id="gallery" className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-background">
+      <section
+        id="gallery"
+        className="relative overflow-hidden py-16 sm:py-20 xl:py-24 bg-background"
+      >
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-8">
-          <div className="text-center mb-16" data-section-eyebrow>
+          <div className="text-center mb-10 sm:mb-16" data-section-eyebrow>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
               <Sparkles className="h-4 w-4" />
               <span className="text-sm font-medium">Our Work</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-display">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 font-display">
               Nail Art <span className="text-primary">Gallery</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our stunning collection of nail art designs. Each piece is a
-              work of art crafted with precision and creativity.
+              Explore hand-painted designs by Rutika — gel polish, extensions,
+              overlays, bridal sets, and custom nail art.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 xl:gap-6">
+          <p className="mb-6 text-center text-sm text-muted-foreground sm:mb-8">
+            Swipe to browse on mobile · Tap any design to view full detail
+          </p>
+
+          {/* Mobile carousel */}
+          <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-none sm:hidden">
             {galleryImages.map((image, index) => (
-              <div
+              <GalleryStyleCard
                 key={image.id}
-                className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-linear-to-br from-primary/10 to-accent/10 hover:shadow-xl transition-all duration-300 hover:scale-105"
-                onClick={() => openModal(index)}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
-                  <div className="absolute top-2 right-2">
-                    <button
-                      onClick={(e) => downloadImage(image.src, image.alt, e)}
-                      className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
-                      aria-label="Download image"
-                      title="Download image"
-                    >
-                      <Download className="h-4 w-4" />
-                    </button>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white text-sm font-medium">{image.category}</p>
-                  </div>
-                </div>
-              </div>
+                image={image}
+                layout="carousel"
+                onOpen={() => openModal(index)}
+              />
+            ))}
+          </div>
+
+          {/* Desktop grid */}
+          <div className="hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+            {galleryImages.map((image, index) => (
+              <GalleryStyleCard
+                key={image.id}
+                image={image}
+                layout="grid"
+                onOpen={() => openModal(index)}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Image Modal */}
+      {/* Detail lightbox */}
       {selectedImage !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
@@ -116,9 +177,12 @@ export function Gallery() {
             <button
               onClick={(e) => {
                 e.stopPropagation()
-                downloadImage(galleryImages[selectedImage].src, galleryImages[selectedImage].alt)
+                downloadImage(
+                  galleryImages[selectedImage].src,
+                  galleryImages[selectedImage].alt
+                )
               }}
-              className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
+              className="rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary"
               aria-label="Download image"
               title="Download image"
             >
@@ -126,7 +190,7 @@ export function Gallery() {
             </button>
             <button
               onClick={closeModal}
-              className="p-2 bg-black/50 hover:bg-primary rounded-full text-white hover:text-white transition-all duration-200 backdrop-blur-sm"
+              className="rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary"
               aria-label="Close gallery"
             >
               <X className="h-6 w-6" />
@@ -138,7 +202,7 @@ export function Gallery() {
               e.stopPropagation()
               prevImage()
             }}
-            className="absolute left-4 z-50 text-white hover:text-primary transition-colors p-2 bg-black/50 rounded-full"
+            className="absolute left-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:text-primary"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-8 w-8" />
@@ -149,30 +213,47 @@ export function Gallery() {
               e.stopPropagation()
               nextImage()
             }}
-            className="absolute right-4 z-50 text-white hover:text-primary transition-colors p-2 bg-black/50 rounded-full"
+            className="absolute right-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:text-primary"
             aria-label="Next image"
           >
             <ChevronRight className="h-8 w-8" />
           </button>
 
           <div
-            className="relative max-w-4xl w-full h-full max-h-[90vh]"
+            className="relative flex w-full max-w-4xl flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={galleryImages[selectedImage].src}
-              alt={galleryImages[selectedImage].alt}
-              fill
-              className="object-contain rounded-lg"
-              sizes="90vw"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/80 to-transparent rounded-b-lg">
-              <p className="text-white text-lg font-medium mb-1">
-                {galleryImages[selectedImage].alt}
-              </p>
-              <p className="text-white/70 text-sm">
-                {galleryImages[selectedImage].category}
-              </p>
+            <div className="relative aspect-4/5 max-h-[70vh] w-full sm:aspect-3/4">
+              <Image
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].alt}
+                fill
+                className="rounded-2xl object-contain"
+                sizes="90vw"
+                priority
+              />
+            </div>
+
+            <div className="mt-4 rounded-2xl bg-white/10 p-5 backdrop-blur sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div>
+                <p className="font-display text-xl font-bold text-white">
+                  {galleryImages[selectedImage].title}
+                </p>
+                <p className="mt-1 text-sm text-white/70">
+                  {galleryImages[selectedImage].alt}
+                </p>
+                <p className="mt-2 text-sm font-medium text-[#ffd8ef]">
+                  {galleryImages[selectedImage].category} · Hand-painted by Rutika
+                </p>
+              </div>
+              <Button
+                size="lg"
+                onClick={bookThisLook}
+                className="mt-4 w-full shrink-0 rounded-full bg-white text-foreground hover:bg-white hover:text-primary hover:opacity-100 sm:mt-0 sm:w-auto"
+              >
+                Book this look
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
           </div>
         </div>
@@ -180,4 +261,3 @@ export function Gallery() {
     </>
   )
 }
-

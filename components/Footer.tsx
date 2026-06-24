@@ -1,18 +1,33 @@
 "use client"
 
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { ArrowUp, Instagram, MapPin } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
-import { NAV_ITEMS, scrollToSection } from "@/lib/navigation"
+import { NAV_ITEMS, handleNavClick, scrollToSection } from "@/lib/navigation"
 
 export function Footer() {
+  const router = useRouter()
+  const pathname = usePathname()
   const currentYear = new Date().getFullYear()
 
-  const handleNavClick = (
+  const contactItem = NAV_ITEMS.find((item) => item.sectionId === "contact")!
+
+  const handleNavClickEvent = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    id: string
+    item: (typeof NAV_ITEMS)[number]
   ) => {
     event.preventDefault()
-    scrollToSection(id)
+    handleNavClick(item, pathname, router)
+  }
+
+  const goHome = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    if (pathname === "/") {
+      scrollToSection("hero")
+    } else {
+      router.push("/")
+    }
   }
 
   return (
@@ -20,11 +35,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-10 xl:px-8">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.2fr_0.8fr_1fr]">
           <div className="max-w-md">
-            <a
-              href="#hero"
-              onClick={(e) => handleNavClick(e, "hero")}
-              className="inline-block"
-            >
+            <a href="/" onClick={goHome} className="inline-block">
               <span className="block font-display text-3xl font-bold">
                 NailsVilla
               </span>
@@ -45,15 +56,15 @@ export function Footer() {
               Explore
             </h3>
             <nav className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
-              {NAV_ITEMS.map(({ label, id }) => (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  onClick={(e) => handleNavClick(e, id)}
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClickEvent(e, item)}
                   className="text-white/65 transition-colors hover:text-white"
                 >
-                  {label}
-                </a>
+                  {item.label}
+                </Link>
               ))}
             </nav>
           </div>
@@ -81,14 +92,14 @@ export function Footer() {
                 <Instagram className="h-4 w-4 text-accent" />
                 <span>@nailsvilla__</span>
               </a>
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "contact")}
+              <Link
+                href={contactItem.href}
+                onClick={(e) => handleNavClickEvent(e, contactItem)}
                 className="flex items-center gap-3 text-white/65 transition-colors hover:text-white"
               >
                 <MapPin className="h-4 w-4 text-accent" />
                 <span>Home based in Ahmedabad</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -96,8 +107,8 @@ export function Footer() {
         <div className="mt-6 flex flex-col gap-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {currentYear} NailsVilla by Rutika. All rights reserved.</p>
           <a
-            href="#hero"
-            onClick={(e) => handleNavClick(e, "hero")}
+            href="/"
+            onClick={goHome}
             className="inline-flex items-center gap-2 transition-colors hover:text-white"
           >
             Back to top
@@ -108,4 +119,3 @@ export function Footer() {
     </footer>
   )
 }
-

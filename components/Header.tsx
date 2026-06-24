@@ -2,17 +2,26 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/common/Button"
 import { Menu, X } from "lucide-react"
-import { NAV_ITEMS, scrollToSection } from "@/lib/navigation"
+import {
+  NAV_ITEMS,
+  handleNavClick,
+  isNavItemActive,
+  scrollToSection,
+} from "@/lib/navigation"
 
 export function Header() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("hero")
   const observerRef = useRef<IntersectionObserver | null>(null)
 
   const navItems = NAV_ITEMS
+  const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,14 +33,17 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    if (!isHome) return
+
     const hash = window.location.hash.slice(1)
     if (!hash) return
 
     requestAnimationFrame(() => scrollToSection(hash))
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
-    // Track how much of each section is visible
+    if (!isHome) return
+
     const visibilityMap = new Map<string, number>()
 
     observerRef.current = new IntersectionObserver(
@@ -40,7 +52,6 @@ export function Header() {
           visibilityMap.set(entry.target.id, entry.intersectionRatio)
         })
 
-        // Pick the section with the highest visible ratio
         let maxRatio = 0
         let mostVisible = ""
         visibilityMap.forEach((ratio, id) => {
@@ -55,26 +66,40 @@ export function Header() {
         }
       },
       {
-        // Slightly shrink top to account for the fixed header height
         rootMargin: "-80px 0px 0px 0px",
         threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
       }
     )
 
-    navItems.forEach(({ id }) => {
-      const el = document.getElementById(id)
+    navItems.forEach(({ sectionId }) => {
+      if (!sectionId || sectionId === "hero") return
+      const el = document.getElementById(sectionId)
       if (el) observerRef.current!.observe(el)
     })
 
+    const heroEl = document.getElementById("hero")
+    if (heroEl) observerRef.current!.observe(heroEl)
+
     return () => observerRef.current?.disconnect()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isHome])
 
-  const handleScrollToSection = (id: string) => {
-    scrollToSection(id)
-    setActiveSection(id)
+  const navigate = (item: (typeof navItems)[number]) => {
+    handleNavClick(item, pathname, router, setActiveSection)
     setIsMobileMenuOpen(false)
   }
+
+  const goHome = () => {
+    if (isHome) {
+      scrollToSection("hero")
+      setActiveSection("hero")
+    } else {
+      router.push("/")
+    }
+    setIsMobileMenuOpen(false)
+  }
+
+  const contactItem = navItems.find((item) => item.sectionId === "contact")!
 
   return (
     <header
@@ -88,7 +113,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="shrink-0">
             <button
-              onClick={() => handleScrollToSection("hero")}
+              onClick={goHome}
               className="group flex items-center gap-0 text-left cursor-pointer"
               aria-label="Go to home"
             >
@@ -114,11 +139,11 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden xl:flex items-center space-x-8">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = isNavItemActive(pathname, item, activeSection)
               return (
                 <button
-                  key={item.id}
-                  onClick={() => handleScrollToSection(item.id)}
+                  key={item.href}
+                  onClick={() => navigate(item)}
                   className={`relative font-medium transition-colors cursor-pointer ${
                     isActive
                       ? "text-primary"
@@ -126,7 +151,6 @@ export function Header() {
                   }`}
                 >
                   {item.label}
-                  {/* Active underline indicator */}
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 rounded-full bg-primary transition-all duration-300 ${
                       isActive ? "w-full opacity-100" : "w-0 opacity-0"
@@ -136,7 +160,7 @@ export function Header() {
               )
             })}
             <Button
-              onClick={() => handleScrollToSection("contact")}
+              onClick={() => navigate(contactItem)}
               className="ml-4"
             >
               Book Now
@@ -161,11 +185,11 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="xl:hidden py-4 space-y-1 border-t border-border">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = isNavItemActive(pathname, item, activeSection)
               return (
                 <button
-                  key={item.id}
-                  onClick={() => handleScrollToSection(item.id)}
+                  key={item.href}
+                  onClick={() => navigate(item)}
                   className={`w-full rounded-xl px-3 py-2.5 text-left font-medium transition-all cursor-pointer ${
                     isActive
                       ? "bg-primary/8 text-primary"
@@ -178,7 +202,7 @@ export function Header() {
             })}
             <div className="pt-2">
               <Button
-                onClick={() => handleScrollToSection("contact")}
+                onClick={() => navigate(contactItem)}
                 className="w-full"
               >
                 Book Now
@@ -190,4 +214,3 @@ export function Header() {
     </header>
   )
 }
-
