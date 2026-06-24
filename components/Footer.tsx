@@ -36,14 +36,14 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-10 xl:px-8">
         <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.2fr_0.8fr_1fr]">
           <div className="max-w-md">
-            <a href="/" onClick={goHome} className="inline-block">
+            <Link href="/" onClick={goHome} className="inline-block">
               <span className="block font-display text-3xl font-bold">
                 NailsVilla
               </span>
               <span className="mt-1 block text-xs font-medium uppercase tracking-[0.3em] text-white/45">
                 by Rutika
               </span>
-            </a>
+            </Link>
 
             <p className="mt-5 text-sm leading-relaxed text-white/62">
               Owner led nail care in Ahmedabad, founded by Rutika Chauhan in
@@ -107,14 +107,14 @@ export function Footer() {
 
         <div className="mt-6 flex flex-col gap-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {currentYear} NailsVilla by Rutika. All rights reserved.</p>
-          <a
+          <Link
             href="/"
             onClick={goHome}
             className="inline-flex items-center gap-2 transition-colors hover:text-white"
           >
             Back to top
             <ArrowUp className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
