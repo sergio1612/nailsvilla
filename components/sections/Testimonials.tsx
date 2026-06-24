@@ -135,7 +135,7 @@ export function Testimonials() {
 
     cards.forEach((card) => observer.observe(card))
     return () => observer.disconnect()
-  }, [])
+  }, [carouselRef])
 
   return (
     <section
