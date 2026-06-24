@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { Star, Quote, Sparkles } from "lucide-react"
 import { Card, CardContent } from "@/components/common/Card"
+import { useCarouselAutoplay } from "@/lib/useCarouselAutoplay"
 
 type Testimonial = {
   id: number
@@ -60,14 +61,17 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({
   testimonial,
+  index,
   layout,
 }: {
   testimonial: Testimonial
+  index: number
   layout: "carousel" | "grid"
 }) {
   return (
     <Card
       data-testimonial-id={testimonial.id}
+      data-carousel-index={layout === "carousel" ? index : undefined}
       className={`relative flex flex-col overflow-hidden rounded-3xl border-white/70 bg-white/75 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 ${
         layout === "carousel"
           ? "w-[85vw] max-w-md min-h-[300px] shrink-0 snap-center"
@@ -101,8 +105,13 @@ function TestimonialCard({
 }
 
 export function Testimonials() {
-  const carouselRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+
+  const { carouselRef, scrollToIndex } = useCarouselAutoplay({
+    itemCount: testimonials.length,
+    currentIndex: activeIndex,
+    onIndexChange: setActiveIndex,
+  })
 
   useEffect(() => {
     const carousel = carouselRef.current
@@ -128,17 +137,6 @@ export function Testimonials() {
     return () => observer.disconnect()
   }, [])
 
-  const scrollToIndex = (index: number) => {
-    const carousel = carouselRef.current
-    if (!carousel) return
-
-    const card = carousel.querySelector<HTMLElement>(
-      `[data-testimonial-id="${testimonials[index].id}"]`
-    )
-    card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
-    setActiveIndex(index)
-  }
-
   return (
     <section
       id="testimonials"
@@ -160,7 +158,7 @@ export function Testimonials() {
         </div>
 
         <p className="mb-6 text-center text-sm text-muted-foreground sm:hidden">
-          Swipe to read more reviews
+          Auto-plays on mobile · Swipe to read more reviews
         </p>
 
         {/* Mobile carousel */}
@@ -168,10 +166,11 @@ export function Testimonials() {
           ref={carouselRef}
           className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-none sm:hidden"
         >
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.id}
               testimonial={testimonial}
+              index={index}
               layout="carousel"
             />
           ))}
@@ -200,10 +199,11 @@ export function Testimonials() {
 
         {/* Desktop grid */}
         <div className="hidden flex-wrap justify-center gap-6 sm:flex xl:gap-8">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.id}
               testimonial={testimonial}
+              index={index}
               layout="grid"
             />
           ))}
