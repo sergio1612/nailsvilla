@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Poppins, Allura, Niconne } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
