@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/common/Card"
 import { CheckCircle2, Phone, Sparkles } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
 import { cn } from "@/lib/utils"
+import { buildWhatsAppUrlWithPhone } from "@/lib/whatsapp"
 
 export function Newsletter() {
   const [phoneNumber, setPhoneNumber] = useState("")
@@ -32,13 +33,8 @@ export function Newsletter() {
     setIsSubmitting(true)
 
     try {
-      const businessWhatsAppNumber = "919429031140"
-      const message = encodeURIComponent(
-        `Hello NailsVilla by Rutika! I want to book a nail appointment in Ahmedabad.\n\nMy WhatsApp number: ${phoneNumber}\nPreferred service: Please help me choose from the latest price list.\nAppointment preference: Rutika's home setup / home service.`
-      )
-
       await new Promise((resolve) => setTimeout(resolve, 400))
-      window.open(`https://wa.me/${businessWhatsAppNumber}?text=${message}`, "_blank")
+      window.open(buildWhatsAppUrlWithPhone(phoneNumber), "_blank")
 
       setIsSuccess(true)
       setPhoneNumber("")

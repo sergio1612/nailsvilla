@@ -4,14 +4,13 @@ import { Button } from "@/components/common/Button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/Card"
 import { Clock, Instagram, MapPin, Phone } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
+import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 export function Contact() {
+  const whatsAppUrl = buildWhatsAppUrl()
+
   const handleWhatsApp = () => {
-    const phoneNumber = "919429031140"
-    const message = encodeURIComponent(
-      "Hello NailsVilla by Rutika! I want to book a nail appointment in Ahmedabad. Please help me choose between Rutika's home setup and home service."
-    )
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank")
+    window.open(whatsAppUrl, "_blank")
   }
 
   const contactInfo = [
@@ -19,7 +18,7 @@ export function Contact() {
       icon: Phone,
       title: "Fast Booking",
       content: "WhatsApp us to choose a service and confirm your slot",
-      link: "https://wa.me/919429031140",
+      link: whatsAppUrl,
     },
     {
       icon: Instagram,
@@ -30,7 +29,7 @@ export function Contact() {
     {
       icon: Clock,
       title: "Hours",
-      content: "Prior booking only. No physical studio at the moment.",
+      content: "No physical studio at the moment.",
       link: "#",
     },
     {
@@ -83,33 +82,47 @@ export function Contact() {
           <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
             {contactInfo.map((info, index) => {
               const Icon = info.icon
-              return (
-                <Card
-                  key={index}
-                  className="rounded-3xl border-white/70 bg-white/80 backdrop-blur transition-all hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex items-start gap-4 p-4 text-left sm:block sm:p-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:mb-5">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-foreground sm:text-xl">
-                        {info.title}
-                      </h3>
-                      {info.link !== "#" ? (
-                        <a
-                          href={info.link}
-                          className="mt-2 block text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary"
-                        >
-                          {info.content}
-                        </a>
-                      ) : (
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {info.content}
-                        </p>
-                      )}
-                    </div>
+              const isClickable = info.link !== "#"
+              const cardClassName =
+                "rounded-3xl border border-white/70 bg-white/80 text-card-foreground shadow-sm backdrop-blur transition-all hover:-translate-y-1 hover:shadow-xl"
+              const cardBody = (
+                <div className="flex items-start gap-4 p-4 text-left sm:block sm:p-6">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:mb-5">
+                    <Icon className="h-5 w-5" />
                   </div>
+                  <div className="min-w-0">
+                    <h3 className="text-base font-semibold text-foreground sm:text-xl">
+                      {info.title}
+                    </h3>
+                    <p
+                      className={`mt-2 text-sm leading-relaxed text-muted-foreground ${
+                        isClickable ? "transition-colors group-hover:text-primary" : ""
+                      }`}
+                    >
+                      {info.content}
+                    </p>
+                  </div>
+                </div>
+              )
+
+              if (isClickable) {
+                return (
+                  <a
+                    key={index}
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group block ${cardClassName} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
+                    aria-label={`${info.title}: ${info.content}`}
+                  >
+                    {cardBody}
+                  </a>
+                )
+              }
+
+              return (
+                <Card key={index} className={cardClassName}>
+                  {cardBody}
                 </Card>
               )
             })}

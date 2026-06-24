@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { ArrowUp, Instagram, MapPin } from "lucide-react"
 import { WhatsappIcon } from "@/components/common/WhatsappIcon"
+import { buildWhatsAppUrl } from "@/lib/whatsapp"
 import { NAV_ITEMS, handleNavClick, scrollToSection } from "@/lib/navigation"
 
 export function Footer() {
@@ -75,7 +76,7 @@ export function Footer() {
             </h3>
             <div className="space-y-3 text-sm">
               <a
-                href="https://wa.me/919429031140"
+                href={buildWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/65 transition-colors hover:text-white"
