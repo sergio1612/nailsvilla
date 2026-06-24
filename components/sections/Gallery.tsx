@@ -103,7 +103,7 @@ export function Gallery() {
 
     items.forEach((item) => observer.observe(item))
     return () => observer.disconnect()
-  }, [])
+  }, [carouselRef])
 
   const openModal = (index: number) => setSelectedImage(index)
   const closeModal = () => setSelectedImage(null)
