@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/common/Button"
 import {
   ArrowRight,
@@ -15,7 +16,7 @@ import {
   Star,
 } from "lucide-react"
 import { pressOnPhotos } from "@/lib/photos"
-import { scrollToSection } from "@/lib/navigation"
+import { SHOP_PATH, scrollToSection } from "@/lib/navigation"
 
 const steps = [
   {
@@ -184,16 +185,23 @@ export function PressOnNails() {
             </div>
 
             <div className="flex flex-col gap-3 lg:items-end">
+              <Link
+                href={SHOP_PATH}
+                className="group inline-flex h-11 items-center justify-center rounded-full bg-white px-7 py-5 text-base font-medium text-foreground shadow-xl shadow-black/20 transition-all hover:bg-white hover:text-primary"
+              >
+                Shop press on sets
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
               <Button
                 size="lg"
+                variant="outline"
                 onClick={scrollToContact}
-                className="group rounded-full bg-white px-7 py-5 text-base text-foreground shadow-xl shadow-black/20 hover:bg-white hover:text-primary hover:opacity-100"
+                className="rounded-full border-white/25 bg-white/10 px-7 py-5 text-base text-white hover:bg-white/15 hover:text-white"
               >
-                Order your set
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                Custom order on WhatsApp
               </Button>
               <p className="text-xs text-white/50 lg:text-right">
-                Prior booking required · WhatsApp orders
+                Shop online or message for fully custom art
               </p>
             </div>
           </div>

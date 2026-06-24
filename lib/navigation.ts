@@ -1,3 +1,5 @@
+export const SHOP_PATH = "/shop" as const
+
 export const NAV_ITEMS = [
   { label: "Home", id: "hero" },
   { label: "About", id: "about" },
