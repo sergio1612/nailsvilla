@@ -1,6 +1,12 @@
 import type { Metadata } from "next"
-import { SiteLayout } from "@/components/layout/SiteLayout"
-import { About } from "@/components/sections/About"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+import { AboutLoading } from "@/components/sections/AboutLoading"
+
+const About = dynamic(
+  () => import("@/components/sections/About").then((mod) => mod.About),
+  { loading: () => <AboutLoading /> }
+)
 
 export const metadata: Metadata = {
   title: "About Rutika | NailsVilla",
@@ -10,10 +16,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <SiteLayout>
-      <div className="pt-20">
+    <div className="pt-20">
+      <Suspense fallback={<AboutLoading />}>
         <About />
-      </div>
-    </SiteLayout>
+      </Suspense>
+    </div>
   )
 }

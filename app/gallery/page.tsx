@@ -1,6 +1,12 @@
 import type { Metadata } from "next"
-import { SiteLayout } from "@/components/layout/SiteLayout"
-import { Gallery } from "@/components/sections/Gallery"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+import { GalleryLoading } from "@/components/sections/GalleryLoading"
+
+const Gallery = dynamic(
+  () => import("@/components/sections/Gallery").then((mod) => mod.Gallery),
+  { loading: () => <GalleryLoading /> }
+)
 
 export const metadata: Metadata = {
   title: "Nail Art Gallery | NailsVilla",
@@ -10,10 +16,10 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <SiteLayout>
-      <div className="pt-20">
+    <div className="pt-20">
+      <Suspense fallback={<GalleryLoading />}>
         <Gallery />
-      </div>
-    </SiteLayout>
+      </Suspense>
+    </div>
   )
 }
