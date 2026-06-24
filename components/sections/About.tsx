@@ -51,7 +51,7 @@ export function About() {
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section eyebrow */}
-        <div className="mx-auto mb-8 max-w-2xl text-center" data-section-eyebrow>
+        <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-8" data-section-eyebrow>
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-primary">
             <Sparkles className="h-4 w-4" />
             <span className="text-xs font-semibold uppercase tracking-[0.28em]">
@@ -69,7 +69,8 @@ export function About() {
           {/* TOP — Portrait + Editorial letter */}
           <div className="relative grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10 xl:p-12">
             {/* Portrait */}
-            <div className="relative mx-auto flex aspect-square w-full max-w-[280px] items-center justify-center md:order-1 xl:max-w-[320px]">
+            <div className="mx-6 mt-6 sm:mx-0 sm:mt-0 md:order-1">
+              <div className="relative mx-auto flex aspect-square w-full max-w-[280px] items-center justify-center xl:max-w-[320px]">
               <div className="absolute inset-0 rounded-full bg-linear-to-br from-accent/45 via-primary/25 to-transparent blur-2xl"></div>
               <div className="absolute -inset-3 rounded-full border border-primary/15"></div>
               <div className="absolute -inset-6 rounded-full border border-primary/8"></div>
@@ -90,6 +91,7 @@ export function About() {
                   </p>
                   <p className="font-display text-xl font-bold">2021</p>
                 </div>
+              </div>
               </div>
             </div>
 
