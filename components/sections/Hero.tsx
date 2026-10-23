@@ -6,6 +6,7 @@ import { Button } from "@/components/common/Button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { heroSlides } from "@/lib/photos"
 import { scrollToSection } from "@/lib/navigation"
+import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -22,7 +23,9 @@ export function Hero() {
     return () => clearInterval(interval)
   }, [slides.length])
 
-  const scrollToContact = () => scrollToSection("contact")
+  const openWhatsAppBooking = () => {
+    window.open(buildWhatsAppUrl(), "_blank")
+  }
 
   return (
     <section
@@ -108,7 +111,7 @@ export function Hero() {
               <div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
                 <Button
                   size="lg"
-                  onClick={scrollToContact}
+                  onClick={openWhatsAppBooking}
                   className="group rounded-full bg-white px-6 py-5 text-base text-foreground shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-primary hover:opacity-100 hover:shadow-2xl hover:shadow-primary/40 sm:px-7"
                 >
                   Book Appointment

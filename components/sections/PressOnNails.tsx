@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/common/Button"
 import {
@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 import { pressOnPhotos, type PressOnPhoto } from "@/lib/photos"
 import { scrollToSection } from "@/lib/navigation"
+import { useCarouselAutoplay } from "@/lib/useCarouselAutoplay"
 
 const steps = [
   {
@@ -60,10 +61,12 @@ const features = [
 
 function PressOnStyleCard({
   photo,
+  index,
   onOpen,
   layout,
 }: {
   photo: PressOnPhoto
+  index: number
   onOpen: () => void
   layout: "carousel" | "grid"
 }) {
@@ -71,6 +74,7 @@ function PressOnStyleCard({
     <button
       type="button"
       onClick={onOpen}
+      data-carousel-index={layout === "carousel" ? index : undefined}
       className={`group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
         layout === "carousel"
           ? "w-[85vw] max-w-sm shrink-0 snap-center"
@@ -107,6 +111,38 @@ function PressOnStyleCard({
 
 export function PressOnNails() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const { carouselRef } = useCarouselAutoplay({
+    itemCount: pressOnPhotos.length,
+    currentIndex: activeIndex,
+    intervalMs: 3000,
+    paused: selectedImage !== null,
+    onIndexChange: setActiveIndex,
+  })
+
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    const items = carousel.querySelectorAll<HTMLElement>("[data-carousel-index]")
+    if (!items.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            const index = Number(entry.target.getAttribute("data-carousel-index"))
+            if (!Number.isNaN(index)) setActiveIndex(index)
+          }
+        })
+      },
+      { root: carousel, threshold: [0.5, 0.75, 1] }
+    )
+
+    items.forEach((item) => observer.observe(item))
+    return () => observer.disconnect()
+  }, [])
 
   const scrollToContact = () => scrollToSection("contact")
 
@@ -204,15 +240,19 @@ export function PressOnNails() {
               Press on styles
             </p>
             <p className="mb-6 text-center text-sm text-muted-foreground sm:mb-8">
-              Swipe to browse on mobile · Tap any set to view full detail
+              Tap any set to view full detail
             </p>
 
             {/* Mobile carousel */}
-            <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-none sm:hidden">
+            <div
+              ref={carouselRef}
+              className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-none sm:hidden"
+            >
               {pressOnPhotos.map((photo, index) => (
                 <PressOnStyleCard
                   key={photo.id}
                   photo={photo}
+                  index={index}
                   layout="carousel"
                   onOpen={() => openModal(index)}
                 />
@@ -225,6 +265,7 @@ export function PressOnNails() {
                 <PressOnStyleCard
                   key={photo.id}
                   photo={photo}
+                  index={index}
                   layout="grid"
                   onOpen={() => openModal(index)}
                 />
