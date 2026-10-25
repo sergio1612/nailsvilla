@@ -12,7 +12,7 @@ type Testimonial = {
   text: string;
   location: string;
 };
-
+console.log("test");
 const testimonials: Testimonial[] = [
   {
     id: 5,
